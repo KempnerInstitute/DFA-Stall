@@ -1,0 +1,8 @@
+data/
+logs/
+__pycache__/
+*.pyc
+*.egg-info/
+figures/*.svg
+figures/*.pdf
+.DS_Store

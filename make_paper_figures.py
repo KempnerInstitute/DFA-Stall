@@ -76,18 +76,13 @@ LI = 1   # representative layer (L1)
 
 def load() -> pd.DataFrame:
     df = pd.read_csv(HERE / "metrics.csv").sort_values("step")
-    # rename to match original figure column names
-    df["train_loss"]                       = df["dfa_loss"]
-    df["gate_participation_unit_l1"]       = df["gate_participation_l1"]
-    df["gate_participation_unit_l2"]       = df["gate_participation_l2"]
-    df["gate_participation_unit_l3"]       = df["gate_participation_l3"]
-    df["gate_saturation_frac_low_g_l1"]   = df["saturation_frac_l1"]
-    df["gate_saturation_frac_low_g_l2"]   = df["saturation_frac_l2"]
-    df["gate_saturation_frac_low_g_l3"]   = df["saturation_frac_l3"]
-    # per-layer grad alignment: use global (DFA-STALL only tracks global)
-    for n in (1, 2, 3):
-        df[f"param_grad_alignment_l{n}"] = df["grad_alignment"]
-        df[f"feature_path_l{n}"]         = df[f"feature_movement_l{n}"]
+    # canonical alias: train_loss = dfa_loss
+    df["train_loss"] = df["dfa_loss"]
+    # interpolate sparse columns (logged every 50 steps)
+    for col in df.columns:
+        if col.startswith("selected_loss") or col.startswith("residual_loss") \
+                or col.startswith("feature_path") or col == "val_loss":
+            df[col] = df[col].interpolate(limit_direction="both")
     return df
 
 
@@ -159,9 +154,9 @@ def figure_1_gate_diagnostic(df: pd.DataFrame) -> None:
     layer_id = LI
 
     specs = [
-        (f"gate_strength_sq_l{layer_id}",          "Gate strength",       "linear"),
-        (f"gate_saturation_frac_low_g_l{layer_id}", "Saturation fraction", "symlog"),
-        (f"feedback_signal_norm_l{layer_id}",       "Feedback signal norm","linear"),
+        (f"gate_strength_sq_l{layer_id}",        "Gate strength",       "linear"),
+        (f"saturation_frac_l{layer_id}",         "Saturation fraction", "symlog"),
+        (f"feedback_signal_norm_l{layer_id}",    "Feedback signal norm","linear"),
     ]
     p_col = f"gate_participation_unit_l{layer_id}"
     p     = df[p_col].to_numpy()
@@ -196,7 +191,7 @@ def figure_2_participation_state(df: pd.DataFrame) -> None:
     p_col = f"gate_participation_unit_l{layer_id}"
     p     = df[p_col].to_numpy()
     loss  = df["train_loss"].to_numpy()
-    ga    = df[f"param_grad_alignment_l{layer_id}"].to_numpy()
+    ga    = df[f"param_grad_alignment_l{layer_id}"].fillna(df["grad_alignment"]).to_numpy()
 
     fig, axes = plt.subplots(1, 2, figsize=(6.6, 2.45))
     scatter_stall(axes[0], p, loss, steps, colors, s=5)
@@ -225,14 +220,15 @@ def _state(df: pd.DataFrame) -> dict:
     """Compute run-relative state variables for candidate_axes figures."""
     step = df["step"].to_numpy()
 
-    # gate participation (raw — same as above)
+    # gate participation
     p = sm(df[f"gate_participation_unit_l{LI}"])
 
-    # feedback selectivity: normalised drop in gate participation from early baseline
-    p_early = float(np.nanmedian(p[step <= 80]))
-    sel = np.clip(1.0 - p / (p_early + 1e-12), 0.0, 1.0)
+    # feedback selectivity: normalised drop in teacher_reff from early baseline
+    reff      = sm(df[f"teacher_reff_l{LI}"])
+    reff_early = float(np.nanmedian(reff[step <= 80]))
+    sel = np.clip(1.0 - reff / (reff_early + 1e-12), 0.0, 1.0)
 
-    # feature movement: normalised cumulative path
+    # feature movement: normalised cumulative feature path
     fp    = sm(df[f"feature_path_l{LI}"])
     fp_n  = fp / (np.nanmax(fp) + 1e-12)
 
@@ -242,16 +238,23 @@ def _state(df: pd.DataFrame) -> dict:
     fp_max  = float(np.nanmax(fp))
     catchup = np.clip((fp - fp_base) / (fp_max - fp_base + 1e-12), 0.0, 1.05)
 
-    # "bottleneck gap": angular update strength normalised (proxy for
-    #   selected_loss_response − residual_loss_response in the original)
-    ang   = sm(np.log1p(df[f"angular_update_l{LI}"].clip(lower=0)))
-    ang_n = (ang - ang.min()) / (ang.max() - ang.min() + 1e-12)
+    # bottleneck gap: selected − residual virtual-step loss response
+    sel_resp = sm(df[f"selected_loss_response_l{LI}"].to_numpy())
+    res_resp = sm(df[f"residual_loss_response_l{LI}"].to_numpy())
+    gap = sel_resp - res_resp
 
-    ga    = sm(df[f"param_grad_alignment_l{LI}"])
-    loss  = np.clip(sm(df["train_loss"]), 0.05, None)
+    # per-layer gradient alignment
+    ga   = sm(df[f"param_grad_alignment_l{LI}"])
+
+    # val_loss (interpolated)
+    loss = np.clip(sm(df["val_loss"].to_numpy()), 0.05, None)
+
+    # gate anisotropy
+    gate_cv = sm(df[f"gate_cv_l{LI}"])
 
     return dict(step=step, participation=p, selectivity=sel,
-                feature=fp_n, catchup=catchup, gap=ang_n, ga=ga, loss=loss)
+                feature=fp_n, catchup=catchup, gap=gap, ga=ga,
+                loss=loss, gate_cv=gate_cv)
 
 
 def _scatter_candidate(ax, x, y, steps, colors, log_y=False):
@@ -317,12 +320,11 @@ def candidate_feature_loss_alignment(df: pd.DataFrame) -> None:
     steps  = df["step"].to_numpy()
     colors, cmap, norm = step_colors(steps)
     st = _state(df)
-    ang = sm(np.log1p(df[f"angular_update_l{LI}"].clip(lower=0).to_numpy()))
 
     specs = [
-        (st["feature"], st["ga"],   r"Feature movement $F_\ell(t)$", "Gradient alignment",      False, "a"),
-        (st["feature"], st["loss"], r"Feature movement $F_\ell(t)$", "Validation loss",          True,  "b"),
-        (st["feature"], ang,        r"Feature movement $F_\ell(t)$", "Angular update strength",  False, "c"),
+        (st["feature"], st["ga"],      r"Feature movement $F_\ell(t)$", "Gradient alignment",      False, "a"),
+        (st["feature"], st["loss"],    r"Feature movement $F_\ell(t)$", "Validation loss",          True,  "b"),
+        (st["feature"], st["gate_cv"], r"Feature movement $F_\ell(t)$", "Angular update strength",  False, "c"),
     ]
     fig, axes = plt.subplots(1, 3, figsize=(7.2, 2.35))
     for ax, (x, y, xl, yl, log_y, lbl) in zip(axes, specs):

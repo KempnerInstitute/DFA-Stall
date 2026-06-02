@@ -136,17 +136,60 @@ def cosine_flat(a: torch.Tensor, b: torch.Tensor) -> float:
 
 @torch.no_grad()
 def gate_stats(g_prime: torch.Tensor) -> Dict[str, float]:
-    """g_prime: [B, d].  Returns gate participation, strength, saturation."""
+    """g_prime: [B, d].  Returns gate participation, strength, saturation,
+    teacher_reff and gate_cv."""
     u = g_prime.pow(2).mean(0).clamp_min(1e-12)          # per-unit squared activity
     u_sum = u.sum()
     participation = u_sum.pow(2) / (u.numel() * u.pow(2).sum().clamp_min(1e-12))
     strength_sq   = u.mean()
     sat           = (g_prime.abs() < 0.01).float().mean()
+    # teacher_reff = exp(H(p_i))  — entropy-based effective participation
+    p = u / u_sum
+    teacher_reff = float(torch.exp(-(p * p.log()).sum()).item())
+    # gate_cv = std/mean of per-unit averaged gate value
+    gp_unit = g_prime.mean(0)
+    gate_cv = float((gp_unit.std() / (gp_unit.mean().clamp_min(1e-12))).item())
     return {
         "gate_participation": float(participation.item()),
         "gate_strength_sq":   float(strength_sq.item()),
         "saturation_frac":    float(sat.item()),
+        "teacher_reff":       teacher_reff,
+        "gate_cv":            gate_cv,
     }
+
+
+@torch.no_grad()
+def _masked_response(
+    model: TanhMLP,
+    layer_idx: int,
+    gw: torch.Tensor,
+    gb: Optional[torch.Tensor],
+    mask: torch.Tensor,
+    baseline_loss: float,
+    x_probe: torch.Tensor,
+    t_probe: torch.Tensor,
+    eps: float,
+) -> float:
+    """Virtual-step loss response for masked rows of one layer's DFA gradient."""
+    layer = model.layers[layer_idx]
+    gw_m = torch.zeros_like(gw); gw_m[mask] = gw[mask]
+    gb_m = None
+    if gb is not None and layer.bias is not None:
+        gb_m = torch.zeros_like(gb); gb_m[mask] = gb[mask]
+    norm = float((gw_m.pow(2).sum() +
+                  (gb_m.pow(2).sum() if gb_m is not None else 0)).sqrt().item())
+    if norm < 1e-12:
+        return float("nan")
+    layer.weight.add_(gw_m, alpha=-eps)
+    if gb_m is not None:
+        layer.bias.add_(gb_m, alpha=-eps)
+    try:
+        loss_after = float(binary_log_loss(t_probe, model(x_probe)).item())
+        return (baseline_loss - loss_after) / (eps * norm)
+    finally:
+        layer.weight.add_(gw_m, alpha=eps)
+        if gb_m is not None:
+            layer.bias.add_(gb_m, alpha=eps)
 
 
 @torch.no_grad()
@@ -196,8 +239,15 @@ def run(args: argparse.Namespace) -> None:
     feedback = [torch.randn(300, n_classes, device=device) for _ in range(3)]
     opt_dfa  = torch.optim.SGD(model.parameters(), lr=args.lr)
 
-    # fixed probe for feature movement (first 512 test samples)
-    probe_x = X_te[:512].to(device).float()
+    # fixed probe set for feature movement, channel responses, val_loss
+    PROBE_N   = 1024
+    probe_x   = X_te[:PROBE_N].to(device).float()
+    probe_t   = to_one_hot(y_te[:PROBE_N], n_classes).to(device)
+    RESP_EPS  = 1e-3
+    RESP_FRAC = 0.20
+    VAL_EVERY = 10
+    RESP_EVERY = 50
+
     with torch.no_grad():
         model(probe_x)
         h_prev   = [h.clone() for h in model.acts]
@@ -249,6 +299,8 @@ def run(args: argparse.Namespace) -> None:
         dfa_cat = torch.cat([dfa_grads[li][0].reshape(-1) for li in range(3)])
         bp_cat  = torch.cat([g.reshape(-1) for g in bp_grads_hw])
         grad_align = cosine_flat(dfa_cat, bp_cat)
+        # per-layer gradient alignment
+        layer_grad_align = [cosine_flat(dfa_grads[li][0], bp_grads_hw[li]) for li in range(3)]
 
         # ── apply DFA update ──────────────────────────────────────────────────
         opt_dfa.zero_grad(set_to_none=True)
@@ -260,10 +312,11 @@ def run(args: argparse.Namespace) -> None:
         # ── order parameters ──────────────────────────────────────────────────
         eff_maps = effective_maps(model)
         row: Dict = {
-            "step":        step,
-            "dfa_loss":    dfa_loss,
-            "bp_loss":     bp_loss_val.item(),
+            "step":           step,
+            "dfa_loss":       dfa_loss,
+            "bp_loss":        bp_loss_val.item(),
             "grad_alignment": grad_align,
+            "val_loss":       np.nan,
         }
 
         for li in range(3):
@@ -276,9 +329,13 @@ def run(args: argparse.Namespace) -> None:
             eff   = eff_maps[li]
 
             gs = gate_stats(gp)
-            row[f"gate_participation_l{lid}"] = gs["gate_participation"]
-            row[f"gate_strength_sq_l{lid}"]   = gs["gate_strength_sq"]
-            row[f"saturation_frac_l{lid}"]    = gs["saturation_frac"]
+            row[f"gate_participation_l{lid}"]      = gs["gate_participation"]
+            row[f"gate_participation_unit_l{lid}"] = gs["gate_participation"]   # alias
+            row[f"gate_strength_sq_l{lid}"]        = gs["gate_strength_sq"]
+            row[f"saturation_frac_l{lid}"]         = gs["saturation_frac"]
+            row[f"gate_saturation_frac_low_g_l{lid}"] = gs["saturation_frac"]  # alias
+            row[f"teacher_reff_l{lid}"]            = gs["teacher_reff"]
+            row[f"gate_cv_l{lid}"]                 = gs["gate_cv"]
 
             fb_norm = float(t.norm().item() / math.sqrt(float(t.numel())))
             row[f"feedback_signal_norm_l{lid}"] = fb_norm
@@ -288,9 +345,37 @@ def run(args: argparse.Namespace) -> None:
             # weight alignment
             dots = (eff * B_l).sum(1)
             wa   = float((dots / (eff.norm(1).clamp_min(1e-12) * B_l.norm(1).clamp_min(1e-12))).mean().item())
-            row[f"weight_alignment_l{lid}"] = wa
+            row[f"weight_alignment_l{lid}"]       = wa
+            row[f"param_grad_alignment_l{lid}"]   = layer_grad_align[li]
 
-            row[f"feature_movement_l{lid}"] = float(feat_acc[li])
+            row[f"feature_movement_l{lid}"]       = float(feat_acc[li])
+            row[f"feature_path_l{lid}"]           = float(feat_acc[li])  # alias
+
+            row[f"selected_loss_response_l{lid}"] = np.nan
+            row[f"residual_loss_response_l{lid}"] = np.nan
+
+        # val_loss every VAL_EVERY steps
+        if step % VAL_EVERY == 0 or step == 1:
+            with torch.no_grad():
+                row["val_loss"] = float(binary_log_loss(probe_t, model(probe_x)).item())
+
+        # channel responses every RESP_EVERY steps
+        if step % RESP_EVERY == 0 or step == 1:
+            with torch.no_grad():
+                baseline = float(binary_log_loss(probe_t, model(probe_x)).item())
+            for li in range(3):
+                lid = li + 1
+                unit_e = teachings[li].pow(2).mean(0)
+                k = max(1, int(round(RESP_FRAC * unit_e.numel())))
+                top_idx = torch.topk(unit_e, k=k, largest=True).indices
+                sel_mask = torch.zeros(unit_e.numel(), dtype=torch.bool, device=device)
+                sel_mask[top_idx] = True
+                row[f"selected_loss_response_l{lid}"] = _masked_response(
+                    model, li, dfa_grads[li][0], dfa_grads[li][1],
+                    sel_mask, baseline, probe_x, probe_t, RESP_EPS)
+                row[f"residual_loss_response_l{lid}"] = _masked_response(
+                    model, li, dfa_grads[li][0], dfa_grads[li][1],
+                    ~sel_mask, baseline, probe_x, probe_t, RESP_EPS)
 
         rows.append(row)
 

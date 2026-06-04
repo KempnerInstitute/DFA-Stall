@@ -159,6 +159,50 @@ def gate_stats(g_prime: torch.Tensor) -> Dict[str, float]:
 
 
 @torch.no_grad()
+def effective_rank(signals: torch.Tensor) -> float:
+    """Spectral-entropy effective rank of E[signals signals^T].
+
+    Uses the Gram-matrix trick when B < d so the eigendecomposition
+    is at most B×B regardless of hidden width.
+
+    signals: [B, d]
+    Returns exp(-Σ p_i log p_i), p_i = λ_i / Σλ_j.
+    """
+    B, d = signals.shape
+    eps = 1e-10
+    if B <= d:
+        G = signals @ signals.t() / B           # [B, B]
+        G = 0.5 * (G + G.t())
+        w = torch.linalg.eigvalsh(G + eps * torch.eye(B, device=G.device))
+    else:
+        C = signals.t() @ signals / B           # [d, d]
+        C = 0.5 * (C + C.t())
+        w = torch.linalg.eigvalsh(C + eps * torch.eye(d, device=C.device))
+    w  = w.clamp_min(0)
+    total = w.sum() + 1e-12
+    p  = (w / total).clamp_min(1e-12)
+    return float(torch.exp(-(p * p.log()).sum()).item())
+
+
+@torch.no_grad()
+def bp_deltas(model: TanhMLP, error: torch.Tensor, n_layers: int) -> List[torch.Tensor]:
+    """Manual backprop: c_ℓ = ∂L/∂a_ℓ for each hidden layer.
+
+    error: [B, C] = sigmoid(a_out) - targets  (output error)
+    Returns [c_1, c_2, ..., c_{n_layers}] each [B, h_ℓ].
+    """
+    delta = error @ model.layers[-1].weight          # [B, h_last]
+    out: List[torch.Tensor] = []
+    for li in range(n_layers - 1, -1, -1):
+        delta = delta * (1.0 - torch.tanh(model.preacts[li]).pow(2))
+        out.append(delta.detach().clone())
+        if li > 0:
+            delta = delta @ model.layers[li].weight  # [B, h_{li-1}]
+    out.reverse()
+    return out   # [c_1, c_2, c_3]
+
+
+@torch.no_grad()
 def _masked_response(
     model: TanhMLP,
     layer_idx: int,
@@ -301,6 +345,9 @@ def run(args: argparse.Namespace) -> None:
         grad_align = cosine_flat(dfa_cat, bp_cat)
         # per-layer gradient alignment
         layer_grad_align = [cosine_flat(dfa_grads[li][0], bp_grads_hw[li]) for li in range(3)]
+        # BP teaching signals c_ℓ = ∂L/∂a_ℓ (for BP effective rank)
+        bp_error = (bp_preds - targets).detach()
+        bp_delta_signals = bp_deltas(model, bp_error, 3)
 
         # ── apply DFA update ──────────────────────────────────────────────────
         opt_dfa.zero_grad(set_to_none=True)
@@ -353,6 +400,10 @@ def run(args: argparse.Namespace) -> None:
 
             row[f"selected_loss_response_l{lid}"] = np.nan
             row[f"residual_loss_response_l{lid}"] = np.nan
+            # effective rank: teacher signal, activations, BP signal
+            row[f"teach_eff_rank_l{lid}"]    = effective_rank(teachings[li])
+            row[f"act_eff_rank_l{lid}"]      = effective_rank(model.acts[li].detach())
+            row[f"bp_teach_eff_rank_l{lid}"] = effective_rank(bp_delta_signals[li])
 
         # val_loss every VAL_EVERY steps
         if step % VAL_EVERY == 0 or step == 1:
@@ -606,6 +657,89 @@ def fig3_phase_portraits(df: pd.DataFrame, stall_s: int, stall_e: int) -> None:
     print("  fig3_phase_portraits.png")
 
 
+def fig4_effective_rank(df: pd.DataFrame, stall_s: int, stall_e: int) -> None:
+    """5-panel mechanistic portrait: loss · rank · useful descent · feature movement · WA."""
+    _style()
+    steps = df["step"].to_numpy()
+    fig, axes = plt.subplots(5, 1, figsize=(5.0, 9.5), sharex=True)
+    fig.subplots_adjust(hspace=0.08, left=0.15, right=0.97, top=0.95, bottom=0.06)
+
+    def shade(ax): _shade(ax, steps, stall_s, stall_e)
+    def label(ax, c, y=0.97):
+        ax.text(0.02, y, c, transform=ax.transAxes,
+                fontsize=9, fontweight="bold", va="top")
+
+    # (a) loss
+    ax = axes[0]
+    shade(ax)
+    ax.semilogy(steps, _sm(df["dfa_loss"]), color="#1f4e79", lw=1.5, label="DFA")
+    ax.semilogy(steps, _sm(df["bp_loss"]),  color="#d62728", lw=1.0, ls="--", label="BP")
+    ax.set_ylabel("Training loss")
+    ax.legend(frameon=False, loc="upper right")
+    label(ax, "a")
+    _clean(ax)
+
+    # (b) teacher effective rank (DFA) vs BP effective rank
+    ax = axes[1]
+    shade(ax)
+    for li in range(3):
+        lid = li + 1
+        ax.plot(steps, _sm(df[f"teach_eff_rank_l{lid}"]),
+                color=LAYER_COLORS[li], lw=1.3, label=f"DFA L{lid}")
+        ax.plot(steps, _sm(df[f"bp_teach_eff_rank_l{lid}"]),
+                color=LAYER_COLORS[li], lw=0.9, ls="--", alpha=0.55)
+    from matplotlib.lines import Line2D
+    handles = [Line2D([0],[0], color="k", lw=1.3, label=r"$r^\delta_\ell$ (DFA teacher)"),
+               Line2D([0],[0], color="k", lw=0.9, ls="--", alpha=0.6, label=r"$r^{\rm BP}_\ell$ (BP teacher)")]
+    ax.legend(handles=handles, frameon=False, fontsize=6.5, loc="upper right")
+    ax.set_ylabel(r"Teacher eff. rank  $r^\delta_\ell(t)$")
+    label(ax, "b")
+    _clean(ax)
+
+    # (c) activation effective rank
+    ax = axes[2]
+    shade(ax)
+    for li in range(3):
+        ax.plot(steps, _sm(df[f"act_eff_rank_l{li+1}"]),
+                color=LAYER_COLORS[li], lw=1.3, label=f"L{li+1}")
+    ax.set_ylabel(r"Activation eff. rank  $r^h_\ell(t)$")
+    ax.legend(frameon=False, loc="upper right", fontsize=6.5, ncol=3)
+    label(ax, "c")
+    _clean(ax)
+
+    # (d) per-layer gradient alignment (projected useful descent)
+    ax = axes[3]
+    shade(ax)
+    for li in range(3):
+        col = f"param_grad_alignment_l{li+1}"
+        y   = df[col].to_numpy() if col in df.columns else df["grad_alignment"].to_numpy()
+        ax.plot(steps, _sm(y), color=LAYER_COLORS[li], lw=1.3, label=f"L{li+1}")
+    ax.axhline(0, color="0.7", lw=0.6, ls=":")
+    ax.set_ylabel(r"Grad alignment  $\Pi_\ell(t)$")
+    ax.legend(frameon=False, loc="lower right", fontsize=6.5, ncol=3)
+    label(ax, "d")
+    _clean(ax)
+
+    # (e) weight alignment
+    ax = axes[4]
+    shade(ax)
+    for li in range(3):
+        ax.plot(steps, _sm(df[f"weight_alignment_l{li+1}"]),
+                color=LAYER_COLORS[li], lw=1.3, label=f"L{li+1}")
+    ax.axhline(0, color="0.7", lw=0.6, ls=":")
+    ax.set_ylabel(r"Weight alignment  ${\rm WA}_\ell(t)$")
+    ax.set_xlabel("Training step")
+    label(ax, "e")
+    _clean(ax)
+
+    for ax in axes:
+        ax.tick_params(axis="both", which="major", length=3, pad=2)
+
+    fig.savefig(HERE / "figures" / "fig4_effective_rank.png", dpi=300, bbox_inches="tight")
+    plt.close(fig)
+    print("  fig4_effective_rank.png")
+
+
 # ── main ──────────────────────────────────────────────────────────────────────
 
 def main() -> None:
@@ -630,6 +764,7 @@ def main() -> None:
     fig1_training_curves(df, stall_s, stall_e)
     fig2_order_params(df, stall_s, stall_e)
     fig3_phase_portraits(df, stall_s, stall_e)
+    fig4_effective_rank(df, stall_s, stall_e)
 
     print(f"\nAll outputs in: {HERE}")
     print(f"  metrics.csv    ({len(df)} rows × {len(df.columns)} cols)")

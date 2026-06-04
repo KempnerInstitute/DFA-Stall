@@ -30,4 +30,7 @@ $PYTHON "$SCRIPT_DIR/train.py" \
 echo "Training done. Generating paper figures …"
 $PYTHON "$SCRIPT_DIR/make_paper_figures.py"
 
+echo "Computing loss landscape …"
+$PYTHON "$SCRIPT_DIR/make_landscape.py"
+
 echo "Done. Figures in $SCRIPT_DIR/figures/"

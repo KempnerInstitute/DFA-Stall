@@ -283,6 +283,15 @@ def run(args: argparse.Namespace) -> None:
     feedback = [torch.randn(300, n_classes, device=device) for _ in range(3)]
     opt_dfa  = torch.optim.SGD(model.parameters(), lr=args.lr)
 
+    # separately-trained BP model (same init) — used for landscape comparison
+    model_bp_trained = TanhMLP(784, 300, n_classes, args.seed).to(device)
+    opt_bp_trained   = torch.optim.SGD(model_bp_trained.parameters(), lr=args.lr)
+
+    # checkpoint steps for the loss landscape
+    CKPT_STEPS = {1, 25, 50, 75, 100, 118, 150, 200, 300, 400, 451, 500, 700, 1000, 1500, 2000, 3000}
+    ckpt_dir   = HERE / "checkpoints"
+    ckpt_dir.mkdir(exist_ok=True)
+
     # fixed probe set for feature movement, channel responses, val_loss
     PROBE_N   = 1024
     probe_x   = X_te[:PROBE_N].to(device).float()
@@ -355,6 +364,19 @@ def run(args: argparse.Namespace) -> None:
             layer.weight.grad = gw
             layer.bias.grad   = gb
         opt_dfa.step()
+
+        # ── true BP step (separate model, same batch) ─────────────────────────
+        opt_bp_trained.zero_grad(set_to_none=True)
+        pred_bp_t = model_bp_trained(xb)
+        binary_log_loss(targets, pred_bp_t).backward()
+        opt_bp_trained.step()
+
+        # ── save checkpoints for loss landscape ───────────────────────────────
+        if step in CKPT_STEPS:
+            torch.save(model.state_dict(),
+                       ckpt_dir / f"dfa_{step:05d}.pt")
+            torch.save(model_bp_trained.state_dict(),
+                       ckpt_dir / f"bp_{step:05d}.pt")
 
         # ── order parameters ──────────────────────────────────────────────────
         eff_maps = effective_maps(model)

@@ -1,34 +1,32 @@
 #!/usr/bin/env python3
 """
-make_landscape.py — 2D loss landscape from real parameter checkpoints.
+make_landscape.py — 2D loss landscape showing DFA vs BP trajectories.
 
-Uses the checkpoints saved by train.py to project the full loss surface
-into a 2D plane defined by the actual DFA and BP optimization trajectories.
+The key insight from the data: DFA and BP start at the SAME point but travel
+in nearly ORTHOGONAL directions through parameter space.  A coordinate system
+that captures only one path hides the other entirely.
 
-Coordinate system
------------------
-  Reference point θ_ref : DFA parameters at the stall start (step 118).
+Coordinate system (this version)
+---------------------------------
+  Origin   : initial parameters θ₀ (same for both DFA and BP, same seed).
+  α-axis   : direction DFA travels  =  DFA_final − θ₀  (filter-normalised).
+  β-axis   : direction BP  travels  =  BP_final  − θ₀,  Gram-Schmidt ⊥ α.
 
-  Direction d1  : DFA(final) − DFA(stall_start)
-                  The direction DFA eventually travels during recovery.
+In this system:
+  • DFA trajectory sweeps along α (DFA stall = α barely changes for ~350 steps).
+  • BP  trajectory sweeps along β (BP converges steadily while DFA stalls).
+  • Both start at (0, 0) and diverge to (≈1, ≈0) and (≈0, ≈1) respectively.
 
-  Direction d2  : BP(final) − DFA(stall_start), Gram-Schmidt ⊥ d1.
-                  The direction BP has moved relative to the stall point.
-                  In this coordinate, BP ends up at β>0 while DFA stays near β≈0
-                  during the stall — this makes the "different paths" visible.
+The loss contours show the surface DFA and BP are actually navigating — you can
+directly read off why DFA stalls: it is on a flatter part of the landscape while
+BP is on a steeper ridge.
 
-Both directions are filter-normalised (Li et al. 2018): each layer's component
-is scaled so that α=1 corresponds to moving by one weight-norm unit, making the
-landscape scale-interpretable.
-
-Grid: 50×50 evaluations of real MNIST loss (2000-sample validation batch).
-
-Output: figures/fig7_loss_landscape.png / .svg / .pdf
+Output: figures/fig7_loss_landscape.png / .svg
 """
 from __future__ import annotations
 import os, sys
 from pathlib import Path
-from typing import Dict, List
+from typing import List
 
 import numpy as np
 import pandas as pd
@@ -42,16 +40,16 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 import matplotlib.colors as mcolors
+import matplotlib.patheffects as pe
 
-HERE  = Path(__file__).resolve().parent
-CKPT  = HERE / "checkpoints"
+HERE   = Path(__file__).resolve().parent
+CKPT   = HERE / "checkpoints"
 OUTDIR = HERE / "figures"
 OUTDIR.mkdir(parents=True, exist_ok=True)
 
-# ── minimal model re-definition (self-contained) ──────────────────────────────
-
+# ── minimal model ─────────────────────────────────────────────────────────────
 class TanhMLP(nn.Module):
-    def __init__(self, seed: int = 42):
+    def __init__(self, seed=42):
         super().__init__()
         torch.manual_seed(seed)
         dims = [784, 300, 300, 300, 10]
@@ -61,7 +59,6 @@ class TanhMLP(nn.Module):
             nn.init.xavier_uniform_(l.weight); nn.init.zeros_(l.bias)
         self.preacts: List[torch.Tensor] = []
         self.acts:    List[torch.Tensor] = []
-
     def forward(self, x):
         self.preacts, self.acts = [], []
         h = x
@@ -74,324 +71,312 @@ def binary_log_loss(t, p, eps=1e-12):
     p = p.clamp(eps, 1-eps)
     return -(t*p.log() + (1-t)*(1-p).log()).sum(1).mean()
 
-def to_one_hot(y, n):
-    return F.one_hot(y.long(), n).float()
+def to_one_hot(y, n): return F.one_hot(y.long(), n).float()
 
-# ── parameter vector utilities ────────────────────────────────────────────────
-
-def param_vec(model: TanhMLP) -> torch.Tensor:
+# ── param utils ───────────────────────────────────────────────────────────────
+def param_vec(model):
     return torch.cat([p.detach().cpu().flatten() for p in model.parameters()])
 
-def load_vec(model: TanhMLP, vec: torch.Tensor, device) -> None:
-    vec = vec.to(device)
-    offset = 0
+def load_vec(model, vec, device):
+    vec = vec.to(device); offset = 0
     with torch.no_grad():
         for p in model.parameters():
             n = p.numel()
-            p.copy_(vec[offset:offset+n].reshape(p.shape))
-            offset += n
+            p.copy_(vec[offset:offset+n].reshape(p.shape)); offset += n
 
-def filter_normalise(d: torch.Tensor, ref: TanhMLP) -> torch.Tensor:
-    """Scale each layer's chunk of d to have the same Frobenius norm as the
-    corresponding layer in ref.  This makes α/β interpretable as weight-norm units."""
-    out = d.clone()
-    offset = 0
-    for p in ref.parameters():
-        n = p.numel()
-        chunk = d[offset:offset+n]
-        ref_norm  = p.detach().cpu().norm().item()
-        chunk_norm = chunk.norm().item()
-        if chunk_norm > 1e-12:
-            out[offset:offset+n] = chunk * (ref_norm / chunk_norm)
+def filter_norm(d, ref_model):
+    """Li et al. filter normalisation: scale each layer chunk to ref layer norm."""
+    out = d.clone(); offset = 0
+    for p in ref_model.parameters():
+        n = p.numel(); chunk = d[offset:offset+n]
+        rn = p.detach().cpu().norm().item(); cn = chunk.norm().item()
+        if cn > 1e-12: out[offset:offset+n] = chunk * (rn / cn)
         offset += n
     return out
 
-# ── load MNIST ────────────────────────────────────────────────────────────────
-
-def load_mnist(data_dir: Path):
+# ── data ──────────────────────────────────────────────────────────────────────
+def load_mnist(data_dir):
     from torchvision import datasets
     te = datasets.MNIST(root=str(data_dir), train=False, download=False)
-    X  = te.data.float().div(255.0).view(-1, 784)
-    y  = torch.as_tensor(te.targets, dtype=torch.long)
-    return X[:2000], y[:2000]     # fixed 2000-sample validation slice
-
-# ── evaluate loss at a parameter vector ───────────────────────────────────────
+    X = te.data.float().div(255.0).view(-1, 784)
+    y = torch.as_tensor(te.targets, dtype=torch.long)
+    return X[:2000], y[:2000]
 
 @torch.no_grad()
-def eval_loss(model: TanhMLP, vec: torch.Tensor, X, y, device) -> float:
+def eval_loss(model, vec, X, y, device):
     load_vec(model, vec, device)
     preds = model(X.to(device).float())
-    tgts  = to_one_hot(y.to(device), 10)
-    return float(binary_log_loss(tgts, preds).item())
+    return float(binary_log_loss(to_one_hot(y.to(device), 10), preds).item())
 
 # ── main ──────────────────────────────────────────────────────────────────────
-
 def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Device: {device}")
 
-    # check checkpoints exist
-    required = ["dfa_00001.pt", "dfa_00118.pt", "dfa_03000.pt",
-                "bp_00001.pt",  "bp_00118.pt",  "bp_03000.pt"]
-    missing  = [f for f in required if not (CKPT / f).exists()]
-    if missing:
-        print(f"Missing checkpoints: {missing}")
-        print("Re-run train.py first.")
-        return
+    # verify checkpoints
+    for f in ["dfa_00001.pt", "dfa_03000.pt", "bp_00001.pt", "bp_03000.pt"]:
+        if not (CKPT / f).exists():
+            print(f"Missing: {f} — run train.py first"); return
 
-    # available checkpoint steps
-    dfa_ckpts = sorted(CKPT.glob("dfa_*.pt"))
-    bp_ckpts  = sorted(CKPT.glob("bp_*.pt"))
-    dfa_steps = [int(p.stem.split("_")[1]) for p in dfa_ckpts]
-    bp_steps  = [int(p.stem.split("_")[1]) for p in bp_ckpts]
-    print(f"DFA checkpoints: {dfa_steps}")
-
-    # load validation data
     X_val, y_val = load_mnist(HERE / "data")
-    print(f"Validation: {tuple(X_val.shape)}")
-
-    # load models
     seed = 42
-    m_tmp = TanhMLP(seed).to(device)   # reusable workspace model
+    m_work = TanhMLP(seed).to(device)
 
     def load_ckpt(path):
-        sd = torch.load(path, map_location="cpu")
-        m_tmp2 = TanhMLP(seed)
-        m_tmp2.load_state_dict(sd)
-        return param_vec(m_tmp2)
+        m = TanhMLP(seed)
+        m.load_state_dict(torch.load(path, map_location="cpu"))
+        return param_vec(m)
 
-    # key parameter vectors
-    dfa_vecs: Dict[int, torch.Tensor] = {}
-    bp_vecs:  Dict[int, torch.Tensor] = {}
-    for p in dfa_ckpts: dfa_vecs[int(p.stem.split("_")[1])] = load_ckpt(p)
-    for p in bp_ckpts:  bp_vecs[int(p.stem.split("_")[1])]  = load_ckpt(p)
+    # load all checkpoints
+    dfa_files = sorted(CKPT.glob("dfa_*.pt"))
+    bp_files  = sorted(CKPT.glob("bp_*.pt"))
+    dfa_steps = [int(p.stem.split("_")[1]) for p in dfa_files]
+    bp_steps  = [int(p.stem.split("_")[1]) for p in bp_files]
+    dfa_vecs  = {s: load_ckpt(p) for s, p in zip(dfa_steps, dfa_files)}
+    bp_vecs   = {s: load_ckpt(p) for s, p in zip(bp_steps,  bp_files)}
 
-    # ── define 2D coordinate system ───────────────────────────────────────────
-    # Stall reference: DFA at stall start (step 118, closest available)
-    stall_step = min(dfa_vecs.keys(), key=lambda s: abs(s - 118))
-    final_step = max(dfa_vecs.keys())
-    print(f"Using stall step: {stall_step},  final step: {final_step}")
+    # ── coordinate system: SHARED ORIGIN = initial params ─────────────────────
+    theta0 = dfa_vecs[1]          # step 1 = same for DFA and BP (same seed)
+    m_ref  = TanhMLP(seed)        # reference model for filter normalisation
+    m_ref.load_state_dict(torch.load(CKPT / "dfa_00001.pt", map_location="cpu"))
 
-    theta_ref = dfa_vecs[stall_step]
-
-    # d1: DFA recovery direction (stall→final)
-    d1_raw = dfa_vecs[final_step] - theta_ref
-    m_ref  = TanhMLP(seed); m_ref.load_state_dict(
-        torch.load(CKPT / f"dfa_{stall_step:05d}.pt", map_location="cpu"))
-    d1     = filter_normalise(d1_raw, m_ref)
+    # d1: DFA direction  (DFA_final − θ₀)
+    d1_raw = dfa_vecs[3000] - theta0
+    d1     = filter_norm(d1_raw, m_ref)
     d1_hat = d1 / d1.norm().clamp_min(1e-12)
+    d1_scale = d1.norm().item()
 
-    # d2: BP direction (BP_final − DFA_stall), Gram-Schmidt ⊥ d1
-    d2_raw  = bp_vecs[final_step] - theta_ref
-    d2_raw  = d2_raw - torch.dot(d2_raw, d1_hat) * d1_hat  # orthogonalise
-    d2      = filter_normalise(d2_raw, m_ref)
+    # d2: BP direction  (BP_final − θ₀),  Gram-Schmidt ⊥ d1
+    d2_raw  = bp_vecs[3000] - theta0
+    d2_raw  = d2_raw - torch.dot(d2_raw, d1_hat) * d1_hat   # orthogonalise
+    d2      = filter_norm(d2_raw, m_ref)
     d2_hat  = d2 / d2.norm().clamp_min(1e-12)
+    d2_scale = d2.norm().item()
+    print(f"d1 (DFA direction) norm: {d1_scale:.2f}")
+    print(f"d2 (BP  direction) norm: {d2_scale:.2f}")
 
-    scale1 = d1.norm().item()
-    scale2 = d2.norm().item()
-    print(f"d1 norm (DFA recovery): {scale1:.2f}")
-    print(f"d2 norm (BP direction): {scale2:.2f}")
-
-    # ── project all checkpoints onto (d1̂, d2̂) ────────────────────────────────
+    # project all checkpoints
     def proj(vec):
-        diff = vec - theta_ref
-        a = torch.dot(diff, d1_hat).item() / scale1
-        b = torch.dot(diff, d2_hat).item() / scale2
-        return a, b
+        diff = vec - theta0
+        return (torch.dot(diff, d1_hat).item() / d1_scale,
+                torch.dot(diff, d2_hat).item() / d2_scale)
 
-    dfa_proj = [(s, *proj(v)) for s, v in sorted(dfa_vecs.items())]
-    bp_proj  = [(s, *proj(v)) for s, v in sorted(bp_vecs.items())]
+    dfa_proj = np.array([proj(dfa_vecs[s]) for s in dfa_steps])
+    bp_proj  = np.array([proj(bp_vecs[s])  for s in bp_steps])
 
-    dfa_proj_arr = np.array([(a, b) for _, a, b in dfa_proj])
-    bp_proj_arr  = np.array([(a, b) for _, a, b in bp_proj])
-    dfa_proj_steps = [s for s, _, _ in dfa_proj]
-    bp_proj_steps  = [s for s, _, _ in bp_proj]
+    print("DFA trajectory range: "
+          f"α [{dfa_proj[:,0].min():.3f}, {dfa_proj[:,0].max():.3f}]  "
+          f"β [{dfa_proj[:,1].min():.3f}, {dfa_proj[:,1].max():.3f}]")
+    print("BP  trajectory range: "
+          f"α [{bp_proj[:,0].min():.3f}, {bp_proj[:,0].max():.3f}]  "
+          f"β [{bp_proj[:,1].min():.3f}, {bp_proj[:,1].max():.3f}]")
 
-    # ── compute loss landscape on 50×50 grid ──────────────────────────────────
-    # Range: cover both trajectories with a margin
-    all_a = np.concatenate([dfa_proj_arr[:, 0], bp_proj_arr[:, 0]])
-    all_b = np.concatenate([dfa_proj_arr[:, 1], bp_proj_arr[:, 1]])
-    margin = 0.25
-    a_lo, a_hi = all_a.min() - margin, all_a.max() + margin
-    b_lo, b_hi = all_b.min() - margin, all_b.max() + margin
+    # ── loss grid ──────────────────────────────────────────────────────────────
+    all_a = np.concatenate([dfa_proj[:,0], bp_proj[:,0]])
+    all_b = np.concatenate([dfa_proj[:,1], bp_proj[:,1]])
+    mg = 0.12
+    a_lo, a_hi = all_a.min() - mg, all_a.max() + mg
+    b_lo, b_hi = all_b.min() - mg, all_b.max() + mg
 
-    N_GRID = 50
-    a_grid = np.linspace(a_lo, a_hi, N_GRID)
-    b_grid = np.linspace(b_lo, b_hi, N_GRID)
-    AG, BG = np.meshgrid(a_grid, b_grid)
-    LG     = np.zeros_like(AG)
+    N = 50
+    ag = np.linspace(a_lo, a_hi, N)
+    bg = np.linspace(b_lo, b_hi, N)
+    AG, BG = np.meshgrid(ag, bg)
+    LG = np.zeros_like(AG)
 
-    print(f"Computing {N_GRID}×{N_GRID} = {N_GRID**2} loss evaluations …")
-    for i in range(N_GRID):
-        for j in range(N_GRID):
-            theta = theta_ref + AG[i, j] * scale1 * d1_hat \
-                              + BG[i, j] * scale2 * d2_hat
-            LG[i, j] = eval_loss(m_tmp, theta, X_val, y_val, device)
+    print(f"Computing {N*N} loss evaluations …")
+    for i in range(N):
+        for j in range(N):
+            theta = theta0 + AG[i,j]*d1_scale*d1_hat + BG[i,j]*d2_scale*d2_hat
+            LG[i,j] = eval_loss(m_work, theta, X_val, y_val, device)
         if i % 10 == 0:
-            print(f"  row {i}/{N_GRID}  loss range so far: "
-                  f"[{LG[:i+1].min():.3f}, {LG[:i+1].max():.3f}]")
+            valid = LG[:i+1][LG[:i+1] < 50]
+            if len(valid): print(f"  row {i}: loss [{valid.min():.2f}, {valid.max():.2f}]")
 
-    # restore ref for labelling
-    load_vec(m_tmp, theta_ref, device)
+    # clip outliers for display
+    LG_disp = np.clip(LG, 0, np.percentile(LG, 96))
 
-    # loss at DFA stall = ref point
-    loss_at_stall = eval_loss(m_tmp, theta_ref, X_val, y_val, device)
-    print(f"Loss at stall reference: {loss_at_stall:.4f}")
+    # loss along each trajectory
+    dfa_losses = np.array([eval_loss(m_work, dfa_vecs[s], X_val, y_val, device)
+                           for s in dfa_steps])
+    bp_losses  = np.array([eval_loss(m_work, bp_vecs[s],  X_val, y_val, device)
+                           for s in bp_steps])
+    print(f"DFA final loss: {dfa_losses[-1]:.4f}")
+    print(f"BP  final loss: {bp_losses[-1]:.4f}")
+
+    # stall masks
+    STALL_S, STALL_E = 118, 451
+    dfa_stall = np.array([STALL_S <= s <= STALL_E for s in dfa_steps])
+    bp_stall  = np.array([STALL_S <= s <= STALL_E for s in bp_steps])
 
     # ── figure ────────────────────────────────────────────────────────────────
     plt.rcParams.update({
-        "font.family": "sans-serif",
-        "font.sans-serif": ["Arial","Helvetica","DejaVu Sans"],
-        "font.size": 8, "axes.labelsize": 8, "axes.titlesize": 8.5,
-        "xtick.labelsize": 7, "ytick.labelsize": 7, "legend.fontsize": 7,
-        "axes.linewidth": 0.75, "lines.linewidth": 1.3,
+        "font.family":"sans-serif","font.sans-serif":["Arial","Helvetica","DejaVu Sans"],
+        "font.size":8,"axes.labelsize":8,"axes.titlesize":8.5,
+        "xtick.labelsize":7,"ytick.labelsize":7,"legend.fontsize":7,
+        "axes.linewidth":0.75,"lines.linewidth":1.3,
     })
     def clean(ax):
         ax.spines["top"].set_visible(False); ax.spines["right"].set_visible(False)
 
-    STALL_S, STALL_E = 118, 451
     DFA_COL  = "#1f77b4"
     BP_COL   = "#d62728"
     STALL_COL = "#e8501a"
 
-    # stall steps mask
-    dfa_stall_mask = np.array([STALL_S <= s <= STALL_E for s in dfa_proj_steps])
-    bp_stall_mask  = np.array([STALL_S <= s <= STALL_E for s in bp_proj_steps])
+    fig = plt.figure(figsize=(13, 9))
+    gs  = GridSpec(2, 2, figure=fig, left=0.09, right=0.97,
+                   bottom=0.09, top=0.91, wspace=0.38, hspace=0.42)
 
-    fig = plt.figure(figsize=(12, 5.2))
-    gs  = GridSpec(1, 2, figure=fig, left=0.08, right=0.96,
-                   bottom=0.13, top=0.88, wspace=0.38)
+    # ─────────────────────────────────────────────────────────────────────────
+    # Panel A: main landscape with both trajectories
+    # ─────────────────────────────────────────────────────────────────────────
+    ax = fig.add_subplot(gs[:, 0])   # left half, full height
 
-    # ── panel A: full landscape ───────────────────────────────────────────────
-    ax = fig.add_subplot(gs[0, 0])
-    LG_clipped = np.clip(LG, 0, np.percentile(LG, 97))
-    lvls = np.linspace(LG_clipped.min(), LG_clipped.max(), 30)
-    cf = ax.contourf(AG, BG, LG_clipped, levels=lvls, cmap="Blues_r", alpha=0.70)
-    ax.contour(AG, BG, LG_clipped, levels=lvls, colors="white",
-               linewidths=0.25, alpha=0.5)
-    plt.colorbar(cf, ax=ax, pad=0.02, fraction=0.05,
-                 label="Validation loss")
+    lvls = np.linspace(LG_disp.min(), LG_disp.max(), 28)
+    cf = ax.contourf(AG, BG, LG_disp, levels=lvls, cmap="RdYlGn_r", alpha=0.72)
+    cs = ax.contour(AG, BG, LG_disp, levels=lvls[::3],
+                    colors="k", linewidths=0.35, alpha=0.55)
+    plt.colorbar(cf, ax=ax, pad=0.02, fraction=0.04, label="Validation loss")
+    ax.clabel(cs, fmt="%.1f", fontsize=5.5, inline=True)
 
-    # full trajectories (thin)
-    ax.plot(dfa_proj_arr[:, 0], dfa_proj_arr[:, 1], color=DFA_COL,
-            lw=0.8, alpha=0.5)
-    ax.plot(bp_proj_arr[:, 0],  bp_proj_arr[:, 1],  color=BP_COL,
-            lw=0.8, alpha=0.5)
+    # draw trajectories as thick lines
+    ax.plot(dfa_proj[:,0], dfa_proj[:,1], color=DFA_COL, lw=2.0,
+            alpha=0.85, zorder=4, label="DFA path")
+    ax.plot(bp_proj[:,0],  bp_proj[:,1],  color=BP_COL,  lw=2.0,
+            alpha=0.85, zorder=4, label="BP path")
 
-    # non-stall scatter
-    ax.scatter(dfa_proj_arr[~dfa_stall_mask, 0], dfa_proj_arr[~dfa_stall_mask, 1],
-               c=np.array(dfa_proj_steps)[~dfa_stall_mask], cmap="Blues",
-               vmin=0, vmax=3000, s=22, linewidths=0.4,
-               edgecolors="k", zorder=4, label="DFA")
-    ax.scatter(bp_proj_arr[~bp_stall_mask, 0],  bp_proj_arr[~bp_stall_mask, 1],
-               c=np.array(bp_proj_steps)[~bp_stall_mask], cmap="Reds",
-               vmin=0, vmax=3000, s=22, linewidths=0.4,
-               edgecolors="k", zorder=4, label="BP")
+    # non-stall circles
+    ax.scatter(dfa_proj[~dfa_stall,0], dfa_proj[~dfa_stall,1],
+               c=np.array(dfa_steps)[~dfa_stall], cmap="Blues",
+               vmin=0, vmax=3000, s=30, edgecolors="k", lw=0.4, zorder=5)
+    ax.scatter(bp_proj[~bp_stall,0],  bp_proj[~bp_stall,1],
+               c=np.array(bp_steps)[~bp_stall],  cmap="Reds",
+               vmin=0, vmax=3000, s=30, edgecolors="k", lw=0.4, zorder=5)
 
-    # stall squares (orange)
-    if dfa_stall_mask.any():
-        ax.scatter(dfa_proj_arr[dfa_stall_mask, 0],
-                   dfa_proj_arr[dfa_stall_mask, 1],
-                   color=STALL_COL, marker="s", s=35,
-                   linewidths=0.5, edgecolors="k",
-                   zorder=5, label="DFA stall")
-    if bp_stall_mask.any():
-        ax.scatter(bp_proj_arr[bp_stall_mask, 0],
-                   bp_proj_arr[bp_stall_mask, 1],
-                   color="#ff9900", marker="s", s=35,
-                   linewidths=0.5, edgecolors="k",
-                   zorder=5, label="BP at stall steps")
+    # stall squares  ─── the key visual ───────────────────────────────────────
+    if dfa_stall.any():
+        ax.scatter(dfa_proj[dfa_stall,0], dfa_proj[dfa_stall,1],
+                   color=STALL_COL, marker="s", s=55, edgecolors="k",
+                   lw=0.5, zorder=6, label="DFA stall steps")
+    if bp_stall.any():
+        ax.scatter(bp_proj[bp_stall,0],  bp_proj[bp_stall,1],
+                   color="#ff9900", marker="^", s=55, edgecolors="k",
+                   lw=0.5, zorder=6, label="BP at same steps")
 
-    # start / end markers
-    ax.scatter(*dfa_proj_arr[0],  marker="x", color=DFA_COL, s=80, lw=1.5, zorder=6)
-    ax.scatter(*dfa_proj_arr[-1], marker="o", facecolor="none",
-               edgecolor=DFA_COL, s=80, lw=1.5, zorder=6)
-    ax.scatter(*bp_proj_arr[0],   marker="x", color=BP_COL,  s=80, lw=1.5, zorder=6)
-    ax.scatter(*bp_proj_arr[-1],  marker="o", facecolor="none",
-               edgecolor=BP_COL,  s=80, lw=1.5, zorder=6)
+    # arrows showing direction of movement
+    for arr, col in [(dfa_proj, DFA_COL), (bp_proj, BP_COL)]:
+        for k in range(len(arr)-1):
+            da = arr[k+1,0]-arr[k,0]; db = arr[k+1,1]-arr[k,1]
+            if np.sqrt(da**2+db**2) > 0.008:
+                ax.annotate("", xy=(arr[k+1,0], arr[k+1,1]),
+                            xytext=(arr[k,0], arr[k,1]),
+                            arrowprops=dict(arrowstyle="-|>", color=col,
+                                            lw=1.2, mutation_scale=8))
 
-    # reference point annotation
-    ax.scatter(0, 0, marker="*", color="gold", edgecolor="k", s=200,
-               zorder=7, linewidths=0.8)
-    ax.annotate("DFA stall\nreference", xy=(0, 0),
-                xytext=(0.15, -0.12),
-                fontsize=6.5, color=STALL_COL,
-                arrowprops=dict(arrowstyle="->", color=STALL_COL, lw=0.8))
+    # shared start marker
+    ax.scatter(0, 0, marker="*", color="gold", edgecolor="k", s=250,
+               zorder=8, lw=0.9)
+    ax.annotate("shared\nstart (same init)", xy=(0, 0), xytext=(0.04, 0.04),
+                fontsize=6.5, color="k",
+                arrowprops=dict(arrowstyle="->", color="k", lw=0.7))
 
-    ax.set_xlabel(r"$\alpha$  (DFA recovery direction,  filter-normalised)")
-    ax.set_ylabel(r"$\beta$  (BP direction,  filter-normalised)")
-    ax.set_title("2D loss landscape slice\n"
-                 r"Origin = DFA stall start  |  $\alpha$=DFA recovery  |  $\beta$=BP path")
-    ax.legend(frameon=False, loc="upper right", fontsize=6.5, ncol=2)
+    # axis labels and annotations
+    ax.set_xlabel(r"$\alpha$  — DFA's direction in weight space  (normalised)",
+                  fontsize=8)
+    ax.set_ylabel(r"$\beta$  — BP's direction in weight space  (normalised)",
+                  fontsize=8)
+    ax.set_title("Real loss landscape: DFA vs BP take\ndifferent paths in weight space",
+                 fontsize=8.5)
+    ax.legend(frameon=False, loc="upper right", fontsize=6.5, ncol=1)
+
+    # annotation: DFA stall region on the plot
+    stall_pts = dfa_proj[dfa_stall]
+    if len(stall_pts) > 1:
+        cx, cy = stall_pts[:,0].mean(), stall_pts[:,1].mean()
+        ax.annotate("DFA stalled here\n(~350 steps, loss flat)",
+                    xy=(cx, cy), xytext=(cx+0.07, cy-0.08),
+                    fontsize=6.5, color=STALL_COL,
+                    arrowprops=dict(arrowstyle="->", color=STALL_COL, lw=0.9),
+                    bbox=dict(boxstyle="round,pad=0.2", facecolor="white",
+                              edgecolor=STALL_COL, alpha=0.85, lw=0.8))
+
+    # annotation: BP at same time
+    bp_stall_pts = bp_proj[bp_stall]
+    if len(bp_stall_pts) > 1:
+        bx, by = bp_stall_pts[:,0].mean(), bp_stall_pts[:,1].mean()
+        ax.annotate("BP here at\nthe same steps",
+                    xy=(bx, by), xytext=(bx-0.12, by+0.06),
+                    fontsize=6.5, color="#cc4400",
+                    arrowprops=dict(arrowstyle="->", color="#cc4400", lw=0.9),
+                    bbox=dict(boxstyle="round,pad=0.2", facecolor="white",
+                              edgecolor="#cc4400", alpha=0.85, lw=0.8))
     clean(ax)
     ax.text(0.02, 0.97, "a", transform=ax.transAxes,
-            fontsize=10, fontweight="bold", va="top")
+            fontsize=11, fontweight="bold", va="top")
 
-    # ── panel B: zoomed to stall region ───────────────────────────────────────
+    # ─────────────────────────────────────────────────────────────────────────
+    # Panel B: loss vs step for both models (from actual checkpoint evaluations)
+    # ─────────────────────────────────────────────────────────────────────────
     ax2 = fig.add_subplot(gs[0, 1])
-    # zoom to within ±0.4 of origin
-    zmarg = 0.45
-    z_mask_a = (AG >= -zmarg) & (AG <= zmarg)
-    z_mask_b = (BG >= -zmarg) & (BG <= zmarg)
-    z_mask   = z_mask_a & z_mask_b
-    if z_mask.any():
-        AG_z = np.where(z_mask, AG, np.nan)
-        BG_z = np.where(z_mask, BG, np.nan)
-        LG_z = np.where(z_mask, LG_clipped, np.nan)
-        lvls_z = np.linspace(np.nanmin(LG_z), np.nanmax(LG_z), 25)
-        ax2.contourf(AG, BG, LG_clipped, levels=lvls_z, cmap="Blues_r", alpha=0.70)
-        ax2.contour(AG,  BG, LG_clipped, levels=lvls_z, colors="white",
-                    linewidths=0.3, alpha=0.5)
 
-    # same trajectory in zoomed view
-    ax2.plot(dfa_proj_arr[:, 0], dfa_proj_arr[:, 1], color=DFA_COL, lw=0.8, alpha=0.4)
-    ax2.plot(bp_proj_arr[:, 0],  bp_proj_arr[:, 1],  color=BP_COL,  lw=0.8, alpha=0.4)
+    ax2.axvspan(STALL_S, STALL_E, color=STALL_COL, alpha=0.12, lw=0,
+                label="DFA stall window")
+    ax2.semilogy(dfa_steps, dfa_losses, color=DFA_COL, lw=1.8,
+                 marker="o", ms=4, label="DFA loss")
+    ax2.semilogy(bp_steps,  bp_losses,  color=BP_COL,  lw=1.8,
+                 marker="s", ms=4, label="BP loss")
 
-    ax2.scatter(dfa_proj_arr[~dfa_stall_mask, 0], dfa_proj_arr[~dfa_stall_mask, 1],
-                c=np.array(dfa_proj_steps)[~dfa_stall_mask], cmap="Blues",
-                vmin=0, vmax=3000, s=25, linewidths=0.4, edgecolors="k", zorder=4)
-    ax2.scatter(bp_proj_arr[~bp_stall_mask, 0],  bp_proj_arr[~bp_stall_mask, 1],
-                c=np.array(bp_proj_steps)[~bp_stall_mask], cmap="Reds",
-                vmin=0, vmax=3000, s=25, linewidths=0.4, edgecolors="k", zorder=4)
-    if dfa_stall_mask.any():
-        ax2.scatter(dfa_proj_arr[dfa_stall_mask, 0],
-                    dfa_proj_arr[dfa_stall_mask, 1],
-                    color=STALL_COL, marker="s", s=45,
-                    linewidths=0.5, edgecolors="k", zorder=5)
-    if bp_stall_mask.any():
-        ax2.scatter(bp_proj_arr[bp_stall_mask, 0],
-                    bp_proj_arr[bp_stall_mask, 1],
-                    color="#ff9900", marker="s", s=45,
-                    linewidths=0.5, edgecolors="k", zorder=5)
-
-    ax2.scatter(0, 0, marker="*", color="gold", edgecolor="k", s=200, zorder=7, lw=0.8)
-    ax2.set_xlim(-zmarg, zmarg); ax2.set_ylim(-zmarg, zmarg)
-    ax2.set_xlabel(r"$\alpha$  (DFA recovery direction)")
-    ax2.set_ylabel(r"$\beta$  (BP direction)")
-    ax2.set_title("Stall region — zoomed\n"
-                  "Orange ■ = DFA stall steps  |  Yellow ■ = BP same steps")
+    ax2.set_xlabel("Training step"); ax2.set_ylabel("Validation loss (log)")
+    ax2.set_title("Loss at checkpoints\n(same steps on landscape panel A)")
+    ax2.legend(frameon=False, loc="upper right")
+    ax2.set_xlim(0, 3100)
     clean(ax2)
     ax2.text(0.02, 0.97, "b", transform=ax2.transAxes,
-             fontsize=10, fontweight="bold", va="top")
+             fontsize=11, fontweight="bold", va="top")
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # Panel C: distance traveled in each direction (shows DFA = mostly α, BP = mostly β)
+    # ─────────────────────────────────────────────────────────────────────────
+    ax3 = fig.add_subplot(gs[1, 1])
+
+    ax3.axvspan(STALL_S, STALL_E, color=STALL_COL, alpha=0.12, lw=0)
+    ax3.plot(dfa_steps, dfa_proj[:,0], color=DFA_COL, lw=1.6,
+             label=r"DFA  $\alpha$ (its own direction)")
+    ax3.plot(dfa_steps, dfa_proj[:,1], color=DFA_COL, lw=1.0, ls="--", alpha=0.55,
+             label=r"DFA  $\beta$ (BP direction)")
+    ax3.plot(bp_steps,  bp_proj[:,0],  color=BP_COL,  lw=1.0, ls="--", alpha=0.55,
+             label=r"BP   $\alpha$ (DFA direction)")
+    ax3.plot(bp_steps,  bp_proj[:,1],  color=BP_COL,  lw=1.6,
+             label=r"BP   $\beta$ (its own direction)")
+    ax3.axhline(0, color="0.7", lw=0.6, ls=":")
+
+    ax3.set_xlabel("Training step")
+    ax3.set_ylabel("Normalised displacement")
+    ax3.set_title("Paths are nearly orthogonal\n"
+                  "DFA travels along α,  BP travels along β")
+    ax3.legend(frameon=False, fontsize=6, ncol=2, loc="center right")
+    ax3.set_xlim(0, 3100)
+    clean(ax3)
+    ax3.text(0.02, 0.97, "c", transform=ax3.transAxes,
+             fontsize=11, fontweight="bold", va="top")
 
     fig.suptitle(
-        "Real loss landscape: 2D projection through DFA stall and BP trajectories\n"
-        "Loss evaluated on 2000 MNIST samples at each of the 2500 grid points  "
-        f"(ref loss at stall: {loss_at_stall:.3f})",
-        fontsize=8.5,
+        "Real loss landscape  —  DFA and BP navigate to different parts of weight space\n"
+        "Same initialisation, same data, but DFA (random feedback) finds a different path than BP (true gradient)",
+        fontsize=9,
     )
 
-    for ext in ("png", "svg", "pdf"):
+    for ext in ("png", "svg"):
         fig.savefig(OUTDIR / f"fig7_loss_landscape.{ext}", dpi=300, bbox_inches="tight")
     plt.close(fig)
-    print(f"Saved: figures/fig7_loss_landscape.png/svg/pdf")
+    print("Saved: figures/fig7_loss_landscape.png / .svg")
 
-    # save projection data alongside figure
+    # save updated npz
     np.savez(OUTDIR / "landscape_data.npz",
              AG=AG, BG=BG, LG=LG,
-             dfa_proj=dfa_proj_arr, dfa_steps=np.array(dfa_proj_steps),
-             bp_proj=bp_proj_arr,   bp_steps=np.array(bp_proj_steps))
-    print("Saved: figures/landscape_data.npz")
+             dfa_proj=dfa_proj, dfa_steps=np.array(dfa_steps),
+             bp_proj=bp_proj,   bp_steps=np.array(bp_steps),
+             dfa_losses=dfa_losses, bp_losses=bp_losses)
 
 
 if __name__ == "__main__":

@@ -8,5 +8,6 @@
     "README.md",
     "REPRODUCING.md"
   ],
-  "scientific_payload": "Training, analysis, configurations, tests and reference records match the source archive byte for byte."
+  "scientific_payload": "Training, analysis, configurations, tests and reference records match the source archive byte for byte.",
+  "repository": "https://github.com/KempnerInstitute/DFA-Stall"
 }

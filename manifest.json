@@ -12,12 +12,12 @@
       "sha256": "2bffe024a5c3d14cc4c2eabe3bd5242c691767eefee5350cd8bd12a5a76af2a1"
     },
     "CITATION.cff": {
-      "bytes": 638,
-      "sha256": "c8de6ece66ea38ebcc03a0503845ba21b896f4de1bf60cd301fad5946559064b"
+      "bytes": 644,
+      "sha256": "37541d2c2bf707d6be7c2d056eefe6d6ca59c7b8fb275b02435620419bd8f18e"
     },
     "README.md": {
-      "bytes": 4314,
-      "sha256": "26926b196b9229367411d232a1a8c93daa52d301eb904b33df21740b4e8cd325"
+      "bytes": 4320,
+      "sha256": "cf1b709c08e4e91aba12b236bf7001ce7c318aaf4090f6d114ee9ee1fe2c48d0"
     },
     "RELEASE_NOTES.md": {
       "bytes": 2162,
@@ -100,8 +100,8 @@
       "sha256": "925f1e8bd17ce4740cc7d14502115867b6361d0136ef538b17d73e8151efe496"
     },
     "release.json": {
-      "bytes": 498,
-      "sha256": "82cc6993b4880aba589ef5f3b66efe5932d78c1f3c378562b8d7ab001359174c"
+      "bytes": 563,
+      "sha256": "9bf4838ba727590eb58f9242746546191520b9b12cedbc1f370926538333d4b8"
     },
     "requirements.txt": {
       "bytes": 199,

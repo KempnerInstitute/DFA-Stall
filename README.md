@@ -15,7 +15,7 @@ release checks. Most experiments support CPU or CUDA; the fresh-architecture
 validation suite requires CUDA.
 
 ```bash
-git clone https://github.com/houman1359/DFA-Stall.git
+git clone https://github.com/KempnerInstitute/DFA-Stall.git
 cd DFA-Stall
 python -m venv .venv
 source .venv/bin/activate

@@ -1,0 +1,31 @@
+{
+ "rung": "rung0_scalar_K4M4_dfa",
+ "seed": 1,
+ "rule": "dfa",
+ "D": 500,
+ "K": 4,
+ "C": 1,
+ "widths": "4",
+ "student_act": "erf",
+ "head": "mse",
+ "bias": 0,
+ "x_mean": 0.0,
+ "x_std": 1.0,
+ "fb_scale": 1.0,
+ "lr": 0.5,
+ "out_lr_div": 10.0,
+ "v_scale": 0.3,
+ "steps": 1000000,
+ "probe_n": 2048,
+ "n_log": 300,
+ "const_loss": 0.6700976819162234,
+ "prior": [
+  0.03692030304336357
+ ],
+ "eta_out": 0.05,
+ "widths_list": [
+  4
+ ],
+ "wall": 52.32858419418335,
+ "final_step": 1000000
+}

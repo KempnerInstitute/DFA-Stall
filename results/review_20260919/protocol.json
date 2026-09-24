@@ -1,0 +1,31 @@
+{
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "training_steps": 3000,
+  "fit_examples": 10000,
+  "evaluation_examples": 5000,
+  "snapshots": "initialization; deepest participation minimum in first 300 original-run updates; step 3000",
+  "readout_steps": 3000,
+  "readout_lr": 0.001,
+  "readout_batch": 128,
+  "ridge_relative": 0.001,
+  "controls": [
+    "raw",
+    "centered",
+    "centered and divided by training RMS"
+  ],
+  "initial_function": "checkpoint logits preserved by transforming weights and bias",
+  "fit_split": "training",
+  "evaluation_split": "validation; disjoint from fitting",
+  "source_sha256": {
+    "scripts/review_experiments.py": "078e11f3258ca4d3ec6bd6434b1f6a90f29299ea1b3d13a7d9a8eac46395f609",
+    "src/cmc/review_checks.py": "e7313eb3a5904c16a8db818219cc63302af851c5be8a1f59debe0a93c9ff5de2"
+  },
+  "hardware": {
+    "name": "NVIDIA A100-SXM4-40GB MIG 3g.20gb",
+    "memory_bytes": 21072183296
+  }
+}

@@ -1,0 +1,7 @@
+# E22: class-imbalanced softmax (p0=0.7, standardized inputs) with the readout calibrated to the sampling prior; compare E1 softmax_imb07
+--exp E22_imbcalib --tag softmax_imb07_calib --seed 0 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7 --calibrate_head 1 --save_snapshots 0
+--exp E22_imbcalib --tag softmax_imb07_calib_bp --seed 0 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7 --calibrate_head 1 --rule bp --save_snapshots 0
+--exp E22_imbcalib --tag softmax_imb07_calib --seed 1 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7 --calibrate_head 1 --save_snapshots 0
+--exp E22_imbcalib --tag softmax_imb07_calib_bp --seed 1 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7 --calibrate_head 1 --rule bp --save_snapshots 0
+--exp E22_imbcalib --tag softmax_imb07_calib --seed 2 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7 --calibrate_head 1 --save_snapshots 0
+--exp E22_imbcalib --tag softmax_imb07_calib_bp --seed 2 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7 --calibrate_head 1 --rule bp --save_snapshots 0

@@ -1,0 +1,88 @@
+{
+ "n_points": 150,
+ "n_conditions": 48,
+ "n_trajectories": 48,
+ "n_aliases": 14,
+ "r_p": 0.8785956457892796,
+ "mae_p": 0.118139822204934,
+ "bias_p_by_layer": {
+  "1": -0.13372708888715518,
+  "2": -0.07999582392881431,
+  "3": 0.002551065252287682,
+  "4": -0.008516713618635402,
+  "5": -0.0032545824968757964,
+  "6": 0.02415783026655445
+ },
+ "r_cos": 0.8100171183884362,
+ "mae_cos": 0.08642169995940155,
+ "onset_exit_n": 25,
+ "exit_valid_n": 24,
+ "exit_censored_n": 1,
+ "n_network_only_plateau": 0,
+ "n_model_only_plateau": 5,
+ "n_neither_plateau": 18,
+ "n_both_plateau": 25,
+ "exit_r": 0.9136227672140338,
+ "onset_r": 0.8340030002923113,
+ "exit_rel_err_median": 0.11102216034342732,
+ "onset_rel_err_median": 0.14567307692307693,
+ "onset_relative_valid_n": 24,
+ "aliases": [
+  {
+   "alias": "E2_master/C10/seed0_fb0",
+   "canonical": "E1_headline/base/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/b128/seed0_fb0",
+   "canonical": "E1_headline/base/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/g1.0/seed0_fb0",
+   "canonical": "E1_headline/base/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/hidlr1.0/seed0_fb0",
+   "canonical": "E1_headline/base/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/lr0.001/seed0_fb0",
+   "canonical": "E1_headline/base/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/outlr1.0/seed0_fb0",
+   "canonical": "E1_headline/base/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/outlr10.0/seed0_fb0",
+   "canonical": "E1_headline/outlr10/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/pre_div255/seed0_fb0",
+   "canonical": "E1_headline/base/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/pre_pixcenter/seed0_fb0",
+   "canonical": "E1_headline/pixcenter/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/q0.1/seed0_fb0",
+   "canonical": "E1_headline/priorbias/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/q0.5/seed0_fb0",
+   "canonical": "E1_headline/base/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/smimb0.0/seed0_fb0",
+   "canonical": "E1_headline/softmax/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/smimb0.7/seed0_fb0",
+   "canonical": "E1_headline/softmax_imb07/seed0_fb0"
+  },
+  {
+   "alias": "E2_master/w300/seed0_fb0",
+   "canonical": "E1_headline/base/seed0_fb0"
+  }
+ ]
+}

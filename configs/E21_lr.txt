@@ -1,0 +1,37 @@
+# E21: learning-rate robustness of the stall and of prior-bias calibration (plain SGD; DFA, DFA+prior bias, BP), seed pairs (0,0),(1,1),(2,2)
+--exp E21_lr --tag dfa_lr0.003 --seed 0 --fb_seed 0 --steps 3000 --lr 0.003 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.003 --seed 0 --fb_seed 0 --steps 3000 --lr 0.003 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.003 --seed 0 --fb_seed 0 --steps 3000 --lr 0.003 --rule bp --log_every 2 --save_snapshots 0
+--exp E21_lr --tag dfa_lr0.003 --seed 1 --fb_seed 1 --steps 3000 --lr 0.003 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.003 --seed 1 --fb_seed 1 --steps 3000 --lr 0.003 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.003 --seed 1 --fb_seed 1 --steps 3000 --lr 0.003 --rule bp --log_every 2 --save_snapshots 0
+--exp E21_lr --tag dfa_lr0.003 --seed 2 --fb_seed 2 --steps 3000 --lr 0.003 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.003 --seed 2 --fb_seed 2 --steps 3000 --lr 0.003 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.003 --seed 2 --fb_seed 2 --steps 3000 --lr 0.003 --rule bp --log_every 2 --save_snapshots 0
+--exp E21_lr --tag dfa_lr0.01 --seed 0 --fb_seed 0 --steps 3000 --lr 0.01 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.01 --seed 0 --fb_seed 0 --steps 3000 --lr 0.01 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.01 --seed 0 --fb_seed 0 --steps 3000 --lr 0.01 --rule bp --log_every 2 --save_snapshots 0
+--exp E21_lr --tag dfa_lr0.01 --seed 1 --fb_seed 1 --steps 3000 --lr 0.01 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.01 --seed 1 --fb_seed 1 --steps 3000 --lr 0.01 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.01 --seed 1 --fb_seed 1 --steps 3000 --lr 0.01 --rule bp --log_every 2 --save_snapshots 0
+--exp E21_lr --tag dfa_lr0.01 --seed 2 --fb_seed 2 --steps 3000 --lr 0.01 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.01 --seed 2 --fb_seed 2 --steps 3000 --lr 0.01 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.01 --seed 2 --fb_seed 2 --steps 3000 --lr 0.01 --rule bp --log_every 2 --save_snapshots 0
+--exp E21_lr --tag dfa_lr0.03 --seed 0 --fb_seed 0 --steps 3000 --lr 0.03 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.03 --seed 0 --fb_seed 0 --steps 3000 --lr 0.03 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.03 --seed 0 --fb_seed 0 --steps 3000 --lr 0.03 --rule bp --log_every 2 --save_snapshots 0
+--exp E21_lr --tag dfa_lr0.03 --seed 1 --fb_seed 1 --steps 3000 --lr 0.03 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.03 --seed 1 --fb_seed 1 --steps 3000 --lr 0.03 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.03 --seed 1 --fb_seed 1 --steps 3000 --lr 0.03 --rule bp --log_every 2 --save_snapshots 0
+--exp E21_lr --tag dfa_lr0.03 --seed 2 --fb_seed 2 --steps 3000 --lr 0.03 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.03 --seed 2 --fb_seed 2 --steps 3000 --lr 0.03 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.03 --seed 2 --fb_seed 2 --steps 3000 --lr 0.03 --rule bp --log_every 2 --save_snapshots 0
+--exp E21_lr --tag dfa_lr0.1 --seed 0 --fb_seed 0 --steps 3000 --lr 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.1 --seed 0 --fb_seed 0 --steps 3000 --lr 0.1 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.1 --seed 0 --fb_seed 0 --steps 3000 --lr 0.1 --rule bp --log_every 2 --save_snapshots 0
+--exp E21_lr --tag dfa_lr0.1 --seed 1 --fb_seed 1 --steps 3000 --lr 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.1 --seed 1 --fb_seed 1 --steps 3000 --lr 0.1 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.1 --seed 1 --fb_seed 1 --steps 3000 --lr 0.1 --rule bp --log_every 2 --save_snapshots 0
+--exp E21_lr --tag dfa_lr0.1 --seed 2 --fb_seed 2 --steps 3000 --lr 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag prior_lr0.1 --seed 2 --fb_seed 2 --steps 3000 --lr 0.1 --out_bias_q 0.1 --log_every 2 --save_snapshots 0
+--exp E21_lr --tag bp_lr0.1 --seed 2 --fb_seed 2 --steps 3000 --lr 0.1 --rule bp --log_every 2 --save_snapshots 0

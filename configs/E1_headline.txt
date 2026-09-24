@@ -1,0 +1,225 @@
+--exp E1_headline --tag base --seed 0 --fb_seed 0 --steps 3000
+--exp E1_headline --tag base --seed 0 --fb_seed 1 --steps 3000
+--exp E1_headline --tag base --seed 0 --fb_seed 2 --steps 3000
+--exp E1_headline --tag base --seed 1 --fb_seed 0 --steps 3000
+--exp E1_headline --tag base --seed 1 --fb_seed 1 --steps 3000
+--exp E1_headline --tag base --seed 1 --fb_seed 2 --steps 3000
+--exp E1_headline --tag base --seed 2 --fb_seed 0 --steps 3000
+--exp E1_headline --tag base --seed 2 --fb_seed 1 --steps 3000
+--exp E1_headline --tag base --seed 2 --fb_seed 2 --steps 3000
+--exp E1_headline --tag base --seed 3 --fb_seed 0 --steps 3000
+--exp E1_headline --tag base --seed 3 --fb_seed 1 --steps 3000
+--exp E1_headline --tag base --seed 3 --fb_seed 2 --steps 3000
+--exp E1_headline --tag base --seed 4 --fb_seed 0 --steps 3000
+--exp E1_headline --tag base --seed 4 --fb_seed 1 --steps 3000
+--exp E1_headline --tag base --seed 4 --fb_seed 2 --steps 3000
+--exp E1_headline --tag bp --seed 0 --fb_seed 0 --steps 3000 --rule bp
+--exp E1_headline --tag bp --seed 1 --fb_seed 0 --steps 3000 --rule bp
+--exp E1_headline --tag bp --seed 2 --fb_seed 0 --steps 3000 --rule bp
+--exp E1_headline --tag bp --seed 3 --fb_seed 0 --steps 3000 --rule bp
+--exp E1_headline --tag bp --seed 4 --fb_seed 0 --steps 3000 --rule bp
+--exp E1_headline --tag fa --seed 0 --fb_seed 0 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 0 --fb_seed 1 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 0 --fb_seed 2 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 1 --fb_seed 0 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 1 --fb_seed 1 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 1 --fb_seed 2 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 2 --fb_seed 0 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 2 --fb_seed 1 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 2 --fb_seed 2 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 3 --fb_seed 0 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 3 --fb_seed 1 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 3 --fb_seed 2 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 4 --fb_seed 0 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 4 --fb_seed 1 --steps 3000 --rule fa
+--exp E1_headline --tag fa --seed 4 --fb_seed 2 --steps 3000 --rule fa
+--exp E1_headline --tag aligned --seed 0 --fb_seed 0 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 0 --fb_seed 1 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 0 --fb_seed 2 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 1 --fb_seed 0 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 1 --fb_seed 1 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 1 --fb_seed 2 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 2 --fb_seed 0 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 2 --fb_seed 1 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 2 --fb_seed 2 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 3 --fb_seed 0 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 3 --fb_seed 1 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 3 --fb_seed 2 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 4 --fb_seed 0 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 4 --fb_seed 1 --steps 3000 --rule aligned
+--exp E1_headline --tag aligned --seed 4 --fb_seed 2 --steps 3000 --rule aligned
+--exp E1_headline --tag center_delta --seed 0 --fb_seed 0 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 0 --fb_seed 1 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 0 --fb_seed 2 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 1 --fb_seed 0 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 1 --fb_seed 1 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 1 --fb_seed 2 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 2 --fb_seed 0 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 2 --fb_seed 1 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 2 --fb_seed 2 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 3 --fb_seed 0 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 3 --fb_seed 1 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 3 --fb_seed 2 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 4 --fb_seed 0 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 4 --fb_seed 1 --steps 3000 --center delta
+--exp E1_headline --tag center_delta --seed 4 --fb_seed 2 --steps 3000 --center delta
+--exp E1_headline --tag center_e --seed 0 --fb_seed 0 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 0 --fb_seed 1 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 0 --fb_seed 2 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 1 --fb_seed 0 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 1 --fb_seed 1 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 1 --fb_seed 2 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 2 --fb_seed 0 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 2 --fb_seed 1 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 2 --fb_seed 2 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 3 --fb_seed 0 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 3 --fb_seed 1 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 3 --fb_seed 2 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 4 --fb_seed 0 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 4 --fb_seed 1 --steps 3000 --center e
+--exp E1_headline --tag center_e --seed 4 --fb_seed 2 --steps 3000 --center e
+--exp E1_headline --tag gated --seed 0 --fb_seed 0 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 0 --fb_seed 1 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 0 --fb_seed 2 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 1 --fb_seed 0 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 1 --fb_seed 1 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 1 --fb_seed 2 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 2 --fb_seed 0 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 2 --fb_seed 1 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 2 --fb_seed 2 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 3 --fb_seed 0 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 3 --fb_seed 1 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 3 --fb_seed 2 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 4 --fb_seed 0 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 4 --fb_seed 1 --steps 3000 --center gated
+--exp E1_headline --tag gated --seed 4 --fb_seed 2 --steps 3000 --center gated
+--exp E1_headline --tag pixcenter --seed 0 --fb_seed 0 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 0 --fb_seed 1 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 0 --fb_seed 2 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 1 --fb_seed 0 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 1 --fb_seed 1 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 1 --fb_seed 2 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 2 --fb_seed 0 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 2 --fb_seed 1 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 2 --fb_seed 2 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 3 --fb_seed 0 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 3 --fb_seed 1 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 3 --fb_seed 2 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 4 --fb_seed 0 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 4 --fb_seed 1 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter --seed 4 --fb_seed 2 --steps 3000 --preprocess pixcenter
+--exp E1_headline --tag pixcenter_frzbias --seed 0 --fb_seed 0 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 0 --fb_seed 1 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 0 --fb_seed 2 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 1 --fb_seed 0 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 1 --fb_seed 1 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 1 --fb_seed 2 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 2 --fb_seed 0 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 2 --fb_seed 1 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 2 --fb_seed 2 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 3 --fb_seed 0 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 3 --fb_seed 1 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 3 --fb_seed 2 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 4 --fb_seed 0 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 4 --fb_seed 1 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag pixcenter_frzbias --seed 4 --fb_seed 2 --steps 3000 --preprocess pixcenter --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 0 --fb_seed 0 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 0 --fb_seed 1 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 0 --fb_seed 2 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 1 --fb_seed 0 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 1 --fb_seed 1 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 1 --fb_seed 2 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 2 --fb_seed 0 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 2 --fb_seed 1 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 2 --fb_seed 2 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 3 --fb_seed 0 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 3 --fb_seed 1 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 3 --fb_seed 2 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 4 --fb_seed 0 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 4 --fb_seed 1 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag frzbias --seed 4 --fb_seed 2 --steps 3000 --freeze_bias 1
+--exp E1_headline --tag priorbias --seed 0 --fb_seed 0 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 0 --fb_seed 1 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 0 --fb_seed 2 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 1 --fb_seed 0 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 1 --fb_seed 1 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 1 --fb_seed 2 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 2 --fb_seed 0 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 2 --fb_seed 1 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 2 --fb_seed 2 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 3 --fb_seed 0 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 3 --fb_seed 1 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 3 --fb_seed 2 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 4 --fb_seed 0 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 4 --fb_seed 1 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag priorbias --seed 4 --fb_seed 2 --steps 3000 --out_bias_q 0.1
+--exp E1_headline --tag outlr10 --seed 0 --fb_seed 0 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 0 --fb_seed 1 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 0 --fb_seed 2 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 1 --fb_seed 0 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 1 --fb_seed 1 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 1 --fb_seed 2 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 2 --fb_seed 0 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 2 --fb_seed 1 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 2 --fb_seed 2 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 3 --fb_seed 0 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 3 --fb_seed 1 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 3 --fb_seed 2 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 4 --fb_seed 0 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 4 --fb_seed 1 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag outlr10 --seed 4 --fb_seed 2 --steps 3000 --out_lr_mult 10
+--exp E1_headline --tag frzout --seed 0 --fb_seed 0 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 0 --fb_seed 1 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 0 --fb_seed 2 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 1 --fb_seed 0 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 1 --fb_seed 1 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 1 --fb_seed 2 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 2 --fb_seed 0 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 2 --fb_seed 1 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 2 --fb_seed 2 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 3 --fb_seed 0 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 3 --fb_seed 1 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 3 --fb_seed 2 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 4 --fb_seed 0 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 4 --fb_seed 1 --steps 1500 --freeze_out 1
+--exp E1_headline --tag frzout --seed 4 --fb_seed 2 --steps 1500 --freeze_out 1
+--exp E1_headline --tag softmax --seed 0 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 0 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 0 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 1 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 1 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 1 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 2 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 2 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 2 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 3 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 3 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 3 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 4 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 4 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax --seed 4 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize
+--exp E1_headline --tag softmax_imb07 --seed 0 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 0 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 0 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 1 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 1 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 1 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 2 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 2 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 2 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 3 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 3 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 3 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 4 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 4 --fb_seed 1 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07 --seed 4 --fb_seed 2 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E1_headline --tag softmax_imb07_bp --seed 0 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7 --rule bp
+--exp E1_headline --tag softmax_imb07_bp --seed 1 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7 --rule bp
+--exp E1_headline --tag softmax_imb07_bp --seed 2 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7 --rule bp
+--exp E1_headline --tag softmax_imb07_bp --seed 3 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7 --rule bp
+--exp E1_headline --tag softmax_imb07_bp --seed 4 --fb_seed 0 --steps 3000 --head softmax_ce --preprocess standardize --p0 0.7 --rule bp
+--exp E1_headline --tag bp_outx12 --seed 0 --fb_seed 0 --steps 3000 --rule bp --out_w_scale 12
+--exp E1_headline --tag bp_outx12 --seed 1 --fb_seed 0 --steps 3000 --rule bp --out_w_scale 12
+--exp E1_headline --tag bp_outx12 --seed 2 --fb_seed 0 --steps 3000 --rule bp --out_w_scale 12
+--exp E1_headline --tag bp_outx12 --seed 3 --fb_seed 0 --steps 3000 --rule bp --out_w_scale 12
+--exp E1_headline --tag bp_outx12 --seed 4 --fb_seed 0 --steps 3000 --rule bp --out_w_scale 12

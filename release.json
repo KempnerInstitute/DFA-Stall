@@ -1,0 +1,12 @@
+{
+  "title": "Common-Mode Collapse and Recovery in Direct Feedback Alignment",
+  "version": "0.1.0",
+  "source_revision": "9b53c4f07e702bd1e19f02d1c3b37aac62e8b760",
+  "source_archive_sha256": "673223aa5862130b29af91b33e5896c85fc17e52dfa89e6d990a707af576cb43",
+  "source_archive_files": 1631,
+  "documentation_replaced": [
+    "README.md",
+    "REPRODUCING.md"
+  ],
+  "scientific_payload": "Training, analysis, configurations, tests and reference records match the source archive byte for byte."
+}

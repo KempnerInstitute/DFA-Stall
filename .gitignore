@@ -1,0 +1,13 @@
+# Local environments and generated artifacts.
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+/data/
+/logs/
+/paper/
+/validation.log
+
+# Reference records are tracked explicitly in the release. New runs stay local.
+/results/

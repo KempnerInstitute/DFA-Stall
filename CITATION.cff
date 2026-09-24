@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying paper and this code when using these experiments."
+type: software
+title: "Common-Mode Collapse and Recovery in Direct Feedback Alignment"
+authors:
+  - family-names: Reddy
+    given-names: Varun
+  - family-names: Safaai
+    given-names: Houman
+  - family-names: Sabatini
+    given-names: Bernardo L.
+repository-code: "https://github.com/houman1359/DFA-Stall"
+version: "0.1.0"
+date-released: "2026-09-24"
+abstract: >-
+  Experimental implementation, configurations, numerical tests and reference
+  records for studying common-mode collapse and recovery in direct feedback alignment.

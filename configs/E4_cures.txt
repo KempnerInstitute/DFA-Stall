@@ -1,0 +1,81 @@
+--exp E4_cures --tag base__none --seed 0 --fb_seed 0 --steps 3000
+--exp E4_cures --tag base__none --seed 1 --fb_seed 1 --steps 3000
+--exp E4_cures --tag base__none --seed 2 --fb_seed 2 --steps 3000
+--exp E4_cures --tag base__center_delta --seed 0 --fb_seed 0 --steps 3000 --center delta
+--exp E4_cures --tag base__center_delta --seed 1 --fb_seed 1 --steps 3000 --center delta
+--exp E4_cures --tag base__center_delta --seed 2 --fb_seed 2 --steps 3000 --center delta
+--exp E4_cures --tag base__center_e --seed 0 --fb_seed 0 --steps 3000 --center e
+--exp E4_cures --tag base__center_e --seed 1 --fb_seed 1 --steps 3000 --center e
+--exp E4_cures --tag base__center_e --seed 2 --fb_seed 2 --steps 3000 --center e
+--exp E4_cures --tag base__gated --seed 0 --fb_seed 0 --steps 3000 --center gated
+--exp E4_cures --tag base__gated --seed 1 --fb_seed 1 --steps 3000 --center gated
+--exp E4_cures --tag base__gated --seed 2 --fb_seed 2 --steps 3000 --center gated
+--exp E4_cures --tag base__priorbias --seed 0 --fb_seed 0 --steps 3000 --out_bias_q 0.1
+--exp E4_cures --tag base__priorbias --seed 1 --fb_seed 1 --steps 3000 --out_bias_q 0.1
+--exp E4_cures --tag base__priorbias --seed 2 --fb_seed 2 --steps 3000 --out_bias_q 0.1
+--exp E4_cures --tag base__outlr10 --seed 0 --fb_seed 0 --steps 3000 --out_lr_mult 10
+--exp E4_cures --tag base__outlr10 --seed 1 --fb_seed 1 --steps 3000 --out_lr_mult 10
+--exp E4_cures --tag base__outlr10 --seed 2 --fb_seed 2 --steps 3000 --out_lr_mult 10
+--exp E4_cures --tag base__muon --seed 0 --fb_seed 0 --steps 3000 --muon 1
+--exp E4_cures --tag base__muon --seed 1 --fb_seed 1 --steps 3000 --muon 1
+--exp E4_cures --tag base__muon --seed 2 --fb_seed 2 --steps 3000 --muon 1
+--exp E4_cures --tag base__bn --seed 0 --fb_seed 0 --steps 3000 --batchnorm 1 --center none
+--exp E4_cures --tag base__bn --seed 1 --fb_seed 1 --steps 3000 --batchnorm 1 --center none
+--exp E4_cures --tag base__bn --seed 2 --fb_seed 2 --steps 3000 --batchnorm 1 --center none
+--exp E4_cures --tag base__whiten --seed 0 --fb_seed 0 --steps 3000 --whiten 1
+--exp E4_cures --tag base__whiten --seed 1 --fb_seed 1 --steps 3000 --whiten 1
+--exp E4_cures --tag base__whiten --seed 2 --fb_seed 2 --steps 3000 --whiten 1
+--exp E4_cures --tag base__aligned --seed 0 --fb_seed 0 --steps 3000 --rule aligned
+--exp E4_cures --tag base__aligned --seed 1 --fb_seed 1 --steps 3000 --rule aligned
+--exp E4_cures --tag base__aligned --seed 2 --fb_seed 2 --steps 3000 --rule aligned
+--exp E4_cures --tag depth6__none --seed 0 --fb_seed 0 --steps 3000 --depth 6
+--exp E4_cures --tag depth6__none --seed 1 --fb_seed 1 --steps 3000 --depth 6
+--exp E4_cures --tag depth6__none --seed 2 --fb_seed 2 --steps 3000 --depth 6
+--exp E4_cures --tag depth6__center_delta --seed 0 --fb_seed 0 --steps 3000 --depth 6 --center delta
+--exp E4_cures --tag depth6__center_delta --seed 1 --fb_seed 1 --steps 3000 --depth 6 --center delta
+--exp E4_cures --tag depth6__center_delta --seed 2 --fb_seed 2 --steps 3000 --depth 6 --center delta
+--exp E4_cures --tag depth6__center_e --seed 0 --fb_seed 0 --steps 3000 --depth 6 --center e
+--exp E4_cures --tag depth6__center_e --seed 1 --fb_seed 1 --steps 3000 --depth 6 --center e
+--exp E4_cures --tag depth6__center_e --seed 2 --fb_seed 2 --steps 3000 --depth 6 --center e
+--exp E4_cures --tag depth6__gated --seed 0 --fb_seed 0 --steps 3000 --depth 6 --center gated
+--exp E4_cures --tag depth6__gated --seed 1 --fb_seed 1 --steps 3000 --depth 6 --center gated
+--exp E4_cures --tag depth6__gated --seed 2 --fb_seed 2 --steps 3000 --depth 6 --center gated
+--exp E4_cures --tag depth6__priorbias --seed 0 --fb_seed 0 --steps 3000 --depth 6 --out_bias_q 0.1
+--exp E4_cures --tag depth6__priorbias --seed 1 --fb_seed 1 --steps 3000 --depth 6 --out_bias_q 0.1
+--exp E4_cures --tag depth6__priorbias --seed 2 --fb_seed 2 --steps 3000 --depth 6 --out_bias_q 0.1
+--exp E4_cures --tag depth6__outlr10 --seed 0 --fb_seed 0 --steps 3000 --depth 6 --out_lr_mult 10
+--exp E4_cures --tag depth6__outlr10 --seed 1 --fb_seed 1 --steps 3000 --depth 6 --out_lr_mult 10
+--exp E4_cures --tag depth6__outlr10 --seed 2 --fb_seed 2 --steps 3000 --depth 6 --out_lr_mult 10
+--exp E4_cures --tag depth6__muon --seed 0 --fb_seed 0 --steps 3000 --depth 6 --muon 1
+--exp E4_cures --tag depth6__muon --seed 1 --fb_seed 1 --steps 3000 --depth 6 --muon 1
+--exp E4_cures --tag depth6__muon --seed 2 --fb_seed 2 --steps 3000 --depth 6 --muon 1
+--exp E4_cures --tag depth6__bn --seed 0 --fb_seed 0 --steps 3000 --depth 6 --batchnorm 1 --center none
+--exp E4_cures --tag depth6__bn --seed 1 --fb_seed 1 --steps 3000 --depth 6 --batchnorm 1 --center none
+--exp E4_cures --tag depth6__bn --seed 2 --fb_seed 2 --steps 3000 --depth 6 --batchnorm 1 --center none
+--exp E4_cures --tag depth6__whiten --seed 0 --fb_seed 0 --steps 3000 --depth 6 --whiten 1
+--exp E4_cures --tag depth6__whiten --seed 1 --fb_seed 1 --steps 3000 --depth 6 --whiten 1
+--exp E4_cures --tag depth6__whiten --seed 2 --fb_seed 2 --steps 3000 --depth 6 --whiten 1
+--exp E4_cures --tag depth6__aligned --seed 0 --fb_seed 0 --steps 3000 --depth 6 --rule aligned
+--exp E4_cures --tag depth6__aligned --seed 1 --fb_seed 1 --steps 3000 --depth 6 --rule aligned
+--exp E4_cures --tag depth6__aligned --seed 2 --fb_seed 2 --steps 3000 --depth 6 --rule aligned
+--exp E4_cures --tag cnn__none --seed 0 --fb_seed 0 --steps 1500 --arch cnn
+--exp E4_cures --tag cnn__none --seed 1 --fb_seed 1 --steps 1500 --arch cnn
+--exp E4_cures --tag cnn__none --seed 2 --fb_seed 2 --steps 1500 --arch cnn
+--exp E4_cures --tag cnn__center_delta --seed 0 --fb_seed 0 --steps 1500 --arch cnn --center delta
+--exp E4_cures --tag cnn__center_delta --seed 1 --fb_seed 1 --steps 1500 --arch cnn --center delta
+--exp E4_cures --tag cnn__center_delta --seed 2 --fb_seed 2 --steps 1500 --arch cnn --center delta
+--exp E4_cures --tag cnn__center_e --seed 0 --fb_seed 0 --steps 1500 --arch cnn --center e
+--exp E4_cures --tag cnn__center_e --seed 1 --fb_seed 1 --steps 1500 --arch cnn --center e
+--exp E4_cures --tag cnn__center_e --seed 2 --fb_seed 2 --steps 1500 --arch cnn --center e
+--exp E4_cures --tag cnn__gated --seed 0 --fb_seed 0 --steps 1500 --arch cnn --center gated
+--exp E4_cures --tag cnn__gated --seed 1 --fb_seed 1 --steps 1500 --arch cnn --center gated
+--exp E4_cures --tag cnn__gated --seed 2 --fb_seed 2 --steps 1500 --arch cnn --center gated
+--exp E4_cures --tag cnn__priorbias --seed 0 --fb_seed 0 --steps 1500 --arch cnn --out_bias_q 0.1
+--exp E4_cures --tag cnn__priorbias --seed 1 --fb_seed 1 --steps 1500 --arch cnn --out_bias_q 0.1
+--exp E4_cures --tag cnn__priorbias --seed 2 --fb_seed 2 --steps 1500 --arch cnn --out_bias_q 0.1
+--exp E4_cures --tag cnn__outlr10 --seed 0 --fb_seed 0 --steps 1500 --arch cnn --out_lr_mult 10
+--exp E4_cures --tag cnn__outlr10 --seed 1 --fb_seed 1 --steps 1500 --arch cnn --out_lr_mult 10
+--exp E4_cures --tag cnn__outlr10 --seed 2 --fb_seed 2 --steps 1500 --arch cnn --out_lr_mult 10
+--exp E4_cures --tag cnn__aligned --seed 0 --fb_seed 0 --steps 1500 --arch cnn --rule aligned
+--exp E4_cures --tag cnn__aligned --seed 1 --fb_seed 1 --steps 1500 --arch cnn --rule aligned
+--exp E4_cures --tag cnn__aligned --seed 2 --fb_seed 2 --steps 1500 --arch cnn --rule aligned

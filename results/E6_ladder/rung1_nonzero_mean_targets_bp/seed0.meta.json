@@ -1,0 +1,34 @@
+{
+ "rung": "rung1_nonzero_mean_targets_bp",
+ "seed": 0,
+ "rule": "bp",
+ "D": 500,
+ "K": 4,
+ "C": 4,
+ "widths": "4",
+ "student_act": "erf",
+ "head": "sigmoid_bce",
+ "bias": 0,
+ "x_mean": 0.0,
+ "x_std": 1.0,
+ "fb_scale": 1.0,
+ "lr": 0.5,
+ "out_lr_div": 10.0,
+ "v_scale": 0.3,
+ "steps": 400000,
+ "probe_n": 2048,
+ "n_log": 300,
+ "const_loss": 2.2443456760441425,
+ "prior": [
+  0.21728515625,
+  0.244140625,
+  0.2705078125,
+  0.26806640625
+ ],
+ "eta_out": 0.05,
+ "widths_list": [
+  4
+ ],
+ "wall": 27.819887161254883,
+ "final_step": 400000
+}

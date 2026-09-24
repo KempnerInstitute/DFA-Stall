@@ -1,0 +1,265 @@
+{
+  "protocol": {
+    "seed": 0,
+    "feedback_seed": 0,
+    "participation_window": 300,
+    "quadrature_orders": [
+      32,
+      64,
+      128
+    ],
+    "euler_substeps": [
+      1,
+      2,
+      4
+    ],
+    "initialization_sha256": "0cecac109497cd83e471e83f6f3a06943c16d30ce35bb55c7d32219cb3acc4f6",
+    "source_sha256": {
+      "src/cmc/reduced.py": "51457bd234a696d1f8c9ecc7b90a804c2df9544ec48dfbf9f2d58569ca7a750a",
+      "scripts/review_resolution.py": "1c224bbc7e4a90575f0c8bbbcb6d51eef045b44d36049a8503ce9091e6545fff"
+    }
+  },
+  "records": [
+    {
+      "label": "Baseline",
+      "nodes": 64,
+      "substeps": 1,
+      "horizon": 3000,
+      "onset": 81,
+      "exit": 570,
+      "min_participation": [
+        0.5368638581866276,
+        0.26119704491404644,
+        0.20131614145585852
+      ]
+    },
+    {
+      "label": "Baseline",
+      "nodes": 32,
+      "substeps": 1,
+      "horizon": 3000,
+      "onset": 81,
+      "exit": 570,
+      "min_participation": [
+        0.5368638581866276,
+        0.26119704491404644,
+        0.20131614145585855
+      ]
+    },
+    {
+      "label": "Baseline",
+      "nodes": 128,
+      "substeps": 1,
+      "horizon": 3000,
+      "onset": 81,
+      "exit": 570,
+      "min_participation": [
+        0.5368638581866276,
+        0.26119704491404644,
+        0.20131614145585852
+      ]
+    },
+    {
+      "label": "Baseline",
+      "nodes": 64,
+      "substeps": 2,
+      "horizon": 3000,
+      "onset": 81,
+      "exit": 567,
+      "min_participation": [
+        0.5403856523199334,
+        0.2639419429527351,
+        0.20309757487958827
+      ]
+    },
+    {
+      "label": "Baseline",
+      "nodes": 64,
+      "substeps": 4,
+      "horizon": 3000,
+      "onset": 81,
+      "exit": 565,
+      "min_participation": [
+        0.5421367878783281,
+        0.26531254973098056,
+        0.20398286450209843
+      ]
+    },
+    {
+      "label": "Gain 10",
+      "nodes": 64,
+      "substeps": 1,
+      "horizon": 1500,
+      "onset": 46,
+      "exit": 213,
+      "min_participation": [
+        0.14093480622466473,
+        0.03741390912329475,
+        0.026484267192384944
+      ]
+    },
+    {
+      "label": "Gain 10",
+      "nodes": 32,
+      "substeps": 1,
+      "horizon": 1500,
+      "onset": 46,
+      "exit": 213,
+      "min_participation": [
+        0.14093480622466475,
+        0.03741390912329483,
+        0.02648426719238474
+      ]
+    },
+    {
+      "label": "Gain 10",
+      "nodes": 128,
+      "substeps": 1,
+      "horizon": 1500,
+      "onset": 46,
+      "exit": 213,
+      "min_participation": [
+        0.14093480622466475,
+        0.037413909123294765,
+        0.026484267192384975
+      ]
+    },
+    {
+      "label": "Gain 10",
+      "nodes": 64,
+      "substeps": 2,
+      "horizon": 1500,
+      "onset": 46,
+      "exit": 209,
+      "min_participation": [
+        0.14456051038487008,
+        0.03809462087310243,
+        0.026680823306306528
+      ]
+    },
+    {
+      "label": "Gain 10",
+      "nodes": 64,
+      "substeps": 4,
+      "horizon": 1500,
+      "onset": 46,
+      "exit": 208,
+      "min_participation": [
+        0.1463276084584253,
+        0.03841587081917781,
+        0.026802480433853453
+      ]
+    },
+    {
+      "label": "Width 100, depth 7",
+      "nodes": 64,
+      "substeps": 1,
+      "horizon": 3000,
+      "onset": 242,
+      "exit": 2809,
+      "min_participation": [
+        0.22670787502274678,
+        0.10560481945950843,
+        0.13820007441616686,
+        0.14008836676629208,
+        0.15648493870579436,
+        0.1713917501632027,
+        0.1997781767788352
+      ]
+    },
+    {
+      "label": "Width 100, depth 7",
+      "nodes": 32,
+      "substeps": 1,
+      "horizon": 3000,
+      "onset": 242,
+      "exit": 2809,
+      "min_participation": [
+        0.2267078750227468,
+        0.10560481945950838,
+        0.13820007441616688,
+        0.14008836676629197,
+        0.1564849387057942,
+        0.17139175016320274,
+        0.1997781767788352
+      ]
+    },
+    {
+      "label": "Width 100, depth 7",
+      "nodes": 128,
+      "substeps": 1,
+      "horizon": 3000,
+      "onset": 242,
+      "exit": 2809,
+      "min_participation": [
+        0.22670787502274684,
+        0.10560481945950843,
+        0.13820007441616683,
+        0.14008836676629202,
+        0.15648493870579425,
+        0.17139175016320274,
+        0.1997781767788352
+      ]
+    },
+    {
+      "label": "Width 100, depth 7",
+      "nodes": 64,
+      "substeps": 2,
+      "horizon": 3000,
+      "onset": 242,
+      "exit": 2801,
+      "min_participation": [
+        0.2282111484120063,
+        0.10644249034018743,
+        0.13909634100956236,
+        0.14086552656087195,
+        0.15709004786550845,
+        0.17202932005284793,
+        0.2001677526851889
+      ]
+    },
+    {
+      "label": "Width 100, depth 7",
+      "nodes": 64,
+      "substeps": 4,
+      "horizon": 3000,
+      "onset": 242,
+      "exit": 2797,
+      "min_participation": [
+        0.22896834577835862,
+        0.10686615368884292,
+        0.1395465826882579,
+        0.14125673524162408,
+        0.15739435509257999,
+        0.1723498174026293,
+        0.20036336921595346
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "label": "Baseline",
+      "exit_one": 570,
+      "exit_two": 567,
+      "exit_four": 565,
+      "max_participation_change": 0.0052729296917004564,
+      "max_quadrature_change": 2.7755575615628914e-17
+    },
+    {
+      "label": "Gain 10",
+      "exit_one": 213,
+      "exit_two": 209,
+      "exit_four": 208,
+      "max_participation_change": 0.0053928022337605686,
+      "max_quadrature_change": 2.0469737016526324e-16
+    },
+    {
+      "label": "Width 100, depth 7",
+      "exit_one": 2809,
+      "exit_two": 2801,
+      "exit_four": 2797,
+      "max_participation_change": 0.0022604707556118375,
+      "max_quadrature_change": 1.6653345369377348e-16
+    }
+  ]
+}

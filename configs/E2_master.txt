@@ -1,0 +1,129 @@
+--exp E2_master --tag g0.03 --seed 0 --fb_seed 0 --fb_scale 0.03 --steps 3000
+--exp E2_master --tag g0.03 --seed 1 --fb_seed 1 --fb_scale 0.03 --steps 3000
+--exp E2_master --tag g0.03 --seed 2 --fb_seed 2 --fb_scale 0.03 --steps 3000
+--exp E2_master --tag g0.1 --seed 0 --fb_seed 0 --fb_scale 0.1 --steps 3000
+--exp E2_master --tag g0.1 --seed 1 --fb_seed 1 --fb_scale 0.1 --steps 3000
+--exp E2_master --tag g0.1 --seed 2 --fb_seed 2 --fb_scale 0.1 --steps 3000
+--exp E2_master --tag g0.3 --seed 0 --fb_seed 0 --fb_scale 0.3 --steps 1500
+--exp E2_master --tag g0.3 --seed 1 --fb_seed 1 --fb_scale 0.3 --steps 1500
+--exp E2_master --tag g0.3 --seed 2 --fb_seed 2 --fb_scale 0.3 --steps 1500
+--exp E2_master --tag g1.0 --seed 0 --fb_seed 0 --fb_scale 1.0 --steps 1500
+--exp E2_master --tag g1.0 --seed 1 --fb_seed 1 --fb_scale 1.0 --steps 1500
+--exp E2_master --tag g1.0 --seed 2 --fb_seed 2 --fb_scale 1.0 --steps 1500
+--exp E2_master --tag g3.0 --seed 0 --fb_seed 0 --fb_scale 3.0 --steps 1500
+--exp E2_master --tag g3.0 --seed 1 --fb_seed 1 --fb_scale 3.0 --steps 1500
+--exp E2_master --tag g3.0 --seed 2 --fb_seed 2 --fb_scale 3.0 --steps 1500
+--exp E2_master --tag g10.0 --seed 0 --fb_seed 0 --fb_scale 10.0 --steps 1500
+--exp E2_master --tag g10.0 --seed 1 --fb_seed 1 --fb_scale 10.0 --steps 1500
+--exp E2_master --tag g10.0 --seed 2 --fb_seed 2 --fb_scale 10.0 --steps 1500
+--exp E2_master --tag q0.1 --seed 0 --fb_seed 0 --out_bias_q 0.1 --steps 1500
+--exp E2_master --tag q0.1 --seed 1 --fb_seed 1 --out_bias_q 0.1 --steps 1500
+--exp E2_master --tag q0.1 --seed 2 --fb_seed 2 --out_bias_q 0.1 --steps 1500
+--exp E2_master --tag q0.2 --seed 0 --fb_seed 0 --out_bias_q 0.2 --steps 1500
+--exp E2_master --tag q0.2 --seed 1 --fb_seed 1 --out_bias_q 0.2 --steps 1500
+--exp E2_master --tag q0.2 --seed 2 --fb_seed 2 --out_bias_q 0.2 --steps 1500
+--exp E2_master --tag q0.35 --seed 0 --fb_seed 0 --out_bias_q 0.35 --steps 1500
+--exp E2_master --tag q0.35 --seed 1 --fb_seed 1 --out_bias_q 0.35 --steps 1500
+--exp E2_master --tag q0.35 --seed 2 --fb_seed 2 --out_bias_q 0.35 --steps 1500
+--exp E2_master --tag q0.5 --seed 0 --fb_seed 0 --out_bias_q 0.5 --steps 1500
+--exp E2_master --tag q0.5 --seed 1 --fb_seed 1 --out_bias_q 0.5 --steps 1500
+--exp E2_master --tag q0.5 --seed 2 --fb_seed 2 --out_bias_q 0.5 --steps 1500
+--exp E2_master --tag q0.7 --seed 0 --fb_seed 0 --out_bias_q 0.7 --steps 1500
+--exp E2_master --tag q0.7 --seed 1 --fb_seed 1 --out_bias_q 0.7 --steps 1500
+--exp E2_master --tag q0.7 --seed 2 --fb_seed 2 --out_bias_q 0.7 --steps 1500
+--exp E2_master --tag q0.85 --seed 0 --fb_seed 0 --out_bias_q 0.85 --steps 1500
+--exp E2_master --tag q0.85 --seed 1 --fb_seed 1 --out_bias_q 0.85 --steps 1500
+--exp E2_master --tag q0.85 --seed 2 --fb_seed 2 --out_bias_q 0.85 --steps 1500
+--exp E2_master --tag lr0.0003 --seed 0 --fb_seed 0 --lr 0.0003 --steps 5000
+--exp E2_master --tag lr0.0003 --seed 1 --fb_seed 1 --lr 0.0003 --steps 5000
+--exp E2_master --tag lr0.0003 --seed 2 --fb_seed 2 --lr 0.0003 --steps 5000
+--exp E2_master --tag lr0.001 --seed 0 --fb_seed 0 --lr 0.001 --steps 1500
+--exp E2_master --tag lr0.001 --seed 1 --fb_seed 1 --lr 0.001 --steps 1500
+--exp E2_master --tag lr0.001 --seed 2 --fb_seed 2 --lr 0.001 --steps 1500
+--exp E2_master --tag lr0.003 --seed 0 --fb_seed 0 --lr 0.003 --steps 500
+--exp E2_master --tag lr0.003 --seed 1 --fb_seed 1 --lr 0.003 --steps 500
+--exp E2_master --tag lr0.003 --seed 2 --fb_seed 2 --lr 0.003 --steps 500
+--exp E2_master --tag w100 --seed 0 --fb_seed 0 --width 100 --steps 1500
+--exp E2_master --tag w100 --seed 1 --fb_seed 1 --width 100 --steps 1500
+--exp E2_master --tag w100 --seed 2 --fb_seed 2 --width 100 --steps 1500
+--exp E2_master --tag w300 --seed 0 --fb_seed 0 --width 300 --steps 1500
+--exp E2_master --tag w300 --seed 1 --fb_seed 1 --width 300 --steps 1500
+--exp E2_master --tag w300 --seed 2 --fb_seed 2 --width 300 --steps 1500
+--exp E2_master --tag w900 --seed 0 --fb_seed 0 --width 900 --steps 1500
+--exp E2_master --tag w900 --seed 1 --fb_seed 1 --width 900 --steps 1500
+--exp E2_master --tag w900 --seed 2 --fb_seed 2 --width 900 --steps 1500
+--exp E2_master --tag w2000 --seed 0 --fb_seed 0 --width 2000 --steps 1500
+--exp E2_master --tag w2000 --seed 1 --fb_seed 1 --width 2000 --steps 1500
+--exp E2_master --tag w2000 --seed 2 --fb_seed 2 --width 2000 --steps 1500
+--exp E2_master --tag C2 --seed 0 --fb_seed 0 --classes 2 --steps 1500
+--exp E2_master --tag C2 --seed 1 --fb_seed 1 --classes 2 --steps 1500
+--exp E2_master --tag C2 --seed 2 --fb_seed 2 --classes 2 --steps 1500
+--exp E2_master --tag C3 --seed 0 --fb_seed 0 --classes 3 --steps 1500
+--exp E2_master --tag C3 --seed 1 --fb_seed 1 --classes 3 --steps 1500
+--exp E2_master --tag C3 --seed 2 --fb_seed 2 --classes 3 --steps 1500
+--exp E2_master --tag C5 --seed 0 --fb_seed 0 --classes 5 --steps 1500
+--exp E2_master --tag C5 --seed 1 --fb_seed 1 --classes 5 --steps 1500
+--exp E2_master --tag C5 --seed 2 --fb_seed 2 --classes 5 --steps 1500
+--exp E2_master --tag C10 --seed 0 --fb_seed 0 --classes 10 --steps 1500
+--exp E2_master --tag C10 --seed 1 --fb_seed 1 --classes 10 --steps 1500
+--exp E2_master --tag C10 --seed 2 --fb_seed 2 --classes 10 --steps 1500
+--exp E2_master --tag b32 --seed 0 --fb_seed 0 --batch 32 --steps 1500
+--exp E2_master --tag b32 --seed 1 --fb_seed 1 --batch 32 --steps 1500
+--exp E2_master --tag b32 --seed 2 --fb_seed 2 --batch 32 --steps 1500
+--exp E2_master --tag b128 --seed 0 --fb_seed 0 --batch 128 --steps 1500
+--exp E2_master --tag b128 --seed 1 --fb_seed 1 --batch 128 --steps 1500
+--exp E2_master --tag b128 --seed 2 --fb_seed 2 --batch 128 --steps 1500
+--exp E2_master --tag b512 --seed 0 --fb_seed 0 --batch 512 --steps 1500
+--exp E2_master --tag b512 --seed 1 --fb_seed 1 --batch 512 --steps 1500
+--exp E2_master --tag b512 --seed 2 --fb_seed 2 --batch 512 --steps 1500
+--exp E2_master --tag b2048 --seed 0 --fb_seed 0 --batch 2048 --steps 1500
+--exp E2_master --tag b2048 --seed 1 --fb_seed 1 --batch 2048 --steps 1500
+--exp E2_master --tag b2048 --seed 2 --fb_seed 2 --batch 2048 --steps 1500
+--exp E2_master --tag pre_div255 --seed 0 --fb_seed 0 --preprocess div255 --steps 1500
+--exp E2_master --tag pre_div255 --seed 1 --fb_seed 1 --preprocess div255 --steps 1500
+--exp E2_master --tag pre_div255 --seed 2 --fb_seed 2 --preprocess div255 --steps 1500
+--exp E2_master --tag pre_standardize --seed 0 --fb_seed 0 --preprocess standardize --steps 1500
+--exp E2_master --tag pre_standardize --seed 1 --fb_seed 1 --preprocess standardize --steps 1500
+--exp E2_master --tag pre_standardize --seed 2 --fb_seed 2 --preprocess standardize --steps 1500
+--exp E2_master --tag pre_pixcenter --seed 0 --fb_seed 0 --preprocess pixcenter --steps 1500
+--exp E2_master --tag pre_pixcenter --seed 1 --fb_seed 1 --preprocess pixcenter --steps 1500
+--exp E2_master --tag pre_pixcenter --seed 2 --fb_seed 2 --preprocess pixcenter --steps 1500
+--exp E2_master --tag pre_pixstd --seed 0 --fb_seed 0 --preprocess pixstd --steps 1500
+--exp E2_master --tag pre_pixstd --seed 1 --fb_seed 1 --preprocess pixstd --steps 1500
+--exp E2_master --tag pre_pixstd --seed 2 --fb_seed 2 --preprocess pixstd --steps 1500
+--exp E2_master --tag outlr0.3 --seed 0 --fb_seed 0 --out_lr_mult 0.3 --steps 1500
+--exp E2_master --tag outlr0.3 --seed 1 --fb_seed 1 --out_lr_mult 0.3 --steps 1500
+--exp E2_master --tag outlr0.3 --seed 2 --fb_seed 2 --out_lr_mult 0.3 --steps 1500
+--exp E2_master --tag outlr1.0 --seed 0 --fb_seed 0 --out_lr_mult 1.0 --steps 1500
+--exp E2_master --tag outlr1.0 --seed 1 --fb_seed 1 --out_lr_mult 1.0 --steps 1500
+--exp E2_master --tag outlr1.0 --seed 2 --fb_seed 2 --out_lr_mult 1.0 --steps 1500
+--exp E2_master --tag outlr3.0 --seed 0 --fb_seed 0 --out_lr_mult 3.0 --steps 1500
+--exp E2_master --tag outlr3.0 --seed 1 --fb_seed 1 --out_lr_mult 3.0 --steps 1500
+--exp E2_master --tag outlr3.0 --seed 2 --fb_seed 2 --out_lr_mult 3.0 --steps 1500
+--exp E2_master --tag outlr10.0 --seed 0 --fb_seed 0 --out_lr_mult 10.0 --steps 1500
+--exp E2_master --tag outlr10.0 --seed 1 --fb_seed 1 --out_lr_mult 10.0 --steps 1500
+--exp E2_master --tag outlr10.0 --seed 2 --fb_seed 2 --out_lr_mult 10.0 --steps 1500
+--exp E2_master --tag hidlr0.25 --seed 0 --fb_seed 0 --hid_lr_mult 0.25 --steps 6000
+--exp E2_master --tag hidlr0.25 --seed 1 --fb_seed 1 --hid_lr_mult 0.25 --steps 6000
+--exp E2_master --tag hidlr0.25 --seed 2 --fb_seed 2 --hid_lr_mult 0.25 --steps 6000
+--exp E2_master --tag hidlr1.0 --seed 0 --fb_seed 0 --hid_lr_mult 1.0 --steps 1500
+--exp E2_master --tag hidlr1.0 --seed 1 --fb_seed 1 --hid_lr_mult 1.0 --steps 1500
+--exp E2_master --tag hidlr1.0 --seed 2 --fb_seed 2 --hid_lr_mult 1.0 --steps 1500
+--exp E2_master --tag hidlr4.0 --seed 0 --fb_seed 0 --hid_lr_mult 4.0 --steps 1500
+--exp E2_master --tag hidlr4.0 --seed 1 --fb_seed 1 --hid_lr_mult 4.0 --steps 1500
+--exp E2_master --tag hidlr4.0 --seed 2 --fb_seed 2 --hid_lr_mult 4.0 --steps 1500
+--exp E2_master --tag smimb0.0 --seed 0 --fb_seed 0 --head softmax_ce --preprocess standardize --p0 0.0 --steps 1500
+--exp E2_master --tag smimb0.0 --seed 1 --fb_seed 1 --head softmax_ce --preprocess standardize --p0 0.0 --steps 1500
+--exp E2_master --tag smimb0.0 --seed 2 --fb_seed 2 --head softmax_ce --preprocess standardize --p0 0.0 --steps 1500
+--exp E2_master --tag smimb0.3 --seed 0 --fb_seed 0 --head softmax_ce --preprocess standardize --p0 0.3 --steps 1500
+--exp E2_master --tag smimb0.3 --seed 1 --fb_seed 1 --head softmax_ce --preprocess standardize --p0 0.3 --steps 1500
+--exp E2_master --tag smimb0.3 --seed 2 --fb_seed 2 --head softmax_ce --preprocess standardize --p0 0.3 --steps 1500
+--exp E2_master --tag smimb0.5 --seed 0 --fb_seed 0 --head softmax_ce --preprocess standardize --p0 0.5 --steps 1500
+--exp E2_master --tag smimb0.5 --seed 1 --fb_seed 1 --head softmax_ce --preprocess standardize --p0 0.5 --steps 1500
+--exp E2_master --tag smimb0.5 --seed 2 --fb_seed 2 --head softmax_ce --preprocess standardize --p0 0.5 --steps 1500
+--exp E2_master --tag smimb0.7 --seed 0 --fb_seed 0 --head softmax_ce --preprocess standardize --p0 0.7 --steps 1500
+--exp E2_master --tag smimb0.7 --seed 1 --fb_seed 1 --head softmax_ce --preprocess standardize --p0 0.7 --steps 1500
+--exp E2_master --tag smimb0.7 --seed 2 --fb_seed 2 --head softmax_ce --preprocess standardize --p0 0.7 --steps 1500
+--exp E2_master --tag smimb0.9 --seed 0 --fb_seed 0 --head softmax_ce --preprocess standardize --p0 0.9 --steps 1500
+--exp E2_master --tag smimb0.9 --seed 1 --fb_seed 1 --head softmax_ce --preprocess standardize --p0 0.9 --steps 1500
+--exp E2_master --tag smimb0.9 --seed 2 --fb_seed 2 --head softmax_ce --preprocess standardize --p0 0.9 --steps 1500

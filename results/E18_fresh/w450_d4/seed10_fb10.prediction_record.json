@@ -1,0 +1,21 @@
+{
+  "saved_utc": "2026-09-19T05:27:28.130939+00:00",
+  "detectors": {
+    "full": {
+      "onset": 55,
+      "exit": 437
+    },
+    "measured_init": {
+      "onset": 56,
+      "exit": 440
+    },
+    "no_local": {
+      "onset": 56,
+      "exit": null
+    },
+    "no_participation": {
+      "onset": 55,
+      "exit": 652
+    }
+  }
+}

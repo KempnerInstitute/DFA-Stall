@@ -1,0 +1,72 @@
+--exp E11_cifar --dataset cifar10 --tag cnn --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000
+--exp E11_cifar --dataset cifar10 --tag cnn_bp --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnn_centere --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --center e
+--exp E11_cifar --dataset cifar10 --tag cnn_priorbias --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --out_bias_q 0.1
+--exp E11_cifar --dataset cifar10 --tag cnn_outlr10 --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --out_lr_mult 10
+--exp E11_cifar --dataset cifar10 --tag cnn_centere_outlr10 --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --center e --out_lr_mult 10
+--exp E11_cifar --dataset cifar10 --tag cnn_pixcenter --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag cnn_centere_pixcenter --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --center e --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --head softmax_ce --preprocess standardize
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_bp --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --head softmax_ce --preprocess standardize --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_imb07 --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_imb07_bp --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --head softmax_ce --preprocess standardize --p0 0.7 --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_imb07_centere --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --head softmax_ce --preprocess standardize --p0 0.7 --center e
+--exp E11_cifar --dataset cifar10 --tag cnnrelu --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000
+--exp E11_cifar --dataset cifar10 --tag cnnrelu_bp --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000 --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnnrelu_centere_pixcenter --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000 --center e --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag cnnrelu_priorbias --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000 --out_bias_q 0.1
+--exp E11_cifar --dataset cifar10 --tag mlp --seed 0 --fb_seed 0 --steps 4000
+--exp E11_cifar --dataset cifar10 --tag mlp_bp --seed 0 --fb_seed 0 --steps 4000 --rule bp
+--exp E11_cifar --dataset cifar10 --tag mlp_centere --seed 0 --fb_seed 0 --steps 4000 --center e
+--exp E11_cifar --dataset cifar10 --tag mlp_pixcenter --seed 0 --fb_seed 0 --steps 4000 --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag mlp_priorbias --seed 0 --fb_seed 0 --steps 4000 --out_bias_q 0.1
+--exp E11_cifar --dataset cifar10 --tag mlp_std --seed 0 --fb_seed 0 --steps 4000 --preprocess standardize
+--exp E11_cifar --dataset cifar10 --tag mlp_std_bp --seed 0 --fb_seed 0 --steps 4000 --preprocess standardize --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnn --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000
+--exp E11_cifar --dataset cifar10 --tag cnn_bp --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnn_centere --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --center e
+--exp E11_cifar --dataset cifar10 --tag cnn_priorbias --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --out_bias_q 0.1
+--exp E11_cifar --dataset cifar10 --tag cnn_outlr10 --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --out_lr_mult 10
+--exp E11_cifar --dataset cifar10 --tag cnn_centere_outlr10 --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --center e --out_lr_mult 10
+--exp E11_cifar --dataset cifar10 --tag cnn_pixcenter --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag cnn_centere_pixcenter --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --center e --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --head softmax_ce --preprocess standardize
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_bp --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --head softmax_ce --preprocess standardize --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_imb07 --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_imb07_bp --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --head softmax_ce --preprocess standardize --p0 0.7 --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_imb07_centere --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --head softmax_ce --preprocess standardize --p0 0.7 --center e
+--exp E11_cifar --dataset cifar10 --tag cnnrelu --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000
+--exp E11_cifar --dataset cifar10 --tag cnnrelu_bp --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000 --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnnrelu_centere_pixcenter --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000 --center e --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag cnnrelu_priorbias --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000 --out_bias_q 0.1
+--exp E11_cifar --dataset cifar10 --tag mlp --seed 1 --fb_seed 1 --steps 4000
+--exp E11_cifar --dataset cifar10 --tag mlp_bp --seed 1 --fb_seed 1 --steps 4000 --rule bp
+--exp E11_cifar --dataset cifar10 --tag mlp_centere --seed 1 --fb_seed 1 --steps 4000 --center e
+--exp E11_cifar --dataset cifar10 --tag mlp_pixcenter --seed 1 --fb_seed 1 --steps 4000 --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag mlp_priorbias --seed 1 --fb_seed 1 --steps 4000 --out_bias_q 0.1
+--exp E11_cifar --dataset cifar10 --tag mlp_std --seed 1 --fb_seed 1 --steps 4000 --preprocess standardize
+--exp E11_cifar --dataset cifar10 --tag mlp_std_bp --seed 1 --fb_seed 1 --steps 4000 --preprocess standardize --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnn --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000
+--exp E11_cifar --dataset cifar10 --tag cnn_bp --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnn_centere --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --center e
+--exp E11_cifar --dataset cifar10 --tag cnn_priorbias --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --out_bias_q 0.1
+--exp E11_cifar --dataset cifar10 --tag cnn_outlr10 --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --out_lr_mult 10
+--exp E11_cifar --dataset cifar10 --tag cnn_centere_outlr10 --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --center e --out_lr_mult 10
+--exp E11_cifar --dataset cifar10 --tag cnn_pixcenter --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag cnn_centere_pixcenter --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --center e --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --head softmax_ce --preprocess standardize
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_bp --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --head softmax_ce --preprocess standardize --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_imb07 --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_imb07_bp --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --head softmax_ce --preprocess standardize --p0 0.7 --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnn_softmax_imb07_centere --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --head softmax_ce --preprocess standardize --p0 0.7 --center e
+--exp E11_cifar --dataset cifar10 --tag cnnrelu --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000
+--exp E11_cifar --dataset cifar10 --tag cnnrelu_bp --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000 --rule bp
+--exp E11_cifar --dataset cifar10 --tag cnnrelu_centere_pixcenter --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000 --center e --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag cnnrelu_priorbias --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000 --out_bias_q 0.1
+--exp E11_cifar --dataset cifar10 --tag mlp --seed 2 --fb_seed 2 --steps 4000
+--exp E11_cifar --dataset cifar10 --tag mlp_bp --seed 2 --fb_seed 2 --steps 4000 --rule bp
+--exp E11_cifar --dataset cifar10 --tag mlp_centere --seed 2 --fb_seed 2 --steps 4000 --center e
+--exp E11_cifar --dataset cifar10 --tag mlp_pixcenter --seed 2 --fb_seed 2 --steps 4000 --preprocess pixcenter
+--exp E11_cifar --dataset cifar10 --tag mlp_priorbias --seed 2 --fb_seed 2 --steps 4000 --out_bias_q 0.1
+--exp E11_cifar --dataset cifar10 --tag mlp_std --seed 2 --fb_seed 2 --steps 4000 --preprocess standardize
+--exp E11_cifar --dataset cifar10 --tag mlp_std_bp --seed 2 --fb_seed 2 --steps 4000 --preprocess standardize --rule bp

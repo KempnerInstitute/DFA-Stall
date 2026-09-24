@@ -1,0 +1,92 @@
+{
+ "version": 2,
+ "records": [
+  {
+   "family": "fresh",
+   "exp": "E18_fresh",
+   "tag": "w450_d2",
+   "seed": 10,
+   "fb_seed": 10,
+   "variant": "full",
+   "horizon": 3000,
+   "onset_network": 70,
+   "exit_network": 360,
+   "onset_model": 59,
+   "exit_model": 315,
+   "cov_log_mae_l1": 0.1569201403683528,
+   "cov_log_mae_l2": 0.24132780077791607
+  },
+  {
+   "family": "fresh",
+   "exp": "E18_fresh",
+   "tag": "w450_d2",
+   "seed": 10,
+   "fb_seed": 10,
+   "variant": "no_local",
+   "horizon": 3000,
+   "onset_network": 70,
+   "exit_network": 360,
+   "onset_model": 59,
+   "exit_model": null,
+   "cov_log_mae_l1": 0.5023045137724841,
+   "cov_log_mae_l2": 0.926147369581037
+  },
+  {
+   "family": "fresh",
+   "exp": "E18_fresh",
+   "tag": "w450_d2",
+   "seed": 10,
+   "fb_seed": 10,
+   "variant": "no_participation",
+   "horizon": 3000,
+   "onset_network": 70,
+   "exit_network": 360,
+   "onset_model": 59,
+   "exit_model": 397,
+   "cov_log_mae_l1": 0.09054611489930205,
+   "cov_log_mae_l2": 0.23158352288654455
+  },
+  {
+   "family": "fresh",
+   "exp": "E18_fresh",
+   "tag": "w450_d2",
+   "seed": 10,
+   "fb_seed": 10,
+   "variant": "measured_init",
+   "horizon": 3000,
+   "onset_network": 70,
+   "exit_network": 360,
+   "onset_model": 59,
+   "exit_model": 317,
+   "cov_log_mae_l1": 0.15419456244104124,
+   "cov_log_mae_l2": 0.2296231919997795
+  }
+ ],
+ "baseline_trajectories": [],
+ "windows": [
+  {
+   "layer": 1,
+   "window": 300,
+   "p_model": 0.6634817578582828,
+   "p_network": 0.7193573117256165
+  },
+  {
+   "layer": 1,
+   "window": 300,
+   "p_model": 0.6634817578582828,
+   "p_network": 0.7193573117256165
+  },
+  {
+   "layer": 2,
+   "window": 300,
+   "p_model": 0.2808052658518987,
+   "p_network": 0.2754057347774505
+  },
+  {
+   "layer": 2,
+   "window": 300,
+   "p_model": 0.2808052658518987,
+   "p_network": 0.2754057347774505
+  }
+ ]
+}

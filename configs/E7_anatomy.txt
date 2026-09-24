@@ -1,0 +1,24 @@
+--exp E7_anatomy --tag base --seed 0 --fb_seed 0 --steps 3000 --anatomy 1 --heavy_every 20 
+--exp E7_anatomy --tag base --seed 1 --fb_seed 1 --steps 3000 --anatomy 1 --heavy_every 20 
+--exp E7_anatomy --tag base --seed 2 --fb_seed 2 --steps 3000 --anatomy 1 --heavy_every 20 
+--exp E7_anatomy --tag bp --seed 0 --fb_seed 0 --steps 3000 --anatomy 1 --heavy_every 20 --rule bp
+--exp E7_anatomy --tag bp --seed 1 --fb_seed 1 --steps 3000 --anatomy 1 --heavy_every 20 --rule bp
+--exp E7_anatomy --tag bp --seed 2 --fb_seed 2 --steps 3000 --anatomy 1 --heavy_every 20 --rule bp
+--exp E7_anatomy --tag aligned --seed 0 --fb_seed 0 --steps 3000 --anatomy 1 --heavy_every 20 --rule aligned
+--exp E7_anatomy --tag aligned --seed 1 --fb_seed 1 --steps 3000 --anatomy 1 --heavy_every 20 --rule aligned
+--exp E7_anatomy --tag aligned --seed 2 --fb_seed 2 --steps 3000 --anatomy 1 --heavy_every 20 --rule aligned
+--exp E7_anatomy --tag center_delta --seed 0 --fb_seed 0 --steps 3000 --anatomy 1 --heavy_every 20 --center delta
+--exp E7_anatomy --tag center_delta --seed 1 --fb_seed 1 --steps 3000 --anatomy 1 --heavy_every 20 --center delta
+--exp E7_anatomy --tag center_delta --seed 2 --fb_seed 2 --steps 3000 --anatomy 1 --heavy_every 20 --center delta
+--exp E7_anatomy --tag frzout --seed 0 --fb_seed 0 --steps 3000 --anatomy 1 --heavy_every 20 --freeze_out 1
+--exp E7_anatomy --tag frzout --seed 1 --fb_seed 1 --steps 3000 --anatomy 1 --heavy_every 20 --freeze_out 1
+--exp E7_anatomy --tag frzout --seed 2 --fb_seed 2 --steps 3000 --anatomy 1 --heavy_every 20 --freeze_out 1
+--exp E7_anatomy --tag g3 --seed 0 --fb_seed 0 --steps 3000 --anatomy 1 --heavy_every 20 --fb_scale 3
+--exp E7_anatomy --tag g3 --seed 1 --fb_seed 1 --steps 3000 --anatomy 1 --heavy_every 20 --fb_scale 3
+--exp E7_anatomy --tag g3 --seed 2 --fb_seed 2 --steps 3000 --anatomy 1 --heavy_every 20 --fb_scale 3
+--exp E7_anatomy --tag softmax --seed 0 --fb_seed 0 --steps 3000 --anatomy 1 --heavy_every 20 --head softmax_ce --preprocess standardize
+--exp E7_anatomy --tag softmax --seed 1 --fb_seed 1 --steps 3000 --anatomy 1 --heavy_every 20 --head softmax_ce --preprocess standardize
+--exp E7_anatomy --tag softmax --seed 2 --fb_seed 2 --steps 3000 --anatomy 1 --heavy_every 20 --head softmax_ce --preprocess standardize
+--exp E7_anatomy --tag smimb07 --seed 0 --fb_seed 0 --steps 3000 --anatomy 1 --heavy_every 20 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E7_anatomy --tag smimb07 --seed 1 --fb_seed 1 --steps 3000 --anatomy 1 --heavy_every 20 --head softmax_ce --preprocess standardize --p0 0.7
+--exp E7_anatomy --tag smimb07 --seed 2 --fb_seed 2 --steps 3000 --anatomy 1 --heavy_every 20 --head softmax_ce --preprocess standardize --p0 0.7

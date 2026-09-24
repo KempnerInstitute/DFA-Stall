@@ -1,0 +1,42 @@
+--exp E12_cifar2 --tag cnn_calib --dataset cifar10 --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --calibrate_head 1
+--exp E12_cifar2 --tag cnn_calib_centere --dataset cifar10 --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --calibrate_head 1 --center e
+--exp E12_cifar2 --tag cnn_centere_pixcenter_outlr10 --dataset cifar10 --arch cnn --act tanh --seed 0 --fb_seed 0 --steps 4000 --center e --preprocess pixcenter --out_lr_mult 10
+--exp E12_cifar2 --tag mlp_calib --dataset cifar10 --seed 0 --fb_seed 0 --steps 4000 --calibrate_head 1
+--exp E12_cifar2 --tag mlp_centere_pixcenter --dataset cifar10 --seed 0 --fb_seed 0 --steps 4000 --center e --preprocess pixcenter
+--exp E12_cifar2 --tag mnist_calib --dataset mnist --seed 0 --fb_seed 0 --steps 3000 --calibrate_head 1
+--exp E12_cifar2 --tag cnnrelu_lr3e4 --dataset cifar10 --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000 --lr 0.0003
+--exp E12_cifar2 --tag cnnrelu_lr3e4_bp --dataset cifar10 --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000 --lr 0.0003 --rule bp
+--exp E12_cifar2 --tag cnnrelu_lr3e4_centere_pixcenter --dataset cifar10 --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000 --lr 0.0003 --center e --preprocess pixcenter
+--exp E12_cifar2 --tag cnnrelu_lr3e4_calib --dataset cifar10 --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000 --lr 0.0003 --calibrate_head 1
+--exp E12_cifar2 --tag cnnrelu_lr1e4 --dataset cifar10 --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000 --lr 0.0001
+--exp E12_cifar2 --tag cnnrelu_lr1e4_bp --dataset cifar10 --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000 --lr 0.0001 --rule bp
+--exp E12_cifar2 --tag cnnrelu_lr1e4_centere_pixcenter --dataset cifar10 --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000 --lr 0.0001 --center e --preprocess pixcenter
+--exp E12_cifar2 --tag cnnrelu_lr1e4_calib --dataset cifar10 --arch cnn --act relu --seed 0 --fb_seed 0 --steps 4000 --lr 0.0001 --calibrate_head 1
+--exp E12_cifar2 --tag cnn_calib --dataset cifar10 --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --calibrate_head 1
+--exp E12_cifar2 --tag cnn_calib_centere --dataset cifar10 --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --calibrate_head 1 --center e
+--exp E12_cifar2 --tag cnn_centere_pixcenter_outlr10 --dataset cifar10 --arch cnn --act tanh --seed 1 --fb_seed 1 --steps 4000 --center e --preprocess pixcenter --out_lr_mult 10
+--exp E12_cifar2 --tag mlp_calib --dataset cifar10 --seed 1 --fb_seed 1 --steps 4000 --calibrate_head 1
+--exp E12_cifar2 --tag mlp_centere_pixcenter --dataset cifar10 --seed 1 --fb_seed 1 --steps 4000 --center e --preprocess pixcenter
+--exp E12_cifar2 --tag mnist_calib --dataset mnist --seed 1 --fb_seed 1 --steps 3000 --calibrate_head 1
+--exp E12_cifar2 --tag cnnrelu_lr3e4 --dataset cifar10 --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000 --lr 0.0003
+--exp E12_cifar2 --tag cnnrelu_lr3e4_bp --dataset cifar10 --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000 --lr 0.0003 --rule bp
+--exp E12_cifar2 --tag cnnrelu_lr3e4_centere_pixcenter --dataset cifar10 --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000 --lr 0.0003 --center e --preprocess pixcenter
+--exp E12_cifar2 --tag cnnrelu_lr3e4_calib --dataset cifar10 --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000 --lr 0.0003 --calibrate_head 1
+--exp E12_cifar2 --tag cnnrelu_lr1e4 --dataset cifar10 --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000 --lr 0.0001
+--exp E12_cifar2 --tag cnnrelu_lr1e4_bp --dataset cifar10 --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000 --lr 0.0001 --rule bp
+--exp E12_cifar2 --tag cnnrelu_lr1e4_centere_pixcenter --dataset cifar10 --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000 --lr 0.0001 --center e --preprocess pixcenter
+--exp E12_cifar2 --tag cnnrelu_lr1e4_calib --dataset cifar10 --arch cnn --act relu --seed 1 --fb_seed 1 --steps 4000 --lr 0.0001 --calibrate_head 1
+--exp E12_cifar2 --tag cnn_calib --dataset cifar10 --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --calibrate_head 1
+--exp E12_cifar2 --tag cnn_calib_centere --dataset cifar10 --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --calibrate_head 1 --center e
+--exp E12_cifar2 --tag cnn_centere_pixcenter_outlr10 --dataset cifar10 --arch cnn --act tanh --seed 2 --fb_seed 2 --steps 4000 --center e --preprocess pixcenter --out_lr_mult 10
+--exp E12_cifar2 --tag mlp_calib --dataset cifar10 --seed 2 --fb_seed 2 --steps 4000 --calibrate_head 1
+--exp E12_cifar2 --tag mlp_centere_pixcenter --dataset cifar10 --seed 2 --fb_seed 2 --steps 4000 --center e --preprocess pixcenter
+--exp E12_cifar2 --tag mnist_calib --dataset mnist --seed 2 --fb_seed 2 --steps 3000 --calibrate_head 1
+--exp E12_cifar2 --tag cnnrelu_lr3e4 --dataset cifar10 --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000 --lr 0.0003
+--exp E12_cifar2 --tag cnnrelu_lr3e4_bp --dataset cifar10 --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000 --lr 0.0003 --rule bp
+--exp E12_cifar2 --tag cnnrelu_lr3e4_centere_pixcenter --dataset cifar10 --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000 --lr 0.0003 --center e --preprocess pixcenter
+--exp E12_cifar2 --tag cnnrelu_lr3e4_calib --dataset cifar10 --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000 --lr 0.0003 --calibrate_head 1
+--exp E12_cifar2 --tag cnnrelu_lr1e4 --dataset cifar10 --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000 --lr 0.0001
+--exp E12_cifar2 --tag cnnrelu_lr1e4_bp --dataset cifar10 --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000 --lr 0.0001 --rule bp
+--exp E12_cifar2 --tag cnnrelu_lr1e4_centere_pixcenter --dataset cifar10 --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000 --lr 0.0001 --center e --preprocess pixcenter
+--exp E12_cifar2 --tag cnnrelu_lr1e4_calib --dataset cifar10 --arch cnn --act relu --seed 2 --fb_seed 2 --steps 4000 --lr 0.0001 --calibrate_head 1

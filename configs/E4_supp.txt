@@ -1,0 +1,12 @@
+--exp E4_cures --tag base__center_outlr10 --seed 0 --fb_seed 0 --steps 3000 --center e --out_lr_mult 10
+--exp E4_cures --tag depth6__center_outlr10 --seed 0 --fb_seed 0 --steps 3000 --depth 6 --center e --out_lr_mult 10
+--exp E4_cures --tag base__center_priorbias --seed 0 --fb_seed 0 --steps 3000 --center e --out_bias_q 0.1
+--exp E4_cures --tag base__gated03 --seed 0 --fb_seed 0 --steps 3000 --center gated --gate_thr 0.3
+--exp E4_cures --tag base__center_outlr10 --seed 1 --fb_seed 1 --steps 3000 --center e --out_lr_mult 10
+--exp E4_cures --tag depth6__center_outlr10 --seed 1 --fb_seed 1 --steps 3000 --depth 6 --center e --out_lr_mult 10
+--exp E4_cures --tag base__center_priorbias --seed 1 --fb_seed 1 --steps 3000 --center e --out_bias_q 0.1
+--exp E4_cures --tag base__gated03 --seed 1 --fb_seed 1 --steps 3000 --center gated --gate_thr 0.3
+--exp E4_cures --tag base__center_outlr10 --seed 2 --fb_seed 2 --steps 3000 --center e --out_lr_mult 10
+--exp E4_cures --tag depth6__center_outlr10 --seed 2 --fb_seed 2 --steps 3000 --depth 6 --center e --out_lr_mult 10
+--exp E4_cures --tag base__center_priorbias --seed 2 --fb_seed 2 --steps 3000 --center e --out_bias_q 0.1
+--exp E4_cures --tag base__gated03 --seed 2 --fb_seed 2 --steps 3000 --center gated --gate_thr 0.3

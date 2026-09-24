@@ -1,0 +1,90 @@
+{
+  "E10_nonsat__summary.csv": {
+    "source": "results/E10_nonsat/summary.csv",
+    "sha256": "f7d27c757709308f0c7a9b673909a62151a3bdfef8a0614fddb37e26bdfeff04"
+  },
+  "E10_nonsat__summary_per_run.csv": {
+    "source": "results/E10_nonsat/summary_per_run.csv",
+    "sha256": "616c62c8eafe1c6ecae121fcb7c95e329b78768d84373a63dd6a1b821cae2bdb"
+  },
+  "E11_cifar__summary.csv": {
+    "source": "results/E11_cifar/summary.csv",
+    "sha256": "2d85fd278abdab5b0670946677f662c200a244a38ffb2056f488188be7a7ec00"
+  },
+  "E11_cifar__summary_per_run.csv": {
+    "source": "results/E11_cifar/summary_per_run.csv",
+    "sha256": "dc283e0e988f45aef4d638243eeaaad97fc13df93a8570b92646c4b1caf70b64"
+  },
+  "E12_cifar2__summary.csv": {
+    "source": "results/E12_cifar2/summary.csv",
+    "sha256": "3fa24c3e1e05fcd4c750a5211acc9caef1de29eb3cd20b0b04f4b54f6d2785a8"
+  },
+  "E12_cifar2__summary_per_run.csv": {
+    "source": "results/E12_cifar2/summary_per_run.csv",
+    "sha256": "77bc03790816488882cec8805eb5703c5f37c1edbed79425d9e6f01e9ac7ca89"
+  },
+  "E1_headline__summary.csv": {
+    "source": "results/E1_headline/summary.csv",
+    "sha256": "9a6a74f8981181f16646c068d56f6eba728d49d2452eb60668a7af9c9fb9857d"
+  },
+  "E1_headline__summary_per_run.csv": {
+    "source": "results/E1_headline/summary_per_run.csv",
+    "sha256": "3fa04ef9851d485481bd5c20d94f6ee736bf8a2d88526878ff013c68f4c80571"
+  },
+  "E2_master__summary.csv": {
+    "source": "results/E2_master/summary.csv",
+    "sha256": "1e4b92dc1f64a84c0824c997b055e81d1b42876576b608b25e3ece3c70861f54"
+  },
+  "E2_master__summary_per_run.csv": {
+    "source": "results/E2_master/summary_per_run.csv",
+    "sha256": "409370a6df38dee778984b52be93d40f813b2b449d4456156628dc13797239f8"
+  },
+  "E3_generality__summary.csv": {
+    "source": "results/E3_generality/summary.csv",
+    "sha256": "d97fb72c49a6ee1df6a87fec12f7d4e56643df0e98bf4d1ccf36b351c1e584d3"
+  },
+  "E3_generality__summary_per_run.csv": {
+    "source": "results/E3_generality/summary_per_run.csv",
+    "sha256": "0107a9c8136b0f46e63c1851a8755baed0d776898af8fa2705ab2e6154a027ad"
+  },
+  "E4_cures__summary.csv": {
+    "source": "results/E4_cures/summary.csv",
+    "sha256": "7c91d597241c8269f436ffeace8803c87450349db656736a160cb08e47d430ca"
+  },
+  "E4_cures__summary_per_run.csv": {
+    "source": "results/E4_cures/summary_per_run.csv",
+    "sha256": "744c15b24799dd79e486b174b95d4451e8eac48a87dc086e7272392a4f8f82de"
+  },
+  "E5_recovery__summary.csv": {
+    "source": "results/E5_recovery/summary.csv",
+    "sha256": "2c0e6eec009444685a0912ad427b96f84d2b345d7fc828fef69a9db8c809d3a9"
+  },
+  "E5_recovery__summary_per_run.csv": {
+    "source": "results/E5_recovery/summary_per_run.csv",
+    "sha256": "2ad82ca7bf4dd64e33a558c2d2f37f75afff3b782b298b7c2803516442b24f26"
+  },
+  "E7_anatomy__summary.csv": {
+    "source": "results/E7_anatomy/summary.csv",
+    "sha256": "2a9625e58d5b3e0eb4f064fec282d264772b69d5bef5198d2b6be7c999a8ce20"
+  },
+  "E7_anatomy__summary_per_run.csv": {
+    "source": "results/E7_anatomy/summary_per_run.csv",
+    "sha256": "d0c209b182f75e67d06aab98e8a80985597410f0bb31b47ea5d7f314882517a2"
+  },
+  "E8_shift__summary.csv": {
+    "source": "results/E8_shift/summary.csv",
+    "sha256": "989ff04f224bc109358a1c3cf4b34334aadb2c2d0d376b47aba5aa35512f355d"
+  },
+  "E8_shift__summary_per_run.csv": {
+    "source": "results/E8_shift/summary_per_run.csv",
+    "sha256": "faa50c30375b26fd4cee25aeed0af8818617caa08bf0c570d9386af0a935c72b"
+  },
+  "E9_headinit__summary.csv": {
+    "source": "results/E9_headinit/summary.csv",
+    "sha256": "1637bc5de6ea565c4f67a1a7e1b51eae6caeee8c66b28fd404857d7a1c4d3583"
+  },
+  "E9_headinit__summary_per_run.csv": {
+    "source": "results/E9_headinit/summary_per_run.csv",
+    "sha256": "7eb1966eb953f1c8b71e7b2938c9ff5c9ad6ab039dc8bbc723c6a8499de24fc6"
+  }
+}

@@ -1,0 +1,34 @@
+{
+ "rung": "rung2_hidden_biases_dfa",
+ "seed": 2,
+ "rule": "dfa",
+ "D": 500,
+ "K": 4,
+ "C": 4,
+ "widths": "4",
+ "student_act": "erf",
+ "head": "sigmoid_bce",
+ "bias": 1,
+ "x_mean": 0.0,
+ "x_std": 1.0,
+ "fb_scale": 1.0,
+ "lr": 0.5,
+ "out_lr_div": 10.0,
+ "v_scale": 0.3,
+ "steps": 400000,
+ "probe_n": 2048,
+ "n_log": 300,
+ "const_loss": 2.2482296572655827,
+ "prior": [
+  0.25830078125,
+  0.259765625,
+  0.234375,
+  0.24755859375
+ ],
+ "eta_out": 0.05,
+ "widths_list": [
+  4
+ ],
+ "wall": 25.626458406448364,
+ "final_step": 400000
+}

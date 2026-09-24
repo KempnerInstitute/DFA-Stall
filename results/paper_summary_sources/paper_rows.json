@@ -1,0 +1,524 @@
+{
+  "summary_baseline": [
+    {
+      "experiment": "E1_headline",
+      "tag": "base",
+      "label": "Plain DFA"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "bp",
+      "label": "Backpropagation"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "fa",
+      "label": "Layerwise FA"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "aligned",
+      "label": "Pre-aligned DFA"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "bp_outx12",
+      "label": "BP, output weights $\\times12$"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "center_e",
+      "label": "Center output error"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "center_delta",
+      "label": "Center teaching signal"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "pixcenter",
+      "label": "Center inputs"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "frzbias",
+      "label": "Freeze hidden biases"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "pixcenter_frzbias",
+      "label": "Center inputs + freeze biases"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "outlr10",
+      "label": "Faster readout"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "frzout",
+      "label": "Frozen readout"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "priorbias",
+      "label": "Prior-bias initialization"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "softmax",
+      "label": "Balanced softmax"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "softmax_imb07",
+      "label": "Imbalanced softmax"
+    },
+    {
+      "experiment": "E1_headline",
+      "tag": "softmax_imb07_bp",
+      "label": "Imbalanced softmax, BP"
+    }
+  ],
+  "summary_initial_error": [
+    {
+      "experiment": "E2_master",
+      "tag": "C2"
+    },
+    {
+      "experiment": "E2_master",
+      "tag": "C3"
+    },
+    {
+      "experiment": "E2_master",
+      "tag": "C5"
+    },
+    {
+      "experiment": "E2_master",
+      "tag": "C10"
+    }
+  ],
+  "summary_covariance": [
+    {
+      "source": "results/review_20260919/anatomy_matched.csv",
+      "tag": "base"
+    },
+    {
+      "source": "results/review_20260919/anatomy_matched.csv",
+      "tag": "bp"
+    },
+    {
+      "source": "results/review_20260919/anatomy_matched.csv",
+      "tag": "aligned"
+    },
+    {
+      "source": "results/review_20260919/anatomy_matched.csv",
+      "tag": "center_delta"
+    },
+    {
+      "source": "results/review_20260919/anatomy_matched.csv",
+      "tag": "frzout"
+    },
+    {
+      "source": "results/review_20260919/anatomy_matched.csv",
+      "tag": "g3"
+    },
+    {
+      "source": "results/review_20260919/anatomy_matched.csv",
+      "tag": "softmax"
+    },
+    {
+      "source": "results/review_20260919/anatomy_matched.csv",
+      "tag": "smimb07"
+    }
+  ],
+  "summary_shift": [
+    {
+      "source": "results/review_20260919/shift_windows.csv",
+      "tag": "shift300"
+    },
+    {
+      "source": "results/review_20260919/shift_windows.csv",
+      "tag": "shift300_bp"
+    },
+    {
+      "source": "results/review_20260919/shift_windows.csv",
+      "tag": "shift1500"
+    },
+    {
+      "source": "results/review_20260919/shift_windows.csv",
+      "tag": "shift1500_bp"
+    }
+  ],
+  "summary_readout_init": [
+    {
+      "experiment": "E9_headinit",
+      "tag": "mse_ctr",
+      "label": "Centered squared error, random readout"
+    },
+    {
+      "experiment": "E9_headinit",
+      "tag": "mse_ctr_w0",
+      "label": "Centered squared error, zero readout"
+    },
+    {
+      "experiment": "E9_headinit",
+      "tag": "mse_ctr_w0_bp",
+      "label": "Same zero readout, BP"
+    },
+    {
+      "experiment": "E9_headinit",
+      "tag": "mse_w0",
+      "label": "Uncentered squared error, zero readout"
+    },
+    {
+      "experiment": "E9_headinit",
+      "tag": "sigmoid_w0",
+      "label": "Sigmoid, zero readout"
+    },
+    {
+      "experiment": "E9_headinit",
+      "tag": "softmax_w0",
+      "label": "Softmax, zero readout"
+    }
+  ],
+  "summary_instability": [
+    {
+      "experiment": "E10_nonsat",
+      "tag": "relu_lr1e4"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "gelu_lr1e4"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "linear_lr1e4"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "relu_lr1e4_centere"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "gelu_lr1e4_centere"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "linear_lr1e4_centere"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "relu_lr3e4"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "gelu_lr3e4"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "linear_lr3e4"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "relu_lr3e4_centere"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "gelu_lr3e4_centere"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "linear_lr3e4_centere"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "relu_lr3e4_centere_outlr10"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "gelu_lr3e4_centere_outlr10"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "linear_lr3e4_centere_outlr10"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "relu_lr1e3_bp"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "gelu_lr1e3_bp"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "linear_lr1e3_bp"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "relu_lr1e3_priorbias"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "gelu_lr1e3_priorbias"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "linear_lr1e3_priorbias"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "relu_lr1e3_centere_outlr10"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "gelu_lr1e3_centere_outlr10"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "linear_lr1e3_centere_outlr10"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "relu_lr1e3_centere_pixcenter"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "gelu_lr1e3_centere_pixcenter"
+    },
+    {
+      "experiment": "E10_nonsat",
+      "tag": "linear_lr1e3_centere_pixcenter"
+    }
+  ],
+  "summary_cifar": [
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "cnn",
+      "layer": 3,
+      "label": "CNN: plain DFA",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "cnn_bp",
+      "layer": 3,
+      "label": "CNN: BP",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "cnn_priorbias",
+      "layer": 3,
+      "label": "CNN: prior bias",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E12_cifar2",
+      "tag": "cnn_calib",
+      "layer": 3,
+      "label": "CNN: calibrated logits",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "cnn_centere",
+      "layer": 3,
+      "label": "CNN: center error",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "cnn_centere_pixcenter",
+      "layer": 3,
+      "label": "CNN: center error + inputs",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "cnn_softmax",
+      "layer": 3,
+      "label": "CNN: balanced softmax",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "cnn_softmax_bp",
+      "layer": 3,
+      "label": "CNN: balanced softmax, BP",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "cnn_softmax_imb07",
+      "layer": 3,
+      "label": "CNN: imbalanced softmax",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "cnn_softmax_imb07_bp",
+      "layer": 3,
+      "label": "CNN: imbalanced softmax, BP",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "mlp",
+      "layer": 1,
+      "label": "MLP: plain DFA",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "mlp_bp",
+      "layer": 1,
+      "label": "MLP: BP",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E12_cifar2",
+      "tag": "mlp_calib",
+      "layer": 1,
+      "label": "MLP: calibrated logits",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "mlp_centere",
+      "layer": 1,
+      "label": "MLP: center error",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "mlp_pixcenter",
+      "layer": 1,
+      "label": "MLP: center inputs",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E11_cifar",
+      "tag": "mlp_std",
+      "layer": 1,
+      "label": "MLP: standardized inputs",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    },
+    {
+      "source": "results/cifar_reporting/trajectories.csv",
+      "experiment": "E12_cifar2",
+      "tag": "mlp_centere_pixcenter",
+      "layer": 1,
+      "label": "MLP: center error + inputs",
+      "runs": [
+        "seed0_fb0",
+        "seed1_fb1",
+        "seed2_fb2"
+      ]
+    }
+  ],
+  "summary_cifar100": [
+    {
+      "source": "results/revision_per_run.csv",
+      "family": "E15_cifar100",
+      "tag": "sigmoid_bce"
+    },
+    {
+      "source": "results/revision_per_run.csv",
+      "family": "E15_cifar100",
+      "tag": "sigmoid_bce_bp"
+    },
+    {
+      "source": "results/revision_per_run.csv",
+      "family": "E15_cifar100",
+      "tag": "softmax_ce"
+    },
+    {
+      "source": "results/revision_per_run.csv",
+      "family": "E15_cifar100",
+      "tag": "softmax_ce_bp"
+    }
+  ]
+}

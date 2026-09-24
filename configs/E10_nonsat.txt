@@ -1,0 +1,81 @@
+--exp E10_nonsat --tag relu_lr1e4 --seed 0 --fb_seed 0 --steps 3000 --act relu --lr 0.0001
+--exp E10_nonsat --tag relu_lr1e4_centere --seed 0 --fb_seed 0 --steps 3000 --act relu --lr 0.0001 --center e
+--exp E10_nonsat --tag relu_lr3e4 --seed 0 --fb_seed 0 --steps 3000 --act relu --lr 0.0003
+--exp E10_nonsat --tag relu_lr3e4_centere --seed 0 --fb_seed 0 --steps 3000 --act relu --lr 0.0003 --center e
+--exp E10_nonsat --tag relu_lr3e4_centere_outlr10 --seed 0 --fb_seed 0 --steps 3000 --act relu --lr 0.0003 --center e --out_lr_mult 10
+--exp E10_nonsat --tag relu_lr1e3_centere_outlr10 --seed 0 --fb_seed 0 --steps 3000 --act relu --lr 0.001 --center e --out_lr_mult 10
+--exp E10_nonsat --tag relu_lr1e3_centere_pixcenter --seed 0 --fb_seed 0 --steps 3000 --act relu --lr 0.001 --center e --preprocess pixcenter
+--exp E10_nonsat --tag relu_lr1e3_priorbias --seed 0 --fb_seed 0 --steps 3000 --act relu --lr 0.001 --out_bias_q 0.1
+--exp E10_nonsat --tag relu_lr1e3_bp --seed 0 --fb_seed 0 --steps 3000 --act relu --lr 0.001 --rule bp
+--exp E10_nonsat --tag relu_lr1e4 --seed 1 --fb_seed 1 --steps 3000 --act relu --lr 0.0001
+--exp E10_nonsat --tag relu_lr1e4_centere --seed 1 --fb_seed 1 --steps 3000 --act relu --lr 0.0001 --center e
+--exp E10_nonsat --tag relu_lr3e4 --seed 1 --fb_seed 1 --steps 3000 --act relu --lr 0.0003
+--exp E10_nonsat --tag relu_lr3e4_centere --seed 1 --fb_seed 1 --steps 3000 --act relu --lr 0.0003 --center e
+--exp E10_nonsat --tag relu_lr3e4_centere_outlr10 --seed 1 --fb_seed 1 --steps 3000 --act relu --lr 0.0003 --center e --out_lr_mult 10
+--exp E10_nonsat --tag relu_lr1e3_centere_outlr10 --seed 1 --fb_seed 1 --steps 3000 --act relu --lr 0.001 --center e --out_lr_mult 10
+--exp E10_nonsat --tag relu_lr1e3_centere_pixcenter --seed 1 --fb_seed 1 --steps 3000 --act relu --lr 0.001 --center e --preprocess pixcenter
+--exp E10_nonsat --tag relu_lr1e3_priorbias --seed 1 --fb_seed 1 --steps 3000 --act relu --lr 0.001 --out_bias_q 0.1
+--exp E10_nonsat --tag relu_lr1e3_bp --seed 1 --fb_seed 1 --steps 3000 --act relu --lr 0.001 --rule bp
+--exp E10_nonsat --tag relu_lr1e4 --seed 2 --fb_seed 2 --steps 3000 --act relu --lr 0.0001
+--exp E10_nonsat --tag relu_lr1e4_centere --seed 2 --fb_seed 2 --steps 3000 --act relu --lr 0.0001 --center e
+--exp E10_nonsat --tag relu_lr3e4 --seed 2 --fb_seed 2 --steps 3000 --act relu --lr 0.0003
+--exp E10_nonsat --tag relu_lr3e4_centere --seed 2 --fb_seed 2 --steps 3000 --act relu --lr 0.0003 --center e
+--exp E10_nonsat --tag relu_lr3e4_centere_outlr10 --seed 2 --fb_seed 2 --steps 3000 --act relu --lr 0.0003 --center e --out_lr_mult 10
+--exp E10_nonsat --tag relu_lr1e3_centere_outlr10 --seed 2 --fb_seed 2 --steps 3000 --act relu --lr 0.001 --center e --out_lr_mult 10
+--exp E10_nonsat --tag relu_lr1e3_centere_pixcenter --seed 2 --fb_seed 2 --steps 3000 --act relu --lr 0.001 --center e --preprocess pixcenter
+--exp E10_nonsat --tag relu_lr1e3_priorbias --seed 2 --fb_seed 2 --steps 3000 --act relu --lr 0.001 --out_bias_q 0.1
+--exp E10_nonsat --tag relu_lr1e3_bp --seed 2 --fb_seed 2 --steps 3000 --act relu --lr 0.001 --rule bp
+--exp E10_nonsat --tag gelu_lr1e4 --seed 0 --fb_seed 0 --steps 3000 --act gelu --lr 0.0001
+--exp E10_nonsat --tag gelu_lr1e4_centere --seed 0 --fb_seed 0 --steps 3000 --act gelu --lr 0.0001 --center e
+--exp E10_nonsat --tag gelu_lr3e4 --seed 0 --fb_seed 0 --steps 3000 --act gelu --lr 0.0003
+--exp E10_nonsat --tag gelu_lr3e4_centere --seed 0 --fb_seed 0 --steps 3000 --act gelu --lr 0.0003 --center e
+--exp E10_nonsat --tag gelu_lr3e4_centere_outlr10 --seed 0 --fb_seed 0 --steps 3000 --act gelu --lr 0.0003 --center e --out_lr_mult 10
+--exp E10_nonsat --tag gelu_lr1e3_centere_outlr10 --seed 0 --fb_seed 0 --steps 3000 --act gelu --lr 0.001 --center e --out_lr_mult 10
+--exp E10_nonsat --tag gelu_lr1e3_centere_pixcenter --seed 0 --fb_seed 0 --steps 3000 --act gelu --lr 0.001 --center e --preprocess pixcenter
+--exp E10_nonsat --tag gelu_lr1e3_priorbias --seed 0 --fb_seed 0 --steps 3000 --act gelu --lr 0.001 --out_bias_q 0.1
+--exp E10_nonsat --tag gelu_lr1e3_bp --seed 0 --fb_seed 0 --steps 3000 --act gelu --lr 0.001 --rule bp
+--exp E10_nonsat --tag gelu_lr1e4 --seed 1 --fb_seed 1 --steps 3000 --act gelu --lr 0.0001
+--exp E10_nonsat --tag gelu_lr1e4_centere --seed 1 --fb_seed 1 --steps 3000 --act gelu --lr 0.0001 --center e
+--exp E10_nonsat --tag gelu_lr3e4 --seed 1 --fb_seed 1 --steps 3000 --act gelu --lr 0.0003
+--exp E10_nonsat --tag gelu_lr3e4_centere --seed 1 --fb_seed 1 --steps 3000 --act gelu --lr 0.0003 --center e
+--exp E10_nonsat --tag gelu_lr3e4_centere_outlr10 --seed 1 --fb_seed 1 --steps 3000 --act gelu --lr 0.0003 --center e --out_lr_mult 10
+--exp E10_nonsat --tag gelu_lr1e3_centere_outlr10 --seed 1 --fb_seed 1 --steps 3000 --act gelu --lr 0.001 --center e --out_lr_mult 10
+--exp E10_nonsat --tag gelu_lr1e3_centere_pixcenter --seed 1 --fb_seed 1 --steps 3000 --act gelu --lr 0.001 --center e --preprocess pixcenter
+--exp E10_nonsat --tag gelu_lr1e3_priorbias --seed 1 --fb_seed 1 --steps 3000 --act gelu --lr 0.001 --out_bias_q 0.1
+--exp E10_nonsat --tag gelu_lr1e3_bp --seed 1 --fb_seed 1 --steps 3000 --act gelu --lr 0.001 --rule bp
+--exp E10_nonsat --tag gelu_lr1e4 --seed 2 --fb_seed 2 --steps 3000 --act gelu --lr 0.0001
+--exp E10_nonsat --tag gelu_lr1e4_centere --seed 2 --fb_seed 2 --steps 3000 --act gelu --lr 0.0001 --center e
+--exp E10_nonsat --tag gelu_lr3e4 --seed 2 --fb_seed 2 --steps 3000 --act gelu --lr 0.0003
+--exp E10_nonsat --tag gelu_lr3e4_centere --seed 2 --fb_seed 2 --steps 3000 --act gelu --lr 0.0003 --center e
+--exp E10_nonsat --tag gelu_lr3e4_centere_outlr10 --seed 2 --fb_seed 2 --steps 3000 --act gelu --lr 0.0003 --center e --out_lr_mult 10
+--exp E10_nonsat --tag gelu_lr1e3_centere_outlr10 --seed 2 --fb_seed 2 --steps 3000 --act gelu --lr 0.001 --center e --out_lr_mult 10
+--exp E10_nonsat --tag gelu_lr1e3_centere_pixcenter --seed 2 --fb_seed 2 --steps 3000 --act gelu --lr 0.001 --center e --preprocess pixcenter
+--exp E10_nonsat --tag gelu_lr1e3_priorbias --seed 2 --fb_seed 2 --steps 3000 --act gelu --lr 0.001 --out_bias_q 0.1
+--exp E10_nonsat --tag gelu_lr1e3_bp --seed 2 --fb_seed 2 --steps 3000 --act gelu --lr 0.001 --rule bp
+--exp E10_nonsat --tag linear_lr1e4 --seed 0 --fb_seed 0 --steps 3000 --act linear --lr 0.0001
+--exp E10_nonsat --tag linear_lr1e4_centere --seed 0 --fb_seed 0 --steps 3000 --act linear --lr 0.0001 --center e
+--exp E10_nonsat --tag linear_lr3e4 --seed 0 --fb_seed 0 --steps 3000 --act linear --lr 0.0003
+--exp E10_nonsat --tag linear_lr3e4_centere --seed 0 --fb_seed 0 --steps 3000 --act linear --lr 0.0003 --center e
+--exp E10_nonsat --tag linear_lr3e4_centere_outlr10 --seed 0 --fb_seed 0 --steps 3000 --act linear --lr 0.0003 --center e --out_lr_mult 10
+--exp E10_nonsat --tag linear_lr1e3_centere_outlr10 --seed 0 --fb_seed 0 --steps 3000 --act linear --lr 0.001 --center e --out_lr_mult 10
+--exp E10_nonsat --tag linear_lr1e3_centere_pixcenter --seed 0 --fb_seed 0 --steps 3000 --act linear --lr 0.001 --center e --preprocess pixcenter
+--exp E10_nonsat --tag linear_lr1e3_priorbias --seed 0 --fb_seed 0 --steps 3000 --act linear --lr 0.001 --out_bias_q 0.1
+--exp E10_nonsat --tag linear_lr1e3_bp --seed 0 --fb_seed 0 --steps 3000 --act linear --lr 0.001 --rule bp
+--exp E10_nonsat --tag linear_lr1e4 --seed 1 --fb_seed 1 --steps 3000 --act linear --lr 0.0001
+--exp E10_nonsat --tag linear_lr1e4_centere --seed 1 --fb_seed 1 --steps 3000 --act linear --lr 0.0001 --center e
+--exp E10_nonsat --tag linear_lr3e4 --seed 1 --fb_seed 1 --steps 3000 --act linear --lr 0.0003
+--exp E10_nonsat --tag linear_lr3e4_centere --seed 1 --fb_seed 1 --steps 3000 --act linear --lr 0.0003 --center e
+--exp E10_nonsat --tag linear_lr3e4_centere_outlr10 --seed 1 --fb_seed 1 --steps 3000 --act linear --lr 0.0003 --center e --out_lr_mult 10
+--exp E10_nonsat --tag linear_lr1e3_centere_outlr10 --seed 1 --fb_seed 1 --steps 3000 --act linear --lr 0.001 --center e --out_lr_mult 10
+--exp E10_nonsat --tag linear_lr1e3_centere_pixcenter --seed 1 --fb_seed 1 --steps 3000 --act linear --lr 0.001 --center e --preprocess pixcenter
+--exp E10_nonsat --tag linear_lr1e3_priorbias --seed 1 --fb_seed 1 --steps 3000 --act linear --lr 0.001 --out_bias_q 0.1
+--exp E10_nonsat --tag linear_lr1e3_bp --seed 1 --fb_seed 1 --steps 3000 --act linear --lr 0.001 --rule bp
+--exp E10_nonsat --tag linear_lr1e4 --seed 2 --fb_seed 2 --steps 3000 --act linear --lr 0.0001
+--exp E10_nonsat --tag linear_lr1e4_centere --seed 2 --fb_seed 2 --steps 3000 --act linear --lr 0.0001 --center e
+--exp E10_nonsat --tag linear_lr3e4 --seed 2 --fb_seed 2 --steps 3000 --act linear --lr 0.0003
+--exp E10_nonsat --tag linear_lr3e4_centere --seed 2 --fb_seed 2 --steps 3000 --act linear --lr 0.0003 --center e
+--exp E10_nonsat --tag linear_lr3e4_centere_outlr10 --seed 2 --fb_seed 2 --steps 3000 --act linear --lr 0.0003 --center e --out_lr_mult 10
+--exp E10_nonsat --tag linear_lr1e3_centere_outlr10 --seed 2 --fb_seed 2 --steps 3000 --act linear --lr 0.001 --center e --out_lr_mult 10
+--exp E10_nonsat --tag linear_lr1e3_centere_pixcenter --seed 2 --fb_seed 2 --steps 3000 --act linear --lr 0.001 --center e --preprocess pixcenter
+--exp E10_nonsat --tag linear_lr1e3_priorbias --seed 2 --fb_seed 2 --steps 3000 --act linear --lr 0.001 --out_bias_q 0.1
+--exp E10_nonsat --tag linear_lr1e3_bp --seed 2 --fb_seed 2 --steps 3000 --act linear --lr 0.001 --rule bp

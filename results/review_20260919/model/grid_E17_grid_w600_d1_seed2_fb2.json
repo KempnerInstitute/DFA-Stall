@@ -1,0 +1,76 @@
+{
+ "version": 2,
+ "records": [
+  {
+   "family": "grid",
+   "exp": "E17_grid",
+   "tag": "w600_d1",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "full",
+   "horizon": 3000,
+   "onset_network": null,
+   "exit_network": null,
+   "onset_model": null,
+   "exit_model": null,
+   "cov_log_mae_l1": 0.2552703491331713
+  },
+  {
+   "family": "grid",
+   "exp": "E17_grid",
+   "tag": "w600_d1",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "no_local",
+   "horizon": 3000,
+   "onset_network": null,
+   "exit_network": null,
+   "onset_model": 65,
+   "exit_model": 815,
+   "cov_log_mae_l1": 0.964444069290321
+  },
+  {
+   "family": "grid",
+   "exp": "E17_grid",
+   "tag": "w600_d1",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "no_participation",
+   "horizon": 3000,
+   "onset_network": null,
+   "exit_network": null,
+   "onset_model": 63,
+   "exit_model": 237,
+   "cov_log_mae_l1": 0.13321593069331483
+  },
+  {
+   "family": "grid",
+   "exp": "E17_grid",
+   "tag": "w600_d1",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "measured_init",
+   "horizon": 3000,
+   "onset_network": null,
+   "exit_network": null,
+   "onset_model": null,
+   "exit_model": null,
+   "cov_log_mae_l1": 0.25022561590195797
+  }
+ ],
+ "baseline_trajectories": [],
+ "windows": [
+  {
+   "layer": 1,
+   "window": 300,
+   "p_model": 0.6289868670012719,
+   "p_network": 0.7245738506317139
+  },
+  {
+   "layer": 1,
+   "window": 300,
+   "p_model": 0.6289868670012719,
+   "p_network": 0.7245738506317139
+  }
+ ]
+}

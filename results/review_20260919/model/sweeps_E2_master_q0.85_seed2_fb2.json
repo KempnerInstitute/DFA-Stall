@@ -1,0 +1,108 @@
+{
+ "version": 2,
+ "records": [
+  {
+   "family": "sweeps",
+   "exp": "E2_master",
+   "tag": "q0.85",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "full",
+   "horizon": 1500,
+   "onset_network": 90,
+   "exit_network": 600,
+   "onset_model": 76,
+   "exit_model": 684,
+   "cov_log_mae_l1": 0.042254462249022004,
+   "cov_log_mae_l2": 0.18373389053572098,
+   "cov_log_mae_l3": 0.4984488901956855
+  },
+  {
+   "family": "sweeps",
+   "exp": "E2_master",
+   "tag": "q0.85",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "no_local",
+   "horizon": 1500,
+   "onset_network": 90,
+   "exit_network": 600,
+   "onset_model": 77,
+   "exit_model": null,
+   "cov_log_mae_l1": 0.8042907554992555,
+   "cov_log_mae_l2": 1.3510207696584398,
+   "cov_log_mae_l3": 1.8628320295706424
+  },
+  {
+   "family": "sweeps",
+   "exp": "E2_master",
+   "tag": "q0.85",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "no_participation",
+   "horizon": 1500,
+   "onset_network": 90,
+   "exit_network": 600,
+   "onset_model": 76,
+   "exit_model": 1140,
+   "cov_log_mae_l1": 0.13120715578153025,
+   "cov_log_mae_l2": 0.45205088017332484,
+   "cov_log_mae_l3": 0.890196634023221
+  },
+  {
+   "family": "sweeps",
+   "exp": "E2_master",
+   "tag": "q0.85",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "measured_init",
+   "horizon": 1500,
+   "onset_network": 90,
+   "exit_network": 600,
+   "onset_model": 76,
+   "exit_model": 694,
+   "cov_log_mae_l1": 0.039750723774227746,
+   "cov_log_mae_l2": 0.18088796643713984,
+   "cov_log_mae_l3": 0.5013593427048494
+  }
+ ],
+ "baseline_trajectories": [],
+ "windows": [
+  {
+   "layer": 1,
+   "window": 300,
+   "p_model": 0.4784131664152095,
+   "p_network": 0.6141194105148315
+  },
+  {
+   "layer": 1,
+   "window": 300,
+   "p_model": 0.4784131664152095,
+   "p_network": 0.6141194105148315
+  },
+  {
+   "layer": 2,
+   "window": 300,
+   "p_model": 0.19187604758337806,
+   "p_network": 0.2092257291078567
+  },
+  {
+   "layer": 2,
+   "window": 300,
+   "p_model": 0.19187604758337806,
+   "p_network": 0.2092257291078567
+  },
+  {
+   "layer": 3,
+   "window": 300,
+   "p_model": 0.12992629667345196,
+   "p_network": 0.1296930909156799
+  },
+  {
+   "layer": 3,
+   "window": 300,
+   "p_model": 0.12992629667345196,
+   "p_network": 0.1296930909156799
+  }
+ ]
+}

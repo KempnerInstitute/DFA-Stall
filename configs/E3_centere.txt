@@ -1,0 +1,49 @@
+--exp E3_generality --tag depth6_centere --seed 0 --fb_seed 0 --steps 2000 --center e --depth 6
+--exp E3_generality --tag depth6_centere --seed 1 --fb_seed 1 --steps 2000 --center e --depth 6
+--exp E3_generality --tag depth6_centere --seed 2 --fb_seed 2 --steps 2000 --center e --depth 6
+--exp E3_generality --tag relu_centere --seed 0 --fb_seed 0 --steps 2000 --center e --act relu
+--exp E3_generality --tag relu_centere --seed 1 --fb_seed 1 --steps 2000 --center e --act relu
+--exp E3_generality --tag relu_centere --seed 2 --fb_seed 2 --steps 2000 --center e --act relu
+--exp E3_generality --tag relu_lr3e4_centere --seed 0 --fb_seed 0 --steps 3000 --center e --act relu --lr 0.0003
+--exp E3_generality --tag relu_lr3e4_centere --seed 1 --fb_seed 1 --steps 3000 --center e --act relu --lr 0.0003
+--exp E3_generality --tag relu_lr3e4_centere --seed 2 --fb_seed 2 --steps 3000 --center e --act relu --lr 0.0003
+--exp E3_generality --tag gelu_centere --seed 0 --fb_seed 0 --steps 2000 --center e --act gelu
+--exp E3_generality --tag gelu_centere --seed 1 --fb_seed 1 --steps 2000 --center e --act gelu
+--exp E3_generality --tag gelu_centere --seed 2 --fb_seed 2 --steps 2000 --center e --act gelu
+--exp E3_generality --tag linear_centere --seed 0 --fb_seed 0 --steps 2000 --center e --act linear
+--exp E3_generality --tag linear_centere --seed 1 --fb_seed 1 --steps 2000 --center e --act linear
+--exp E3_generality --tag linear_centere --seed 2 --fb_seed 2 --steps 2000 --center e --act linear
+--exp E3_generality --tag cnn_centere --seed 0 --fb_seed 0 --steps 1500 --center e --arch cnn
+--exp E3_generality --tag cnn_centere --seed 1 --fb_seed 1 --steps 1500 --center e --arch cnn
+--exp E3_generality --tag cnn_centere --seed 2 --fb_seed 2 --steps 1500 --center e --arch cnn
+--exp E3_generality --tag multilabel_centere --seed 0 --fb_seed 0 --steps 2000 --center e --head multilabel
+--exp E3_generality --tag multilabel_centere --seed 1 --fb_seed 1 --steps 2000 --center e --head multilabel
+--exp E3_generality --tag multilabel_centere --seed 2 --fb_seed 2 --steps 2000 --center e --head multilabel
+--exp E3_generality --tag mse_s1_centere --seed 0 --fb_seed 0 --steps 2000 --center e --head mse --target_scale 1.0
+--exp E3_generality --tag mse_s1_centere --seed 1 --fb_seed 1 --steps 2000 --center e --head mse --target_scale 1.0
+--exp E3_generality --tag mse_s1_centere --seed 2 --fb_seed 2 --steps 2000 --center e --head mse --target_scale 1.0
+--exp E3_generality --tag mse_s1_ctr --seed 0 --fb_seed 0 --steps 2000 --head mse --target_scale 1.0 --target_center 1
+--exp E3_generality --tag mse_s1_ctr_centere --seed 0 --fb_seed 0 --steps 2000 --center e --head mse --target_scale 1.0 --target_center 1
+--exp E3_generality --tag mse_s1_ctr_bp --seed 0 --fb_seed 0 --steps 2000 --rule bp --head mse --target_scale 1.0 --target_center 1
+--exp E3_generality --tag mse_s1_ctr --seed 1 --fb_seed 1 --steps 2000 --head mse --target_scale 1.0 --target_center 1
+--exp E3_generality --tag mse_s1_ctr_centere --seed 1 --fb_seed 1 --steps 2000 --center e --head mse --target_scale 1.0 --target_center 1
+--exp E3_generality --tag mse_s1_ctr --seed 2 --fb_seed 2 --steps 2000 --head mse --target_scale 1.0 --target_center 1
+--exp E3_generality --tag mse_s1_ctr_centere --seed 2 --fb_seed 2 --steps 2000 --center e --head mse --target_scale 1.0 --target_center 1
+--exp E3_generality --tag mse_s5_centere --seed 0 --fb_seed 0 --steps 2000 --center e --head mse --target_scale 5.0
+--exp E3_generality --tag mse_s5_centere --seed 1 --fb_seed 1 --steps 2000 --center e --head mse --target_scale 5.0
+--exp E3_generality --tag mse_s5_centere --seed 2 --fb_seed 2 --steps 2000 --center e --head mse --target_scale 5.0
+--exp E3_generality --tag fashion_centere --seed 0 --fb_seed 0 --steps 2000 --center e --dataset fashion
+--exp E3_generality --tag fashion_centere --seed 1 --fb_seed 1 --steps 2000 --center e --dataset fashion
+--exp E3_generality --tag fashion_centere --seed 2 --fb_seed 2 --steps 2000 --center e --dataset fashion
+--exp E3_generality --tag fashion_softmax_centere --seed 0 --fb_seed 0 --steps 2000 --center e --dataset fashion --head softmax_ce --preprocess standardize
+--exp E3_generality --tag fashion_softmax_centere --seed 1 --fb_seed 1 --steps 2000 --center e --dataset fashion --head softmax_ce --preprocess standardize
+--exp E3_generality --tag fashion_softmax_centere --seed 2 --fb_seed 2 --steps 2000 --center e --dataset fashion --head softmax_ce --preprocess standardize
+--exp E3_generality --tag fa_centere --seed 0 --fb_seed 0 --steps 2000 --center e --rule fa
+--exp E3_generality --tag fa_centere --seed 1 --fb_seed 1 --steps 2000 --center e --rule fa
+--exp E3_generality --tag fa_centere --seed 2 --fb_seed 2 --steps 2000 --center e --rule fa
+--exp E3_generality --tag fa_depth6_centere --seed 0 --fb_seed 0 --steps 2000 --center e --rule fa --depth 6
+--exp E3_generality --tag fa_depth6_centere --seed 1 --fb_seed 1 --steps 2000 --center e --rule fa --depth 6
+--exp E3_generality --tag fa_depth6_centere --seed 2 --fb_seed 2 --steps 2000 --center e --rule fa --depth 6
+--exp E3_generality --tag w900_depth6_centere --seed 0 --fb_seed 0 --steps 2000 --center e --width 900 --depth 6
+--exp E3_generality --tag w900_depth6_centere --seed 1 --fb_seed 1 --steps 2000 --center e --width 900 --depth 6
+--exp E3_generality --tag w900_depth6_centere --seed 2 --fb_seed 2 --steps 2000 --center e --width 900 --depth 6

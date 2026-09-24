@@ -1,0 +1,44 @@
+[
+ {
+  "dataset": "mnist",
+  "seed": 0,
+  "mean_norm": 0.0281561435199413,
+  "trace_cov": 0.9051433922813268,
+  "n_population": 50000
+ },
+ {
+  "dataset": "mnist",
+  "seed": 1,
+  "mean_norm": 0.08668145987632955,
+  "trace_cov": 0.9252445608972051,
+  "n_population": 50000
+ },
+ {
+  "dataset": "mnist",
+  "seed": 2,
+  "mean_norm": 0.10080655814096647,
+  "trace_cov": 0.9145360713575637,
+  "n_population": 50000
+ },
+ {
+  "dataset": "cifar10",
+  "seed": 0,
+  "mean_norm": 0.006429454936972824,
+  "trace_cov": 0.9011831860473664,
+  "n_population": 40000
+ },
+ {
+  "dataset": "cifar10",
+  "seed": 1,
+  "mean_norm": 0.005000273654248412,
+  "trace_cov": 0.9012288716073241,
+  "n_population": 40000
+ },
+ {
+  "dataset": "cifar10",
+  "seed": 2,
+  "mean_norm": 0.005902886688539478,
+  "trace_cov": 0.9056144354926633,
+  "n_population": 40000
+ }
+]

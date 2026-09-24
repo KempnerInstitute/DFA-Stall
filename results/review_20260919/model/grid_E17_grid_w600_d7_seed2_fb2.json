@@ -1,0 +1,172 @@
+{
+ "version": 2,
+ "records": [
+  {
+   "family": "grid",
+   "exp": "E17_grid",
+   "tag": "w600_d7",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "full",
+   "horizon": 3000,
+   "onset_network": 50,
+   "exit_network": 340,
+   "onset_model": 45,
+   "exit_model": 449,
+   "cov_log_mae_l1": 0.10495531657077503,
+   "cov_log_mae_l2": 0.09014922798955949,
+   "cov_log_mae_l3": 0.2966178450945831,
+   "cov_log_mae_l4": 0.6983545314811854,
+   "cov_log_mae_l5": 1.1266442780438726,
+   "cov_log_mae_l6": 1.5842230959199692,
+   "cov_log_mae_l7": 2.0251807889667632
+  },
+  {
+   "family": "grid",
+   "exp": "E17_grid",
+   "tag": "w600_d7",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "no_local",
+   "horizon": 3000,
+   "onset_network": 50,
+   "exit_network": 340,
+   "onset_model": 46,
+   "exit_model": null,
+   "cov_log_mae_l1": 0.5660442541791582,
+   "cov_log_mae_l2": 1.2148855762451651,
+   "cov_log_mae_l3": 1.848103425010766,
+   "cov_log_mae_l4": 2.4428698575648657,
+   "cov_log_mae_l5": 2.8987088976771425,
+   "cov_log_mae_l6": 3.252158955450716,
+   "cov_log_mae_l7": 3.4289239391262054
+  },
+  {
+   "family": "grid",
+   "exp": "E17_grid",
+   "tag": "w600_d7",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "no_participation",
+   "horizon": 3000,
+   "onset_network": 50,
+   "exit_network": 340,
+   "onset_model": 45,
+   "exit_model": 708,
+   "cov_log_mae_l1": 0.05310073280962405,
+   "cov_log_mae_l2": 0.21456773224675396,
+   "cov_log_mae_l3": 0.603439781758937,
+   "cov_log_mae_l4": 1.0789267765015929,
+   "cov_log_mae_l5": 1.472563812945969,
+   "cov_log_mae_l6": 1.8224501855243047,
+   "cov_log_mae_l7": 2.1630398133152346
+  },
+  {
+   "family": "grid",
+   "exp": "E17_grid",
+   "tag": "w600_d7",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "measured_init",
+   "horizon": 3000,
+   "onset_network": 50,
+   "exit_network": 340,
+   "onset_model": 45,
+   "exit_model": 455,
+   "cov_log_mae_l1": 0.09196117349592726,
+   "cov_log_mae_l2": 0.0823438168744822,
+   "cov_log_mae_l3": 0.30701957915289624,
+   "cov_log_mae_l4": 0.7143219633915102,
+   "cov_log_mae_l5": 1.1385173884981634,
+   "cov_log_mae_l6": 1.5827174308437446,
+   "cov_log_mae_l7": 2.0153567852555914
+  }
+ ],
+ "baseline_trajectories": [],
+ "windows": [
+  {
+   "layer": 1,
+   "window": 300,
+   "p_model": 0.73859561726575,
+   "p_network": 0.8459106683731079
+  },
+  {
+   "layer": 1,
+   "window": 300,
+   "p_model": 0.73859561726575,
+   "p_network": 0.8459106683731079
+  },
+  {
+   "layer": 2,
+   "window": 300,
+   "p_model": 0.3757497366739677,
+   "p_network": 0.4945593476295471
+  },
+  {
+   "layer": 2,
+   "window": 300,
+   "p_model": 0.3757497366739677,
+   "p_network": 0.4945593476295471
+  },
+  {
+   "layer": 3,
+   "window": 300,
+   "p_model": 0.21863009040226383,
+   "p_network": 0.2634494304656982
+  },
+  {
+   "layer": 3,
+   "window": 300,
+   "p_model": 0.21863009040226383,
+   "p_network": 0.2634494304656982
+  },
+  {
+   "layer": 4,
+   "window": 300,
+   "p_model": 0.1807422838367663,
+   "p_network": 0.2006885558366775
+  },
+  {
+   "layer": 4,
+   "window": 300,
+   "p_model": 0.1807422838367663,
+   "p_network": 0.2006885558366775
+  },
+  {
+   "layer": 5,
+   "window": 300,
+   "p_model": 0.18161251670493478,
+   "p_network": 0.1607153564691543
+  },
+  {
+   "layer": 5,
+   "window": 300,
+   "p_model": 0.18161251670493478,
+   "p_network": 0.1607153564691543
+  },
+  {
+   "layer": 6,
+   "window": 300,
+   "p_model": 0.17346417413077442,
+   "p_network": 0.1551477015018463
+  },
+  {
+   "layer": 6,
+   "window": 300,
+   "p_model": 0.17346417413077442,
+   "p_network": 0.1551477015018463
+  },
+  {
+   "layer": 7,
+   "window": 300,
+   "p_model": 0.19631261929319002,
+   "p_network": 0.1552605926990509
+  },
+  {
+   "layer": 7,
+   "window": 300,
+   "p_model": 0.19631261929319002,
+   "p_network": 0.1552605926990509
+  }
+ ]
+}

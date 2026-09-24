@@ -1,0 +1,32 @@
+{
+ "n_points": 192,
+ "n_conditions": 16,
+ "n_trajectories": 48,
+ "n_aliases": 0,
+ "r_p": 0.9639534270674398,
+ "mae_p": 0.06642297815997025,
+ "bias_p_by_layer": {
+  "1": -0.12520037697030093,
+  "2": -0.09633037894834591,
+  "3": -0.0331446324254899,
+  "4": -0.010793894611923018,
+  "5": 0.00534330497249946,
+  "6": 0.0017541068752422635,
+  "7": 0.010555404899176246
+ },
+ "r_cos": 0.9841147291153083,
+ "mae_cos": 0.012526474312916905,
+ "onset_exit_n": 39,
+ "exit_valid_n": 39,
+ "exit_censored_n": 0,
+ "n_network_only_plateau": 4,
+ "n_model_only_plateau": 3,
+ "n_neither_plateau": 2,
+ "n_both_plateau": 39,
+ "exit_r": 0.9700895752044552,
+ "onset_r": 0.9445604167736456,
+ "exit_rel_err_median": 0.2423076923076923,
+ "onset_rel_err_median": 0.168,
+ "onset_relative_valid_n": 39,
+ "aliases": []
+}

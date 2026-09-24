@@ -1,0 +1,36 @@
+{
+ "rung": "rung5_gain0.3_bp",
+ "seed": 1,
+ "rule": "bp",
+ "D": 500,
+ "K": 4,
+ "C": 4,
+ "widths": "300,300,300",
+ "student_act": "tanh",
+ "head": "sigmoid_bce",
+ "bias": 1,
+ "x_mean": 0.13,
+ "x_std": 0.3,
+ "fb_scale": 0.3,
+ "lr": 0.5,
+ "out_lr_div": 10.0,
+ "v_scale": 0.3,
+ "steps": 400000,
+ "probe_n": 1024,
+ "n_log": 200,
+ "const_loss": 2.102165714785372,
+ "prior": [
+  0.16015625,
+  0.3828125,
+  0.34375,
+  0.11328125
+ ],
+ "eta_out": 0.05,
+ "widths_list": [
+  300,
+  300,
+  300
+ ],
+ "wall": 590.5616874694824,
+ "final_step": 400000
+}

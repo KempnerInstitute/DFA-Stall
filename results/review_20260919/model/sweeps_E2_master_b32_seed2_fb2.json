@@ -1,0 +1,108 @@
+{
+ "version": 2,
+ "records": [
+  {
+   "family": "sweeps",
+   "exp": "E2_master",
+   "tag": "b32",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "full",
+   "horizon": 1500,
+   "onset_network": 100,
+   "exit_network": 500,
+   "onset_model": 81,
+   "exit_model": 511,
+   "cov_log_mae_l1": 0.09979519273466966,
+   "cov_log_mae_l2": 0.15345750670366523,
+   "cov_log_mae_l3": 0.3634263972008855
+  },
+  {
+   "family": "sweeps",
+   "exp": "E2_master",
+   "tag": "b32",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "no_local",
+   "horizon": 1500,
+   "onset_network": 100,
+   "exit_network": 500,
+   "onset_model": 82,
+   "exit_model": null,
+   "cov_log_mae_l1": 0.6789650652457371,
+   "cov_log_mae_l2": 1.16594086884451,
+   "cov_log_mae_l3": 1.6286716967699135
+  },
+  {
+   "family": "sweeps",
+   "exp": "E2_master",
+   "tag": "b32",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "no_participation",
+   "horizon": 1500,
+   "onset_network": 100,
+   "exit_network": 500,
+   "onset_model": 82,
+   "exit_model": 731,
+   "cov_log_mae_l1": 0.06540228590793534,
+   "cov_log_mae_l2": 0.29481317557701525,
+   "cov_log_mae_l3": 0.6213381110620179
+  },
+  {
+   "family": "sweeps",
+   "exp": "E2_master",
+   "tag": "b32",
+   "seed": 2,
+   "fb_seed": 2,
+   "variant": "measured_init",
+   "horizon": 1500,
+   "onset_network": 100,
+   "exit_network": 500,
+   "onset_model": 82,
+   "exit_model": 522,
+   "cov_log_mae_l1": 0.09479134439482041,
+   "cov_log_mae_l2": 0.1431592461212104,
+   "cov_log_mae_l3": 0.3612084261183243
+  }
+ ],
+ "baseline_trajectories": [],
+ "windows": [
+  {
+   "layer": 1,
+   "window": 300,
+   "p_model": 0.5897648926467315,
+   "p_network": 0.7093205451965332
+  },
+  {
+   "layer": 1,
+   "window": 300,
+   "p_model": 0.5897648926467315,
+   "p_network": 0.7093205451965332
+  },
+  {
+   "layer": 2,
+   "window": 300,
+   "p_model": 0.29579884020304564,
+   "p_network": 0.3465161323547363
+  },
+  {
+   "layer": 2,
+   "window": 300,
+   "p_model": 0.29579884020304564,
+   "p_network": 0.3465161323547363
+  },
+  {
+   "layer": 3,
+   "window": 300,
+   "p_model": 0.2218218679623865,
+   "p_network": 0.2231494337320327
+  },
+  {
+   "layer": 3,
+   "window": 300,
+   "p_model": 0.2218218679623865,
+   "p_network": 0.2231494337320327
+  }
+ ]
+}

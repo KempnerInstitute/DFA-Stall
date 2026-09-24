@@ -9,5 +9,13 @@
     "REPRODUCING.md"
   ],
   "scientific_payload": "Training, analysis, configurations, tests and reference records match the source archive byte for byte.",
-  "repository": "https://github.com/KempnerInstitute/DFA-Stall"
+  "repository": "https://github.com/KempnerInstitute/DFA-Stall",
+  "original_history": {
+    "author": "Varun Reddy",
+    "commits": 7,
+    "tip": "bd4a0784d97003650672391331a6d5eee0a38263",
+    "preserved_on_repository_branch": "main",
+    "merge_commit": "f8eda723984f5fe9498a4ee14808681ff1237bca",
+    "merge_preserves_release_tree": true
+  }
 }

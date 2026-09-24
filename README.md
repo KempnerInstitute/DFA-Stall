@@ -90,6 +90,15 @@ training trajectories, unit snapshots and image datasets are not included;
 regenerate them before running analyses that require those records. Floating-point
 results can vary across hardware.
 
+## Project history
+
+[Varun Reddy](https://github.com/varun04reddy) developed the original DFA stall
+implementation. His seven original commits are preserved in this repository's
+`main` history with their authorship, dates, messages and commit IDs unchanged.
+The [original implementation](https://github.com/KempnerInstitute/DFA-Stall/tree/bd4a0784d97003650672391331a6d5eee0a38263)
+and its figures can be inspected at that revision. The current checkout contains
+the implementation and reference records used for the revised paper.
+
 ## Release provenance and citation
 
 This release uses the same training, analysis and test code as the paper's

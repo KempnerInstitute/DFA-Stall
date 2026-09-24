@@ -25,12 +25,21 @@ Public image datasets must be downloaded. Full training trajectories and unit
 snapshots must be regenerated for analyses that depend on them. The release does
 not promise that every figure can be rebuilt from compact summaries alone.
 
-Manuscript sources, PDFs, rendered figures, presentations, internal review notes,
-cluster-specific launchers and the private development history are excluded.
-The public release starts from the validated code supplement, with a portable
-data directory and public-facing documentation. Scientific Python modules,
-experiment configurations, tests and reference records are unchanged from that
-supplement. `release.json` identifies the exact source archive and revision.
+The current checkout excludes manuscript sources, PDFs, rendered figures,
+presentations, internal review notes and cluster-specific launchers. It starts
+from the validated code supplement, with a portable data directory and public
+documentation. Scientific Python modules, experiment configurations, tests and
+reference records are unchanged from that supplement. `release.json` identifies
+the exact source archive and revision.
+
+## Original project history
+
+The repository also preserves Varun Reddy's seven original commits, ending at
+`bd4a0784d97003650672391331a6d5eee0a38263`. Their authorship, timestamps, messages
+and commit IDs are unchanged. A merge connects this history to `main` while
+retaining the current release files exactly. The original implementation and
+its figures remain accessible in those historical revisions. The private
+manuscript development history is not included.
 
 ## Validation
 

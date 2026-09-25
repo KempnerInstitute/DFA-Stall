@@ -90,18 +90,6 @@ training trajectories, unit snapshots and image datasets are not included;
 regenerate them before running analyses that require those records. Floating-point
 results can vary across hardware.
 
-## Project history
-
-[Varun Reddy](https://github.com/varun04reddy) developed the original DFA stall
-implementation. His seven commits remain in this repository's `main` history
-with Varun as their sole credited author. His authorship, dates and code changes
-are preserved. Automated co-author trailers were removed, and his cluster email
-addresses were replaced with his GitHub noreply address for account attribution.
-These metadata corrections changed the commit IDs.
-The [original implementation](https://github.com/KempnerInstitute/DFA-Stall/tree/96eb648512111b4bbeb7e358eb9ad9ff04229a46)
-and its figures can be inspected at that revision. The current checkout contains
-the implementation and reference records used for the revised paper.
-
 ## Release provenance and citation
 
 This release uses the same training, analysis and test code as the paper's

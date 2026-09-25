@@ -142,7 +142,7 @@ def main():
             heads.append(dict(label=label,seed=m['seed'],preprocess=m['preprocess'],head=m['head'],
                               error=d.ebar_norm.iloc[0],cos=q.cos_l3.max(),p=q[q.step<=300].p_l3.min()))
     h=pd.DataFrame(heads);h.to_csv(DEST/'matched_heads.csv',index=False)
-    table('review_heads','MNIST readout comparisons with preprocessing stated explicitly. All rows use the same three initialization--feedback pairs, $(0,0)$, $(1,1)$ and $(2,2)$, batch size 128, and a 1,500-update window for peak cosine; participation minima use the first 300 updates. These are the first three of the 15 headline trajectories, so values can differ slightly from Table~\\ref{tab:E1}. Only the first two rows isolate the readout choice.','tab:review_heads',
+    table('review_heads','MNIST readout comparisons with preprocessing stated explicitly. All rows use the same three initialization--feedback pairs, $(0,0)$, $(1,1)$ and $(2,2)$, batch size 128, and a 1,500-update window for peak cosine; participation minima use the first 300 updates. Table~\\ref{tab:E1} reports larger 15-trajectory cohorts for the corresponding headline protocols; the raw-pixel softmax row is an additional preprocessing-matched comparison. Only the first two rows isolate the readout choice.','tab:review_heads',
           ['Protocol','$n$','Initial $\\|\\bar e\\|$','Peak cosine','Min. $p_3$'],
           [[label,len(g),pm(g.error,3),pm(g.cos,3),pm(g.p,3)] for label,g in h.groupby('label',sort=False)])
     summary['RawSoftmaxCos']=float(h[h.label=='Raw pixels, softmax']['cos'].mean())

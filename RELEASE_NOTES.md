@@ -34,10 +34,12 @@ the exact source archive and revision.
 
 ## Original project history
 
-The repository also preserves Varun Reddy's seven original commits, ending at
-`bd4a0784d97003650672391331a6d5eee0a38263`. Their authorship, timestamps, messages
-and commit IDs are unchanged. A merge connects this history to `main` while
-retaining the current release files exactly. The original implementation and
+The repository also retains Varun Reddy's seven commits, ending at
+`8c21518db68b6beec360a196fa7e12d581af827d`. Their authorship, timestamps and code
+changes are preserved. Automated co-author trailers were removed from the commit
+messages, changing the commit IDs while leaving Varun as their sole credited
+author. A merge connects this history to `main` while retaining the release
+files exactly. The original implementation and
 its figures remain accessible in those historical revisions. The private
 manuscript development history is not included.
 

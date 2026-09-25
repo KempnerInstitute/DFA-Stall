@@ -93,9 +93,10 @@ results can vary across hardware.
 ## Project history
 
 [Varun Reddy](https://github.com/varun04reddy) developed the original DFA stall
-implementation. His seven original commits are preserved in this repository's
-`main` history with their authorship, dates, messages and commit IDs unchanged.
-The [original implementation](https://github.com/KempnerInstitute/DFA-Stall/tree/bd4a0784d97003650672391331a6d5eee0a38263)
+implementation. His seven commits remain in this repository's `main` history
+with Varun as their sole credited author. His authorship, dates and code changes
+are preserved; removing automated co-author trailers changed the commit IDs.
+The [original implementation](https://github.com/KempnerInstitute/DFA-Stall/tree/8c21518db68b6beec360a196fa7e12d581af827d)
 and its figures can be inspected at that revision. The current checkout contains
 the implementation and reference records used for the revised paper.
 

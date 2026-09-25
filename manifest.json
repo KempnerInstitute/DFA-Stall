@@ -16,12 +16,12 @@
       "sha256": "37541d2c2bf707d6be7c2d056eefe6d6ca59c7b8fb275b02435620419bd8f18e"
     },
     "README.md": {
-      "bytes": 4852,
-      "sha256": "f0d02dcb9ac0a1c676d996a44c669642e8bc842e07db158771e8238d8af32811"
+      "bytes": 4929,
+      "sha256": "58e9add3a9cf9cd47f61f6a320a6e45efe3dad59c034dc7231b9734c24804e92"
     },
     "RELEASE_NOTES.md": {
-      "bytes": 2588,
-      "sha256": "0df046d4b45b277e4d3b3b9aa721b50a8b7d9c4fba5d18e7d50e4d71a987a377"
+      "bytes": 2704,
+      "sha256": "781f0306f8464f45f148791ed073525b082b30a28d26e78dde979a6987170b4c"
     },
     "REPRODUCING.md": {
       "bytes": 13885,
@@ -100,8 +100,8 @@
       "sha256": "925f1e8bd17ce4740cc7d14502115867b6361d0136ef538b17d73e8151efe496"
     },
     "release.json": {
-      "bytes": 845,
-      "sha256": "51aa8a518414e64c6c6269081e50963ee71fe41bebf04460c501a92c184c1767"
+      "bytes": 884,
+      "sha256": "f1ad53985780b4f756b092625e3bc48c09efc9352abb5ba425c2c6cc5618ce78"
     },
     "requirements.txt": {
       "bytes": 199,

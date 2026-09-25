@@ -13,9 +13,10 @@
   "original_history": {
     "author": "Varun Reddy",
     "commits": 7,
-    "tip": "bd4a0784d97003650672391331a6d5eee0a38263",
+    "tip": "8c21518db68b6beec360a196fa7e12d581af827d",
     "preserved_on_repository_branch": "main",
-    "merge_commit": "f8eda723984f5fe9498a4ee14808681ff1237bca",
-    "merge_preserves_release_tree": true
+    "merge_commit": "2d7d73fc8806cc291953cd02c937d90beef04369",
+    "merge_preserves_release_tree": true,
+    "coauthor_trailers_removed": true
   }
 }

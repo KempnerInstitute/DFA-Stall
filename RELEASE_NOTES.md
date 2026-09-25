@@ -1,8 +1,9 @@
 # Paper code release, 24 September 2026
 
 This release contains the implementation and analyses used in **Common-Mode
-Collapse and Recovery in Direct Feedback Alignment**, by Varun Reddy, Houman
-Safaai and Bernardo L. Sabatini. The project grew out of the original DFA stall
+Collapse and Recovery in Direct Feedback Alignment**, by Varun Reddy, Bernardo L.
+Sabatini and Houman Safaai. Bernardo L. Sabatini and Houman Safaai are joint senior
+authors. The project grew out of the original DFA stall
 experiments; this release records the pipeline used for the revised paper.
 
 The code covers the baseline and causal controls, reduced model, optimizer and

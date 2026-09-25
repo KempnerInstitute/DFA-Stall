@@ -1,6 +1,7 @@
 # Common-Mode Collapse and Recovery in Direct Feedback Alignment
 
-Code accompanying the paper by Varun Reddy, Houman Safaai and Bernardo L. Sabatini.
+Code accompanying the paper by Varun Reddy, Bernardo L. Sabatini and Houman Safaai.
+Bernardo L. Sabatini and Houman Safaai are joint senior authors.
 
 The experiments examine how a shared output error can drive hidden units toward
 saturation in direct feedback alignment (DFA), and how the readout, optimizer and

@@ -13,15 +13,15 @@
     },
     "CITATION.cff": {
       "bytes": 644,
-      "sha256": "37541d2c2bf707d6be7c2d056eefe6d6ca59c7b8fb275b02435620419bd8f18e"
+      "sha256": "68f197fc0bec03f4df1b2243d3fcf07c87d91de1ad5287c0cc38b4c281d2716e"
     },
     "README.md": {
-      "bytes": 4320,
-      "sha256": "cf1b709c08e4e91aba12b236bf7001ce7c318aaf4090f6d114ee9ee1fe2c48d0"
+      "bytes": 4385,
+      "sha256": "23438c5990aba0798298ae5935b2eef3731a7e6a28e552bd4a9d67ab99ff0605"
     },
     "RELEASE_NOTES.md": {
-      "bytes": 2848,
-      "sha256": "f17d00c7d85d47917f885ce9e0005423821cc8dd95aab795894fbb8a37e33bed"
+      "bytes": 2913,
+      "sha256": "bb51a9274875090c48c67d0581209027a4d5bc567191996c1c403a7da01df7de"
     },
     "REPRODUCING.md": {
       "bytes": 13885,

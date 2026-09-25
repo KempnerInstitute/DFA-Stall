@@ -5,10 +5,10 @@ title: "Common-Mode Collapse and Recovery in Direct Feedback Alignment"
 authors:
   - family-names: Reddy
     given-names: Varun
-  - family-names: Safaai
-    given-names: Houman
   - family-names: Sabatini
     given-names: Bernardo L.
+  - family-names: Safaai
+    given-names: Houman
 repository-code: "https://github.com/KempnerInstitute/DFA-Stall"
 version: "0.1.0"
 date-released: "2026-09-24"

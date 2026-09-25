@@ -13,10 +13,12 @@
   "original_history": {
     "author": "Varun Reddy",
     "commits": 7,
-    "tip": "8c21518db68b6beec360a196fa7e12d581af827d",
+    "tip": "96eb648512111b4bbeb7e358eb9ad9ff04229a46",
     "preserved_on_repository_branch": "main",
-    "merge_commit": "2d7d73fc8806cc291953cd02c937d90beef04369",
+    "merge_commit": "e380559457d1bfc0b44f568a3aa1e1a14c8d161d",
     "merge_preserves_release_tree": true,
-    "coauthor_trailers_removed": true
+    "coauthor_trailers_removed": true,
+    "github_login": "varun04reddy",
+    "github_email": "115124159+varun04reddy@users.noreply.github.com"
   }
 }

@@ -35,12 +35,14 @@ the exact source archive and revision.
 ## Original project history
 
 The repository also retains Varun Reddy's seven commits, ending at
-`8c21518db68b6beec360a196fa7e12d581af827d`. Their authorship, timestamps and code
+`96eb648512111b4bbeb7e358eb9ad9ff04229a46`. Their authorship, timestamps and code
 changes are preserved. Automated co-author trailers were removed from the commit
-messages, changing the commit IDs while leaving Varun as their sole credited
-author. A merge connects this history to `main` while retaining the release
-files exactly. The original implementation and
-its figures remain accessible in those historical revisions. The private
+messages, and Varun's cluster email addresses were replaced with his GitHub
+noreply address to link the commits to his account. These metadata corrections
+changed the commit IDs while leaving Varun as their sole credited author.
+A merge connects this history to `main` while retaining the release files
+exactly. The original implementation and its figures remain accessible in those
+historical revisions. The private
 manuscript development history is not included.
 
 ## Validation
